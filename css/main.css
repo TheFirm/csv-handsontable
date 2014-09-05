@@ -76,11 +76,11 @@ h3 {
 
 .handsontable th, .handsontable td {
     border-color: #d2d2d2;
+    background-color: rgb(249, 249, 249);
 }
 
 .handsontable tr:first-child td {
     box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
-    background-color: rgb(249, 249, 249);
 }
 
 .main_btn {
