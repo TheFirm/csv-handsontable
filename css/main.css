@@ -53,10 +53,6 @@ h3 {
     padding: 10px 15px;
 }
 
-.thCore * {
-
-}
-
 .htCore th, .htCore td {
     padding: 10px 15px;
     font-family: Roboto, 'Helvetica Neue';
@@ -81,6 +77,10 @@ h3 {
 .handsontable th, .handsontable td {
     border-color: #d2d2d2;
     background-color: rgb(249, 249, 249);
+}
+
+.ht_clone_top th, .ht_clone_top td, .ht_clone_left th, .ht_clone_left td, .ht_clone_corner th  {
+    background-color: #fff;
 }
 
 .handsontable tr:first-child td {
