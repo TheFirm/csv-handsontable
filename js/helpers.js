@@ -10,6 +10,7 @@ function checkFileApiSupport(){
 function displayData(results){
     var headers = results[0];
     results.shift();
+    $(".submit_row").show(); //show submit row
     $('#handsontable_data').handsontable({
         data: results
         ,rowHeaders: true
