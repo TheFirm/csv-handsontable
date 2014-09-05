@@ -1,0 +1,23 @@
+
+
+#drop_zone{
+    margin-top: 50px;
+    border: 2px dashed #bbb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    font: 20pt bold 'Vollkorn';
+    color: #bbb;
+}
+
+#handsontable_data{
+    margin-top: 10px;
+    /*overflow: scroll;*/
+    /*height: 300px;*/
+}
+
+.button_row{
+    padding: 20px 0 100px ;
+}

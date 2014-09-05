@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/jquery.handsontable.full.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>CSV demo</title>
+</head>
+<body>
+
+
+
+<div class="container">
+    <h3>Demo CSV reader.</h3>
+    <small>Sample CSV file can be found here: <a href="employees.csv">employees.csv</a></small>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div id="drop_zone">Drop CSV file here</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="handsontable_data" class="handsontable">
+        </div>
+    </div>
+
+    <div class="row button_row" >
+        <button class="btn btn-primary">Upload</button>
+    </div>
+</div>
+
+<script src="http://handsontable.com/lib/jquery.min.js"></script>
+<script src="http://handsontable.com/dist/jquery.handsontable.full.js"></script>
+<script src="js/lib/papaparse.min.js"></script>
+
+<script src="js/helpers.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
