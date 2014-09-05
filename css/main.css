@@ -13,6 +13,10 @@
     cursor: pointer;
 }
 
+#drop_zone img {
+    display: none;
+}
+
 #handsontable_data{
     margin-top: 10px;
     /*overflow: scroll;*/
