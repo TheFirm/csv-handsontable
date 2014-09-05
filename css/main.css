@@ -10,6 +10,7 @@
     text-align: center;
     font: 20pt bold 'Vollkorn';
     color: #bbb;
+    cursor: pointer;
 }
 
 #handsontable_data{
@@ -27,6 +28,9 @@
 h3 {
     font-size: 30px;
 }
+.dz-error-mark, .dz-success-mark{
+    display: none;
+}
 
 .main_header, .main_subheader {
     text-align: center;
@@ -43,6 +47,10 @@ h3 {
 
 .wtSpreader .htCore thead th {
     padding: 10px 15px;
+}
+
+.thCore * {
+
 }
 
 .htCore th, .htCore td {
