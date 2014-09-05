@@ -22,7 +22,9 @@
     padding: 20px 0 100px ;
 }
 
-
+.dz-error-mark, .dz-success-mark{
+    display: none;
+}
 
 .main_header, .main_subheader {
     text-align: center;

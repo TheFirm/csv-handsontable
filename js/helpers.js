@@ -6,25 +6,6 @@ function checkFileApiSupport(){
     }
 }
 
-function handleFileSelect(evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-
-    var files = evt.dataTransfer.files; // FileList object.
-
-    // files is a FileList of File objects. List some properties.
-    for (var i = 0, f; f = files[i]; i++) {
-        if(!isFileExtentionValid(f)){
-            alert('Only CSV file supported.');
-        } else {
-            Papa.parse(f, {
-                complete: function(results) {
-                    displayData(results.data);
-                }
-            });
-        }
-    }
-}
 
 function displayData(results){
     var headers = results[0];
