@@ -10,7 +10,6 @@ function checkFileApiSupport(){
 function displayData(results){
     var headers = results[0];
     results.shift();
-    $(".submit_row").show(); //show submit row
     $('#handsontable_data').handsontable({
         data: results
         ,rowHeaders: true
@@ -19,12 +18,6 @@ function displayData(results){
         ,width: 800
         //,stretchH: 'last'
     });
-}
-
-function handleDragOver(evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-    evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
 }
 
 function isFileExtentionValid(f){

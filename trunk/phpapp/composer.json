@@ -1,0 +1,24 @@
+{
+    "name": "shiftplanning/humanity-php-sdk",
+    "description": "PHP SDK for Humanity App",
+    "keywords": ["humanity", "sdk"],
+    "type": "library",
+    "homepage": "https://github.com/shiftplanning/humanity-php-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Humanity",
+            "homepage": "https://github.com/shiftplanning/humanity-php-sdk"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "guzzle/guzzle": ">=v3.7.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Humanity": "humanity_sdk/src",
+            "Helpers": ""
+        }
+    }
+}
