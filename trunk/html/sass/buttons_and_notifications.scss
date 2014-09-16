@@ -1,0 +1,129 @@
+@import "compass";
+@import "base_styles";
+
+
+/////////////////////////////////////////////////////////////
+//////////////////////////*BUTTONS*//////////////////////////
+/////////////////////////////////////////////////////////////
+//Main button
+.main_btn {
+  display: inline-block;
+  cursor: pointer;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  margin: 0;
+  text-decoration: none;
+  outline: none;
+  @include border-radius(2px);
+  height: 35px;
+  line-height: 33px;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
+
+//Button blue
+.btn_blue {
+  &:hover {
+    background-color: darken($bg4, 3%);
+    border-color: darken($bg4, 5%);
+    color: #ffffff;
+  }
+  background-color: $bg4;
+  border: 1px solid darken($bg4, 5%);
+  color: $full_white;
+  @include transition(all 0.1s);
+}
+
+//Upload button
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+}
+
+.fileUpload input.file_cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+//Add something button
+.add_btn {
+  &:hover {
+    color: lighten($succes_color, 5%);
+  }
+  i {
+    vertical-align: middle;
+    margin-right: 8px;
+    font-size: 22px;
+    margin-bottom: 3px;
+  }
+  color: lighten($succes_color, 5%);
+  font-size: 13px;
+}
+
+//Icon-button
+.icon_btn {
+  &:hover {
+    color: darken($text_color1, 10%);
+  }
+  i {
+    font-size: 18px;
+  }
+  color: $text_color1;
+}
+
+//Bordered btn
+.btn_bordered_left {
+  border-left: 1px solid $border_light;
+  padding-left: 5px;
+}
+
+.btn_bordered_right {
+  border-right: 1px solid $border_light;
+  padding-right: 5px;
+}
+
+/////////////////////////////////////////////////////////////
+///////////////////////*END OF BUTTONS*//////////////////////
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+/////////////////////////*NOTIFICATIONS*/////////////////////
+/////////////////////////////////////////////////////////////
+.base_notification {
+  span {
+    a {
+      color: $full_white;
+    }
+    i {
+      margin-left: 60px;
+    }
+    color: $full_white;
+    font-size: 13px;
+  }
+  display: inline-block;
+  padding: 10px 15px;
+  @include border-radius(3px);
+  @include box-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+}
+
+
+//Colors
+.notificaton_error {
+  background-color: $error_color;
+}
+
+.notificaton_success {
+  background-color: $succes_color;
+}
+/////////////////////////////////////////////////////////////
+/////////////////////////*NOTIFICATIONS*/////////////////////
+/////////////////////////////////////////////////////////////

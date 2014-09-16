@@ -1,0 +1,282 @@
+@import "compass";
+@import "base_styles";
+@import "icons";
+@import "buttons_and_notifications";
+@import "checkboxes_styles";
+
+
+html, body {
+  height: 100%;
+  background-color: $bg3;
+}
+
+
+/////////////////////////////////////////////////////////////
+///////////////////////*LEFT NAVIGATION*/////////////////////
+/////////////////////////////////////////////////////////////
+.fixed_left_navigation {
+  ul {
+    li {
+      &:last-child {
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid $border_dark;
+        width: 100%;
+      }
+      i {
+        font-size: 22px;
+        vertical-align: middle;
+        margin-right: 12px;
+      }
+      a {
+        &:hover {
+          text-decoration: none;
+          color: $text_hover1;
+          background-color: darken($bg1, 3%);
+        }
+        @include transition(all 0.3s);
+        font-weight: 300;
+        line-height: 60px;
+        display: block;
+        color: $text_color1;
+        padding-left: 15px;
+      }
+      border-bottom: 1px solid $border_dark;
+    }
+    color: $text_color1;
+  }
+  background-color: $bg1;
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  display: inline-block;
+}
+/////////////////////////////////////////////////////////////
+////////////////////*END OF LEFT NAVIGATION*/////////////////
+/////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////////////////////
+///////////////////////////*HEADER*//////////////////////////
+/////////////////////////////////////////////////////////////
+header {
+  background-color: red;
+  margin: 0 0 0 160px;
+}
+
+.navbar-fixed-top {
+  left: 160px;
+}
+
+.top_navbar {
+  .container-fluid {
+    padding-left: 0;
+  }
+}
+
+.dropdown_base {
+  &:focus {
+    background-color: none;
+  }
+  i {
+    font-size: 24px;
+    vertical-align: middle;
+  }
+  font-size: 18px;
+
+  font-weight: 300;
+}
+
+.dropdown_main {
+  i {
+    &:first-child {
+      color: $bg2;
+      margin-right: 10px;
+    }
+    &:last-child {
+      margin-left: 80px;
+    }
+  }
+  border-left: 5px solid $bg2;
+  margin-right: 5px;
+}
+
+.thin_border_wrapper {
+  padding: 13px 0;
+}
+
+.thin_border {
+  width: 1px;
+  height: 31px;
+  background-color: $border_light;
+}
+
+.user_icon_wrapper {
+  img {
+    width: 30px;
+    height: 30px;
+    @include border-radius(3px);
+  }
+}
+
+.navbar-nav > li > .user_icon_wrapper {
+  padding: 14px 0;
+}
+
+.navbar-text {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  font-size: 13px;
+}
+
+.navbar-default {
+  border-bottom: 1px solid $border_light;
+  background-color: $full_white;
+}
+
+.navbar-nav > li > a {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  color: $text_color2;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background: none;
+  border-color: $bg2;
+}
+
+#bs-example-navbar-collapse-1 {
+  background-color: $full_white;
+  margin-left: 0;
+}
+
+//Buttons and notification li wrappers
+.header_btn_wrapper {
+  margin: 10px 10px 0;
+}
+
+.notificaton_wrapper {
+  margin: 8px 10px 0;
+}
+/////////////////////////////////////////////////////////////
+///////////////////////*END OF HEADER*///////////////////////
+/////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////
+////////////////////////*MAIN CONTENT*///////////////////////
+/////////////////////////////////////////////////////////////
+.main_content {
+  margin: 60px 0 0 160px;
+  padding-top: 40px;
+}
+
+//Drag and drop
+.drag_and_drop_wrapper {
+  h3 {
+    span {
+      color: lighten($text_color3, 10%);
+      font-size: 20px;
+    }
+    text-align: center;
+    color: $text_color3;
+    margin-bottom: 30px;
+  }
+  text-align: center;
+}
+
+.drag_and_drop {
+  position: relative;
+}
+
+#drop_zone {
+  &.dz-drag-hover {
+    width: 425px;
+    background-color: $bg5;
+    background-image: url(../img/bg1.png);
+    background-repeat: no-repeat;
+    border: 2px solid $bg5;
+  }
+
+  width: 360px;
+  min-height: 315px;
+  @include transition(all 0.3s);
+  padding: 20px;
+  display: inline-block;
+  border: 2px dashed $base-color1;
+  @include border-radius(8px);
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+.hidden_elements_wrapper {
+  p {
+    span {
+      font-size: 14px;
+    }
+    margin: 15px 0;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 22px;
+    color: $base-color1;
+  }
+  a {
+    position: relative;
+    z-index: 6;
+  }
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.dz-filename {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+}
+
+.dz-size {
+  display: none;
+}
+.dz-progress {
+  display: none;
+}
+.dz-success-mark {
+  display: none;
+}
+.dz-error-mark {
+  display: none;
+}
+.dz-error-message {
+  display: none;
+}
+
+//End of Drag and drop
+
+
+
+/////////////////////////////////////////////////////////////
+///////////////////*END OF MAIN CONTENT*/////////////////////
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+/////////////////////////*LIBRARY*///////////////////////////
+/////////////////////////////////////////////////////////////
+.library {
+  padding-top: 50px;
+}
+
+.library_element {
+  margin-bottom: 10px;
+}
+/////////////////////////////////////////////////////////////
+////////////////////*END OF LIBRARY*/////////////////////////
+/////////////////////////////////////////////////////////////
+
