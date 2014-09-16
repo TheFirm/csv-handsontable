@@ -1,0 +1,63 @@
+
+
+#drop_zone{
+    margin-top: 50px;
+    border: 2px dashed #bbb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    font: 20pt bold 'Vollkorn';
+    color: #bbb;
+    cursor: pointer;
+}
+
+#handsontable_data{
+    margin-top: 10px;
+    /*overflow: scroll;*/
+    /*height: 300px;*/
+}
+
+.button_row{
+    padding: 20px 0 100px ;
+}
+
+.dz-error-mark, .dz-success-mark{
+    display: none;
+}
+
+.main_header, .main_subheader {
+    text-align: center;
+}
+
+
+.wtSpreader .htCore th{
+    height: 22px !important;
+}
+
+.wtSpreader .htCore thead th {
+    padding: 10px 15px;
+}
+
+.thCore * {
+
+}
+
+.htCore th, .htCore td {
+    padding: 10px 15px;
+    font-family: Roboto, 'Helvetica Neue';
+    color: rgb(136, 136, 136);
+    font-size: 13px;
+}
+
+.handsontable th, .handsontable td {
+    border-color: #d2d2d2;
+}
+
+.main_btn {
+    height: 35px;
+    line-height: 33px;
+    padding: 0 10px;
+    vertical-align: middle;
+}
