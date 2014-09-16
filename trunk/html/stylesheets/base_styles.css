@@ -1,0 +1,59 @@
+/* line 44, ../sass/base_styles.scss */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 49, ../sass/base_styles.scss */
+body * {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+/* line 55, ../sass/base_styles.scss */
+textarea {
+  resize: none;
+  overflow-y: auto;
+}
+
+/* line 59, ../sass/base_styles.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 70, ../sass/base_styles.scss */
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* line 71, ../sass/base_styles.scss */
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* line 72, ../sass/base_styles.scss */
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 73, ../sass/base_styles.scss */
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* line 74, ../sass/base_styles.scss */
+h5 {
+  font-size: 14px;
+}
+
+/* line 75, ../sass/base_styles.scss */
+h6 {
+  font-size: 12px;
+}

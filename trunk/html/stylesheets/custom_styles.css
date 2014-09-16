@@ -1,0 +1,604 @@
+/* line 44, ../sass/base_styles.scss */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 49, ../sass/base_styles.scss */
+body * {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+/* line 55, ../sass/base_styles.scss */
+textarea {
+  resize: none;
+  overflow-y: auto;
+}
+
+/* line 59, ../sass/base_styles.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 70, ../sass/base_styles.scss */
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* line 71, ../sass/base_styles.scss */
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* line 72, ../sass/base_styles.scss */
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 73, ../sass/base_styles.scss */
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* line 74, ../sass/base_styles.scss */
+h5 {
+  font-size: 14px;
+}
+
+/* line 75, ../sass/base_styles.scss */
+h6 {
+  font-size: 12px;
+}
+
+/* line 2, ../sass/icons.scss */
+.csv_icon {
+  background: url(../img/sprite.png) no-repeat 0 0;
+  display: inline-block;
+  width: 56px;
+  height: 64px;
+}
+
+/* line 10, ../sass/icons.scss */
+.upload_icon {
+  background: url(../img/sprite.png) no-repeat -56px 0;
+  display: inline-block;
+  width: 64px;
+  height: 52px;
+}
+
+/* line 44, ../sass/base_styles.scss */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 49, ../sass/base_styles.scss */
+body * {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+/* line 55, ../sass/base_styles.scss */
+textarea {
+  resize: none;
+  overflow-y: auto;
+}
+
+/* line 59, ../sass/base_styles.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 70, ../sass/base_styles.scss */
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* line 71, ../sass/base_styles.scss */
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* line 72, ../sass/base_styles.scss */
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 73, ../sass/base_styles.scss */
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* line 74, ../sass/base_styles.scss */
+h5 {
+  font-size: 14px;
+}
+
+/* line 75, ../sass/base_styles.scss */
+h6 {
+  font-size: 12px;
+}
+
+/* line 9, ../sass/buttons_and_notifications.scss */
+.main_btn {
+  display: inline-block;
+  cursor: pointer;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  margin: 0;
+  text-decoration: none;
+  outline: none;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  height: 35px;
+  line-height: 33px;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
+/* line 27, ../sass/buttons_and_notifications.scss */
+.btn_blue {
+  background-color: #41a3cc;
+  border: 1px solid #3497c0;
+  color: #fff;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+/* line 28, ../sass/buttons_and_notifications.scss */
+.btn_blue:hover {
+  background-color: #369dc8;
+  border-color: #3497c0;
+  color: #ffffff;
+}
+
+/* line 40, ../sass/buttons_and_notifications.scss */
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+}
+
+/* line 45, ../sass/buttons_and_notifications.scss */
+.fileUpload input.file_cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+/* line 58, ../sass/buttons_and_notifications.scss */
+.add_btn {
+  color: #97c343;
+  font-size: 13px;
+}
+/* line 59, ../sass/buttons_and_notifications.scss */
+.add_btn:hover {
+  color: #97c343;
+}
+/* line 62, ../sass/buttons_and_notifications.scss */
+.add_btn i {
+  vertical-align: middle;
+  margin-right: 8px;
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+
+/* line 73, ../sass/buttons_and_notifications.scss */
+.icon_btn {
+  color: #818181;
+}
+/* line 74, ../sass/buttons_and_notifications.scss */
+.icon_btn:hover {
+  color: #686868;
+}
+/* line 77, ../sass/buttons_and_notifications.scss */
+.icon_btn i {
+  font-size: 18px;
+}
+
+/* line 84, ../sass/buttons_and_notifications.scss */
+.btn_bordered_left {
+  border-left: 1px solid #e1e1e1;
+  padding-left: 5px;
+}
+
+/* line 89, ../sass/buttons_and_notifications.scss */
+.btn_bordered_right {
+  border-right: 1px solid #e1e1e1;
+  padding-right: 5px;
+}
+
+/* line 101, ../sass/buttons_and_notifications.scss */
+.base_notification {
+  display: inline-block;
+  padding: 10px 15px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+/* line 102, ../sass/buttons_and_notifications.scss */
+.base_notification span {
+  color: #fff;
+  font-size: 13px;
+}
+/* line 103, ../sass/buttons_and_notifications.scss */
+.base_notification span a {
+  color: #fff;
+}
+/* line 106, ../sass/buttons_and_notifications.scss */
+.base_notification span i {
+  margin-left: 60px;
+}
+
+/* line 120, ../sass/buttons_and_notifications.scss */
+.notificaton_error {
+  background-color: #f4644d;
+}
+
+/* line 124, ../sass/buttons_and_notifications.scss */
+.notificaton_success {
+  background-color: #89b339;
+}
+
+/* line 1, ../sass/checkboxes_styles.scss */
+input[type=checkbox].css-checkbox {
+  position: absolute;
+  z-index: -1000;
+  top: -1000px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+/* line 14, ../sass/checkboxes_styles.scss */
+input[type=checkbox].css-checkbox + label.css-label {
+  padding-left: 21px;
+  height: 16px;
+  display: inline-block;
+  line-height: 16px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font-size: 16px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* line 27, ../sass/checkboxes_styles.scss */
+input[type=checkbox].css-checkbox:checked + label.css-label {
+  background-position: 0 -16px;
+}
+
+/* line 30, ../sass/checkboxes_styles.scss */
+label.css-label {
+  background-image: url(../img/checkbox_sprite.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 8, ../sass/custom_styles.scss */
+html, body {
+  height: 100%;
+  background-color: #f1f1f1;
+}
+
+/* line 17, ../sass/custom_styles.scss */
+.fixed_left_navigation {
+  background-color: #333333;
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  display: inline-block;
+}
+/* line 18, ../sass/custom_styles.scss */
+.fixed_left_navigation ul {
+  color: #818181;
+}
+/* line 19, ../sass/custom_styles.scss */
+.fixed_left_navigation ul li {
+  border-bottom: 1px solid #3a3a3a;
+}
+/* line 20, ../sass/custom_styles.scss */
+.fixed_left_navigation ul li:last-child {
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #3a3a3a;
+  width: 100%;
+}
+/* line 26, ../sass/custom_styles.scss */
+.fixed_left_navigation ul li i {
+  font-size: 22px;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+/* line 31, ../sass/custom_styles.scss */
+.fixed_left_navigation ul li a {
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-weight: 300;
+  line-height: 60px;
+  display: block;
+  color: #818181;
+  padding-left: 15px;
+}
+/* line 32, ../sass/custom_styles.scss */
+.fixed_left_navigation ul li a:hover {
+  text-decoration: none;
+  color: #f8f8f8;
+  background-color: #2b2b2b;
+}
+
+/* line 63, ../sass/custom_styles.scss */
+header {
+  background-color: red;
+  margin: 0 0 0 160px;
+}
+
+/* line 68, ../sass/custom_styles.scss */
+.navbar-fixed-top {
+  left: 160px;
+}
+
+/* line 73, ../sass/custom_styles.scss */
+.top_navbar .container-fluid {
+  padding-left: 0;
+}
+
+/* line 78, ../sass/custom_styles.scss */
+.dropdown_base {
+  font-size: 18px;
+  font-weight: 300;
+}
+/* line 79, ../sass/custom_styles.scss */
+.dropdown_base:focus {
+  background-color: none;
+}
+/* line 82, ../sass/custom_styles.scss */
+.dropdown_base i {
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+/* line 91, ../sass/custom_styles.scss */
+.dropdown_main {
+  border-left: 5px solid #a894db;
+  margin-right: 5px;
+}
+/* line 93, ../sass/custom_styles.scss */
+.dropdown_main i:first-child {
+  color: #a894db;
+  margin-right: 10px;
+}
+/* line 97, ../sass/custom_styles.scss */
+.dropdown_main i:last-child {
+  margin-left: 80px;
+}
+
+/* line 105, ../sass/custom_styles.scss */
+.thin_border_wrapper {
+  padding: 13px 0;
+}
+
+/* line 109, ../sass/custom_styles.scss */
+.thin_border {
+  width: 1px;
+  height: 31px;
+  background-color: #e1e1e1;
+}
+
+/* line 116, ../sass/custom_styles.scss */
+.user_icon_wrapper img {
+  width: 30px;
+  height: 30px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/* line 123, ../sass/custom_styles.scss */
+.navbar-nav > li > .user_icon_wrapper {
+  padding: 14px 0;
+}
+
+/* line 127, ../sass/custom_styles.scss */
+.navbar-text {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  font-size: 13px;
+}
+
+/* line 134, ../sass/custom_styles.scss */
+.navbar-default {
+  border-bottom: 1px solid #e1e1e1;
+  background-color: #fff;
+}
+
+/* line 139, ../sass/custom_styles.scss */
+.navbar-nav > li > a {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  color: #999;
+}
+
+/* line 145, ../sass/custom_styles.scss */
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background: none;
+  border-color: #a894db;
+}
+
+/* line 150, ../sass/custom_styles.scss */
+#bs-example-navbar-collapse-1 {
+  background-color: #fff;
+  margin-left: 0;
+}
+
+/* line 156, ../sass/custom_styles.scss */
+.header_btn_wrapper {
+  margin: 10px 10px 0;
+}
+
+/* line 160, ../sass/custom_styles.scss */
+.notificaton_wrapper {
+  margin: 8px 10px 0;
+}
+
+/* line 171, ../sass/custom_styles.scss */
+.main_content {
+  margin: 60px 0 0 160px;
+  padding-top: 40px;
+}
+
+/* line 177, ../sass/custom_styles.scss */
+.drag_and_drop_wrapper {
+  text-align: center;
+}
+/* line 178, ../sass/custom_styles.scss */
+.drag_and_drop_wrapper h3 {
+  text-align: center;
+  color: #6c7984;
+  margin-bottom: 30px;
+}
+/* line 179, ../sass/custom_styles.scss */
+.drag_and_drop_wrapper h3 span {
+  color: #87929c;
+  font-size: 20px;
+}
+
+/* line 190, ../sass/custom_styles.scss */
+.drag_and_drop {
+  position: relative;
+}
+
+/* line 194, ../sass/custom_styles.scss */
+#drop_zone {
+  width: 360px;
+  min-height: 315px;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  padding: 20px;
+  display: inline-block;
+  border: 2px dashed #b2bac0;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+/* line 195, ../sass/custom_styles.scss */
+#drop_zone.dz-drag-hover {
+  width: 425px;
+  background-color: #4ba4db;
+  background-image: url(../img/bg1.png);
+  background-repeat: no-repeat;
+  border: 2px solid #4ba4db;
+}
+
+/* line 215, ../sass/custom_styles.scss */
+.hidden_elements_wrapper {
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* line 216, ../sass/custom_styles.scss */
+.hidden_elements_wrapper p {
+  margin: 15px 0;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 22px;
+  color: #b2bac0;
+}
+/* line 217, ../sass/custom_styles.scss */
+.hidden_elements_wrapper p span {
+  font-size: 14px;
+}
+/* line 226, ../sass/custom_styles.scss */
+.hidden_elements_wrapper a {
+  position: relative;
+  z-index: 6;
+}
+
+/* line 238, ../sass/custom_styles.scss */
+.dz-filename {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+}
+
+/* line 245, ../sass/custom_styles.scss */
+.dz-size {
+  display: none;
+}
+
+/* line 248, ../sass/custom_styles.scss */
+.dz-progress {
+  display: none;
+}
+
+/* line 251, ../sass/custom_styles.scss */
+.dz-success-mark {
+  display: none;
+}
+
+/* line 254, ../sass/custom_styles.scss */
+.dz-error-mark {
+  display: none;
+}
+
+/* line 257, ../sass/custom_styles.scss */
+.dz-error-message {
+  display: none;
+}
+
+/* line 272, ../sass/custom_styles.scss */
+.library {
+  padding-top: 50px;
+}
+
+/* line 276, ../sass/custom_styles.scss */
+.library_element {
+  margin-bottom: 10px;
+}
