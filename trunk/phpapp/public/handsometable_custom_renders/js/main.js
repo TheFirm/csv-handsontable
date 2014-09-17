@@ -18,11 +18,10 @@ var data = {
     ]
 };
 
-var handsomeTable = function(){
+var handsomeTable = function () {
     var self = this;
 
-    self.data =  {
-    };
+    self.data = {};
 
     self.helpers = {
         addCheckboxesToProperty: function (checkboxProperty) {
@@ -44,8 +43,8 @@ var handsomeTable = function(){
             columns_with_checkboxes.unshift(checkBoxObj);
             //return columns_with_checkboxes
         },
-        removeColumn: function (index){
-            if(!confirm("Delete column?")){
+        removeColumn: function (index) {
+            if (!confirm("Delete column?")) {
                 return false;
             }
             var removedColumn = self.data.columns.splice(index, 1)[0];
@@ -74,7 +73,7 @@ var handsomeTable = function(){
 
         self.$handsontable_container.handsontable({
             data: self.data.body,
-            rowHeaders: true,
+            colHeaders: true,
             columns: self.data.columns,
 
             colHeaders: function (colNum) {
@@ -115,8 +114,18 @@ var handsomeTable = function(){
 
         self.$handsontable_container.on('click', 'a.js-edit_column_name', function (event) {
             var $this = $(this);
+            window.$$this = $this;
+            var $title = $this.siblings('p');
+            var $wrapper = $this.parent();
+            $title.hide();
+            $wrapper.append('<input type="text"></p>');
+
+            var source = $("#edit_column_wrapper").html();
+            var template = Handlebars.compile(source);
+            console.log(template());
+
             var colNum = $this.data("columnNum");
-            console.log(this, colNum);
+            console.log($this, colNum);
         });
     }
 };

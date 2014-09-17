@@ -36,6 +36,15 @@
     </div>
 </div>
 
+<script id="edit_column_wrapper" type="text/x-handlebars-template">
+    <select name="edit_column" id="edit_column">
+        {{#options}}
+            <option value="{{value}}">{{name}}</option>
+        {{/each}}
+    </select>
+</script>
+
+<script src="js/lib/handlebars-v2.0.0.js"></script>
 <script src="http://handsontable.com/lib/jquery.min.js"></script>
 <script src="http://handsontable.com/dist/jquery.handsontable.full.js"></script>
 <script src="js/lib/papaparse.min.js"></script>
