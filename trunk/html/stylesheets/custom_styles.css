@@ -197,6 +197,7 @@ h6 {
   transition: all 0.1s;
   color: #97c343;
   font-size: 13px;
+  font-weight: 300;
 }
 /* line 59, ../sass/buttons_and_notifications.scss */
 .add_btn:hover {
@@ -210,7 +211,7 @@ h6 {
   margin-bottom: 3px;
 }
 
-/* line 74, ../sass/buttons_and_notifications.scss */
+/* line 75, ../sass/buttons_and_notifications.scss */
 .icon_btn {
   -moz-transition: all 0.1s;
   -o-transition: all 0.1s;
@@ -218,53 +219,53 @@ h6 {
   transition: all 0.1s;
   color: #a8a8a8;
 }
-/* line 75, ../sass/buttons_and_notifications.scss */
+/* line 76, ../sass/buttons_and_notifications.scss */
 .icon_btn:hover {
   color: #818181;
 }
-/* line 78, ../sass/buttons_and_notifications.scss */
+/* line 79, ../sass/buttons_and_notifications.scss */
 .icon_btn i {
   font-size: 18px;
 }
 
-/* line 85, ../sass/buttons_and_notifications.scss */
+/* line 86, ../sass/buttons_and_notifications.scss */
 .success {
   color: #89b339;
 }
-/* line 86, ../sass/buttons_and_notifications.scss */
+/* line 87, ../sass/buttons_and_notifications.scss */
 .success:hover {
   color: #6b8c2d;
 }
 
-/* line 91, ../sass/buttons_and_notifications.scss */
+/* line 92, ../sass/buttons_and_notifications.scss */
 .error {
   color: #f4644d;
 }
-/* line 92, ../sass/buttons_and_notifications.scss */
+/* line 93, ../sass/buttons_and_notifications.scss */
 .error:hover {
   color: #f13a1d;
 }
 
-/* line 100, ../sass/buttons_and_notifications.scss */
+/* line 101, ../sass/buttons_and_notifications.scss */
 .caret_btn i {
   font-size: 12px;
   margin-left: -4px;
   color: #898989;
 }
 
-/* line 108, ../sass/buttons_and_notifications.scss */
+/* line 109, ../sass/buttons_and_notifications.scss */
 .btn_bordered_left {
   border-left: 1px solid #e1e1e1;
   padding-left: 7px;
 }
 
-/* line 113, ../sass/buttons_and_notifications.scss */
+/* line 114, ../sass/buttons_and_notifications.scss */
 .btn_bordered_right {
   border-right: 1px solid #e1e1e1;
   padding-right: 7px;
 }
 
-/* line 126, ../sass/buttons_and_notifications.scss */
+/* line 127, ../sass/buttons_and_notifications.scss */
 .base_notification {
   display: inline-block;
   padding: 10px 15px;
@@ -275,26 +276,26 @@ h6 {
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
-/* line 127, ../sass/buttons_and_notifications.scss */
+/* line 128, ../sass/buttons_and_notifications.scss */
 .base_notification span {
   color: #fff;
   font-size: 13px;
 }
-/* line 128, ../sass/buttons_and_notifications.scss */
+/* line 129, ../sass/buttons_and_notifications.scss */
 .base_notification span a {
   color: #fff;
 }
-/* line 131, ../sass/buttons_and_notifications.scss */
+/* line 132, ../sass/buttons_and_notifications.scss */
 .base_notification span i {
   margin-left: 60px;
 }
 
-/* line 145, ../sass/buttons_and_notifications.scss */
+/* line 146, ../sass/buttons_and_notifications.scss */
 .notificaton_error {
   background-color: #f4644d;
 }
 
-/* line 149, ../sass/buttons_and_notifications.scss */
+/* line 150, ../sass/buttons_and_notifications.scss */
 .notificaton_success {
   background-color: #89b339;
 }
@@ -406,79 +407,175 @@ h6 {
 .table_wrapper {
   background-color: #f9f9f9;
 }
-/* line 7, ../sass/tables_styles.scss */
-.table_wrapper .main_table {
-  width: 87.5%;
+
+/* line 11, ../sass/tables_styles.scss */
+.table_wrapper > .row > div:first-child {
+  padding-right: 0;
+}
+/* line 14, ../sass/tables_styles.scss */
+.table_wrapper > .row > div:last-child {
+  padding-left: 0;
 }
 
-/* line 13, ../sass/tables_styles.scss */
+/* line 19, ../sass/tables_styles.scss */
 .main_table {
   background-color: #f9f9f9;
+  margin-bottom: 0;
+  border-bottom: none;
 }
 
-/* line 17, ../sass/tables_styles.scss */
+/* line 25, ../sass/tables_styles.scss */
 .main_table.table-bordered {
   border-top: 1px solid #eeeeee;
 }
 
-/* line 21, ../sass/tables_styles.scss */
+/* line 29, ../sass/tables_styles.scss */
 .main_table.table-bordered th {
-  font-size: 13px;
   color: #a8a8a8;
   padding: 13px 10px 15px 16px;
+  word-break: break-all;
+  word-break: break-word;
+}
+/* line 30, ../sass/tables_styles.scss */
+.main_table.table-bordered th span {
+  font-size: 13px;
+  font-weight: 300;
 }
 
-/* line 27, ../sass/tables_styles.scss */
+/* line 40, ../sass/tables_styles.scss */
 .main_table.table-bordered td {
   font-size: 13px;
+  font-weight: 300;
   color: #a8a8a8;
   padding: 16px 16px;
+  word-break: break-all;
+  word-break: break-word;
 }
 
-/* line 33, ../sass/tables_styles.scss */
+/* line 49, ../sass/tables_styles.scss */
 .main_table.table-bordered tbody tr:first-child td {
   -moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
   -webkit-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
 }
 
-/* line 37, ../sass/tables_styles.scss */
+/* line 53, ../sass/tables_styles.scss */
+.main_table.table-bordered tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* line 57, ../sass/tables_styles.scss */
 .main_table.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
   border-bottom-width: 1px;
   border: 1px solid #eeeeee;
   border-right-width: 2px;
 }
 
-/* line 43, ../sass/tables_styles.scss */
+/* line 63, ../sass/tables_styles.scss */
 .main_table.table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td {
   border: 1px solid #eeeeee;
   border-right-width: 2px;
 }
 
-/* line 48, ../sass/tables_styles.scss */
+/* line 68, ../sass/tables_styles.scss */
 .checkbox_wrap {
   width: 80px;
   text-align: center;
 }
 
-/* line 53, ../sass/tables_styles.scss */
+/* line 73, ../sass/tables_styles.scss */
 .unknown_cell {
   background-color: #eaeaea;
+  position: relative;
+  min-width: 190px;
 }
 
-/* line 57, ../sass/tables_styles.scss */
+/* line 79, ../sass/tables_styles.scss */
 .table_btn_wrapper {
   display: inline-block;
   float: right;
 }
-/* line 58, ../sass/tables_styles.scss */
+/* line 80, ../sass/tables_styles.scss */
 .table_btn_wrapper a:first-child {
   margin-right: 5px;
 }
 
-/* line 67, ../sass/tables_styles.scss */
-.add_column_block {
+/* line 87, ../sass/tables_styles.scss */
+.select_match_wrapper {
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+/* line 88, ../sass/tables_styles.scss */
+.select_match_wrapper a {
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 89, ../sass/tables_styles.scss */
+.select_match_wrapper a i {
+  font-size: 20px;
+}
+
+/* line 105, ../sass/tables_styles.scss */
+.table_wrapper.table_edit_done .top_side .directly_table {
+  width: 100%;
+}
+/* line 108, ../sass/tables_styles.scss */
+.table_wrapper.table_edit_done .top_side .add_column_wrapper {
+  display: none;
+}
+/* line 112, ../sass/tables_styles.scss */
+.table_wrapper.table_edit_done .bottom_side {
+  display: none;
+}
+
+/* line 117, ../sass/tables_styles.scss */
+.directly_table {
+  width: 87.5%;
+  display: inline-block;
+  float: left;
+  -moz-transition: width 0.6s;
+  -o-transition: width 0.6s;
+  -webkit-transition: width 0.6s;
+  transition: width 0.6s;
+}
+
+/* line 124, ../sass/tables_styles.scss */
+.add_column_wrapper {
   width: 12.5%;
+  display: inline-block;
+  float: left;
+}
+
+/* line 132, ../sass/tables_styles.scss */
+.top_side {
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* line 136, ../sass/tables_styles.scss */
+.add_column_btn {
+  padding: 13px 10px 12px 16px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* line 141, ../sass/tables_styles.scss */
+.shadow_block {
+  height: 10px;
+  -moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
+  -webkit-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
+}
+
+/* line 146, ../sass/tables_styles.scss */
+.add_row_btn {
+  text-align: right;
+  padding: 13px 18px 12px 18px;
+}
+/* line 147, ../sass/tables_styles.scss */
+.add_row_btn a {
+  margin-right: 80px;
 }
 
 /* line 9, ../sass/custom_styles.scss */

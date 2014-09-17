@@ -68,6 +68,7 @@
   @include transition(all 0.1s);
   color: lighten($succes_color, 5%);
   font-size: 13px;
+  font-weight: 300;
 }
 
 //Icon-button

@@ -2,16 +2,24 @@
 @import "base_styles";
 /////////////////////////////////////////////////////////////
 /////////////////////////*MAIN TABLE*////////////////////////
-/////////////////////////////////////////////////////////////\
+/////////////////////////////////////////////////////////////
 .table_wrapper {
-  .main_table {
-    width: 87.5%;
-  }
   background-color: darken($full_white, 2.5%);
+}
+
+.table_wrapper > .row > div {
+  &:first-child {
+    padding-right: 0;
+  }
+  &:last-child {
+    padding-left: 0;
+  }
 }
 
 .main_table {
   background-color: darken($full_white, 2.5%);
+  margin-bottom: 0;
+  border-bottom: none;
 }
 
 .main_table.table-bordered {
@@ -19,19 +27,31 @@
 }
 
 .main_table.table-bordered th {
-  font-size: 13px;
+  span {
+    font-size: 13px;
+    font-weight: 300;
+  }
   color: $text_color4;
   padding: 13px 10px 15px 16px;
+  word-break: break-all;
+  word-break: break-word;
 }
 
 .main_table.table-bordered td {
   font-size: 13px;
+  font-weight: 300;
   color: $text_color4;
   padding: 16px 16px;
+  word-break: break-all;
+  word-break: break-word;
 }
 
 .main_table.table-bordered tbody tr:first-child td {
   @include box-shadow(0 5px 5px -5px rgba(0, 0, 0, 0.15) inset);
+}
+
+.main_table.table-bordered tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .main_table.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
@@ -52,6 +72,8 @@
 
 .unknown_cell {
   background-color: $bg6;
+  position: relative;
+  min-width: 190px;
 }
 
 .table_btn_wrapper {
@@ -62,10 +84,71 @@
   float: right;
 }
 
+.select_match_wrapper {
+  a {
+    i {
+      font-size: 20px;
+    }
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+//Table wrappers
+.table_wrapper.table_edit_done {
+  .top_side {
+    .directly_table {
+      width: 100%;
+    }
+    .add_column_wrapper {
+      display: none;
+    }
+  }
+  .bottom_side {
+    display: none;
+  }
+}
+
+.directly_table {
+  width: 87.5%;
+  display: inline-block;
+  float: left;
+  @include transition(width 0.6s);
+}
+
+.add_column_wrapper {
+  width: 12.5%;
+  display: inline-block;
+  float: left;
+}
+
 
 //Add row or column
-.add_column_block {
-  width: 12.5%;
+.top_side {
+  border-bottom: 1px solid $border_table;
+}
+
+.add_column_btn {
+  padding: 13px 10px 12px 16px;
+  border-bottom: 1px solid $border_table;
+}
+
+.shadow_block {
+  height: 10px;
+  @include box-shadow(0 5px 5px -5px rgba(0, 0, 0, 0.15) inset);
+}
+
+.add_row_btn {
+  a {
+    margin-right: 80px;
+  }
+  text-align: right;
+  padding: 13px 18px 12px 18px;
 }
 /////////////////////////////////////////////////////////////
 //////////////////////*END OF MAIN TABLE*////////////////////
