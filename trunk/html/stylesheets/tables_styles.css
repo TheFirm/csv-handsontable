@@ -186,20 +186,29 @@ h6 {
   font-size: 20px;
 }
 
-/* line 121, ../sass/tables_styles.scss */
+/* line 116, ../sass/tables_styles.scss */
+.select_btn_wrapper {
+  display: inline-block;
+}
+/* line 117, ../sass/tables_styles.scss */
+.select_btn_wrapper a {
+  padding-bottom: 18px;
+}
+
+/* line 127, ../sass/tables_styles.scss */
 .table_wrapper.table_edit_done .top_side .directly_table {
   width: 100%;
 }
-/* line 124, ../sass/tables_styles.scss */
+/* line 130, ../sass/tables_styles.scss */
 .table_wrapper.table_edit_done .top_side .add_column_wrapper {
   display: none;
 }
-/* line 128, ../sass/tables_styles.scss */
+/* line 134, ../sass/tables_styles.scss */
 .table_wrapper.table_edit_done .bottom_side {
   display: none;
 }
 
-/* line 133, ../sass/tables_styles.scss */
+/* line 139, ../sass/tables_styles.scss */
 .directly_table {
   width: 87.5%;
   display: inline-block;
@@ -210,29 +219,29 @@ h6 {
   transition: width 0.6s;
 }
 
-/* line 140, ../sass/tables_styles.scss */
+/* line 146, ../sass/tables_styles.scss */
 .add_column_wrapper {
   width: 12.5%;
   display: inline-block;
   float: left;
 }
 
-/* line 148, ../sass/tables_styles.scss */
+/* line 154, ../sass/tables_styles.scss */
 .top_side {
   border-bottom: 1px solid #eeeeee;
 }
 
-/* line 152, ../sass/tables_styles.scss */
+/* line 158, ../sass/tables_styles.scss */
 .add_column_btn {
   padding: 13px 10px 12px 16px;
   border-bottom: 1px solid #eeeeee;
 }
-/* line 153, ../sass/tables_styles.scss */
+/* line 159, ../sass/tables_styles.scss */
 .add_column_btn a {
   white-space: nowrap;
 }
 
-/* line 160, ../sass/tables_styles.scss */
+/* line 166, ../sass/tables_styles.scss */
 .shadow_block {
   height: 10px;
   -moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
@@ -240,12 +249,12 @@ h6 {
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
 }
 
-/* line 165, ../sass/tables_styles.scss */
+/* line 171, ../sass/tables_styles.scss */
 .add_row_btn {
   text-align: right;
   padding: 13px 18px 12px 18px;
 }
-/* line 166, ../sass/tables_styles.scss */
+/* line 172, ../sass/tables_styles.scss */
 .add_row_btn a {
   margin-right: 80px;
 }

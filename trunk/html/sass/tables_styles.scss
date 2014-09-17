@@ -113,6 +113,12 @@
   left: 8px;
 }
 
+.select_btn_wrapper {
+  a {
+    padding-bottom: 18px;
+  }
+  display: inline-block;
+}
 //Table wrappers
 
 //This class is using for hide add row/column divs.

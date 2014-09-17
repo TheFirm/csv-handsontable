@@ -5,6 +5,7 @@
   position: relative;
   margin: 0 0 10px;
   width: 110px;
+  display: inline-block;
   cursor: pointer;
 }
 
