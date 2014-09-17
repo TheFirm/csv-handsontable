@@ -65,6 +65,7 @@
     font-size: 22px;
     margin-bottom: 3px;
   }
+  @include transition(all 0.1s);
   color: lighten($succes_color, 5%);
   font-size: 13px;
 }
@@ -77,7 +78,30 @@
   i {
     font-size: 18px;
   }
+  @include transition(all 0.1s);
   color: $text_color1;
+}
+
+.success {
+  &:hover {
+    color: darken($succes_color, 10%);
+  }
+  color: $succes_color;
+}
+.error {
+  &:hover {
+    color: darken($error_color, 10%);
+  }
+  color: $error_color;
+}
+
+//Caret sort button
+.caret_btn {
+  i {
+    font-size: 12px;
+    margin-left: -4px;
+    color: lighten($text_color1, 3%);
+  }
 }
 
 //Bordered btn
@@ -90,6 +114,7 @@
   border-right: 1px solid $border_light;
   padding-right: 5px;
 }
+
 
 /////////////////////////////////////////////////////////////
 ///////////////////////*END OF BUTTONS*//////////////////////

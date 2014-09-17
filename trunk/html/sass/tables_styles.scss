@@ -1,0 +1,51 @@
+@import "compass";
+@import "base_styles";
+/////////////////////////////////////////////////////////////
+/////////////////////////*MAIN TABLE*////////////////////////
+/////////////////////////////////////////////////////////////
+.main_table {
+  background-color: darken($full_white, 2.5%);
+}
+
+.main_table.table-bordered {
+  border-top: 1px solid $border_table;;
+}
+
+.main_table.table-bordered th {
+  font-size: 13px;
+  color: $text_color4;
+  padding: 13px 10px 15px 16px;
+}
+
+.main_table.table-bordered td {
+  font-size: 13px;
+  color: $text_color4;
+  padding: 16px 16px;
+}
+
+.main_table.table-bordered tbody tr:first-child td {
+  @include box-shadow(0 5px 5px -5px rgba(0, 0, 0, 0.15) inset);
+}
+
+.main_table.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+  border-bottom-width: 1px;
+  border: 1px solid $border_table;
+  border-right-width: 2px;
+}
+
+.main_table.table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td {
+  border: 1px solid $border_table;
+  border-right-width: 2px;
+}
+
+.checkbox_wrap {
+  width: 80px;
+  text-align: center;
+}
+
+.unknown_cell {
+  background-color: $bg6;
+}
+/////////////////////////////////////////////////////////////
+//////////////////////*END OF MAIN TABLE*////////////////////
+/////////////////////////////////////////////////////////////

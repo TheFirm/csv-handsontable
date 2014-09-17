@@ -1,11 +1,11 @@
-/* line 44, ../sass/base_styles.scss */
+/* line 47, ../sass/base_styles.scss */
 * {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
 
-/* line 49, ../sass/base_styles.scss */
+/* line 52, ../sass/base_styles.scss */
 body * {
   margin: 0;
   padding: 0;
@@ -13,47 +13,47 @@ body * {
   font-size: 14px;
 }
 
-/* line 55, ../sass/base_styles.scss */
+/* line 58, ../sass/base_styles.scss */
 textarea {
   resize: none;
   overflow-y: auto;
 }
 
-/* line 59, ../sass/base_styles.scss */
+/* line 62, ../sass/base_styles.scss */
 ul {
   list-style-type: none;
 }
 
-/* line 70, ../sass/base_styles.scss */
+/* line 73, ../sass/base_styles.scss */
 h1 {
   font-size: 32px;
   font-weight: bold;
 }
 
-/* line 71, ../sass/base_styles.scss */
+/* line 74, ../sass/base_styles.scss */
 h2 {
   font-size: 30px;
   font-weight: bold;
 }
 
-/* line 72, ../sass/base_styles.scss */
+/* line 75, ../sass/base_styles.scss */
 h3 {
   font-size: 20px;
   font-weight: bold;
 }
 
-/* line 73, ../sass/base_styles.scss */
+/* line 76, ../sass/base_styles.scss */
 h4 {
   font-size: 18px;
   font-weight: bold;
 }
 
-/* line 74, ../sass/base_styles.scss */
+/* line 77, ../sass/base_styles.scss */
 h5 {
   font-size: 14px;
 }
 
-/* line 75, ../sass/base_styles.scss */
+/* line 78, ../sass/base_styles.scss */
 h6 {
   font-size: 12px;
 }
@@ -115,6 +115,10 @@ h6 {
 
 /* line 58, ../sass/buttons_and_notifications.scss */
 .add_btn {
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
   color: #97c343;
   font-size: 13px;
 }
@@ -130,32 +134,61 @@ h6 {
   margin-bottom: 3px;
 }
 
-/* line 73, ../sass/buttons_and_notifications.scss */
+/* line 74, ../sass/buttons_and_notifications.scss */
 .icon_btn {
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
   color: #818181;
 }
-/* line 74, ../sass/buttons_and_notifications.scss */
+/* line 75, ../sass/buttons_and_notifications.scss */
 .icon_btn:hover {
   color: #686868;
 }
-/* line 77, ../sass/buttons_and_notifications.scss */
+/* line 78, ../sass/buttons_and_notifications.scss */
 .icon_btn i {
   font-size: 18px;
 }
 
-/* line 84, ../sass/buttons_and_notifications.scss */
+/* line 85, ../sass/buttons_and_notifications.scss */
+.success {
+  color: #89b339;
+}
+/* line 86, ../sass/buttons_and_notifications.scss */
+.success:hover {
+  color: #6b8c2d;
+}
+
+/* line 91, ../sass/buttons_and_notifications.scss */
+.error {
+  color: #f4644d;
+}
+/* line 92, ../sass/buttons_and_notifications.scss */
+.error:hover {
+  color: #f13a1d;
+}
+
+/* line 100, ../sass/buttons_and_notifications.scss */
+.caret_btn i {
+  font-size: 12px;
+  margin-left: -4px;
+  color: #898989;
+}
+
+/* line 108, ../sass/buttons_and_notifications.scss */
 .btn_bordered_left {
   border-left: 1px solid #e1e1e1;
   padding-left: 5px;
 }
 
-/* line 89, ../sass/buttons_and_notifications.scss */
+/* line 113, ../sass/buttons_and_notifications.scss */
 .btn_bordered_right {
   border-right: 1px solid #e1e1e1;
   padding-right: 5px;
 }
 
-/* line 101, ../sass/buttons_and_notifications.scss */
+/* line 126, ../sass/buttons_and_notifications.scss */
 .base_notification {
   display: inline-block;
   padding: 10px 15px;
@@ -166,26 +199,26 @@ h6 {
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
-/* line 102, ../sass/buttons_and_notifications.scss */
+/* line 127, ../sass/buttons_and_notifications.scss */
 .base_notification span {
   color: #fff;
   font-size: 13px;
 }
-/* line 103, ../sass/buttons_and_notifications.scss */
+/* line 128, ../sass/buttons_and_notifications.scss */
 .base_notification span a {
   color: #fff;
 }
-/* line 106, ../sass/buttons_and_notifications.scss */
+/* line 131, ../sass/buttons_and_notifications.scss */
 .base_notification span i {
   margin-left: 60px;
 }
 
-/* line 120, ../sass/buttons_and_notifications.scss */
+/* line 145, ../sass/buttons_and_notifications.scss */
 .notificaton_error {
   background-color: #f4644d;
 }
 
-/* line 124, ../sass/buttons_and_notifications.scss */
+/* line 149, ../sass/buttons_and_notifications.scss */
 .notificaton_success {
   background-color: #89b339;
 }
