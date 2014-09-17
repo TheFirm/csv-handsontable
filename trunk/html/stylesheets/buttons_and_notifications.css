@@ -121,6 +121,7 @@ h6 {
   transition: all 0.1s;
   color: #97c343;
   font-size: 13px;
+  font-weight: 300;
 }
 /* line 59, ../sass/buttons_and_notifications.scss */
 .add_btn:hover {
@@ -134,7 +135,7 @@ h6 {
   margin-bottom: 3px;
 }
 
-/* line 74, ../sass/buttons_and_notifications.scss */
+/* line 75, ../sass/buttons_and_notifications.scss */
 .icon_btn {
   -moz-transition: all 0.1s;
   -o-transition: all 0.1s;
@@ -142,53 +143,53 @@ h6 {
   transition: all 0.1s;
   color: #a8a8a8;
 }
-/* line 75, ../sass/buttons_and_notifications.scss */
+/* line 76, ../sass/buttons_and_notifications.scss */
 .icon_btn:hover {
   color: #818181;
 }
-/* line 78, ../sass/buttons_and_notifications.scss */
+/* line 79, ../sass/buttons_and_notifications.scss */
 .icon_btn i {
   font-size: 18px;
 }
 
-/* line 85, ../sass/buttons_and_notifications.scss */
+/* line 86, ../sass/buttons_and_notifications.scss */
 .success {
   color: #89b339;
 }
-/* line 86, ../sass/buttons_and_notifications.scss */
+/* line 87, ../sass/buttons_and_notifications.scss */
 .success:hover {
   color: #6b8c2d;
 }
 
-/* line 91, ../sass/buttons_and_notifications.scss */
+/* line 92, ../sass/buttons_and_notifications.scss */
 .error {
   color: #f4644d;
 }
-/* line 92, ../sass/buttons_and_notifications.scss */
+/* line 93, ../sass/buttons_and_notifications.scss */
 .error:hover {
   color: #f13a1d;
 }
 
-/* line 100, ../sass/buttons_and_notifications.scss */
+/* line 101, ../sass/buttons_and_notifications.scss */
 .caret_btn i {
   font-size: 12px;
   margin-left: -4px;
   color: #898989;
 }
 
-/* line 108, ../sass/buttons_and_notifications.scss */
+/* line 109, ../sass/buttons_and_notifications.scss */
 .btn_bordered_left {
   border-left: 1px solid #e1e1e1;
   padding-left: 7px;
 }
 
-/* line 113, ../sass/buttons_and_notifications.scss */
+/* line 114, ../sass/buttons_and_notifications.scss */
 .btn_bordered_right {
   border-right: 1px solid #e1e1e1;
   padding-right: 7px;
 }
 
-/* line 126, ../sass/buttons_and_notifications.scss */
+/* line 127, ../sass/buttons_and_notifications.scss */
 .base_notification {
   display: inline-block;
   padding: 10px 15px;
@@ -199,26 +200,26 @@ h6 {
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
-/* line 127, ../sass/buttons_and_notifications.scss */
+/* line 128, ../sass/buttons_and_notifications.scss */
 .base_notification span {
   color: #fff;
   font-size: 13px;
 }
-/* line 128, ../sass/buttons_and_notifications.scss */
+/* line 129, ../sass/buttons_and_notifications.scss */
 .base_notification span a {
   color: #fff;
 }
-/* line 131, ../sass/buttons_and_notifications.scss */
+/* line 132, ../sass/buttons_and_notifications.scss */
 .base_notification span i {
   margin-left: 60px;
 }
 
-/* line 145, ../sass/buttons_and_notifications.scss */
+/* line 146, ../sass/buttons_and_notifications.scss */
 .notificaton_error {
   background-color: #f4644d;
 }
 
-/* line 149, ../sass/buttons_and_notifications.scss */
+/* line 150, ../sass/buttons_and_notifications.scss */
 .notificaton_success {
   background-color: #89b339;
 }
