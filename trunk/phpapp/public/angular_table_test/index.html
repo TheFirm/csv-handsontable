@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:900,400,300,100,700,500&subset=latin,cyrillic-ext'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+    <title>CSV demo</title>
+</head>
+<body>
+
+
+<div data-ng-app="customTable">
+    <p>{{test}}</p>
+
+    <div data-ng-controller="MyController">
+        <div>{{tableData.headers | json}}</div>
+        <table>
+            <thead>
+            <tr>
+                <th><input type="checkbox"/></th>
+                <th data-ng-repeat="headerTitle in tableData.headers track by $index">
+                    {{headerTitle}}
+                    <div class="table_btn_wrapper">
+                        <a href="" class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i>E</a>
+                        <a href="" class="icon_btn"><i class="fa fa-trash-o">D</i></a>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="rowItem in tableData.data">
+                <td><input type="checkbox"/></td>
+                <td data-ng-repeat="(key, value) in rowItem">
+                    {{value}}
+
+                    <div class="table_btn_wrapper">
+                        <a href="" class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i>E</a>
+                        <a href="" class="icon_btn"><i class="fa fa-trash-o">D</i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script src="js/lib/angular/angular.min.js"></script>
+
+<script src="js/ng-src/customTable.js"></script>
+<script src="js/ng-src/localLoaderService.js"></script>
+
+<!--<script src="js/helpers.js"></script>-->
+<!--<script src="js/main.js"></script>-->
+
+</body>
+</html>
