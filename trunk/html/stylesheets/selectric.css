@@ -26,7 +26,7 @@
   padding: 6px;
   font-size: 12px;
   line-height: 18px;
-  color: #444;
+  color: #a8a8a8;
   min-height: 18px;
 }
 .selectric .button {
@@ -164,8 +164,8 @@
   border-top-color: #E0E0E0;
 }
 .selectricItems li:hover {
-  background: #F0F0F0;
-  color: #444;
+  background: #41a3cc;
+  color: #FFF;
 }
 .selectricItems li.disabled {
   background: #F5F5F5;
