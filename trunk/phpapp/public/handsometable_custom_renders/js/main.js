@@ -73,7 +73,6 @@ var handsomeTable = function () {
 
         self.$handsontable_container.handsontable({
             data: self.data.body,
-            colHeaders: true,
             columns: self.data.columns,
 
             colHeaders: function (colNum) {
