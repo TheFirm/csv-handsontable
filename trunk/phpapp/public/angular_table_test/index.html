@@ -11,10 +11,7 @@
 
 
 <div data-ng-app="customTable">
-    <p>{{test}}</p>
-
     <div data-ng-controller="MyController">
-        <div>{{tableData.headers | json}}</div>
         <table>
             <thead>
             <tr>
@@ -23,7 +20,7 @@
                     {{headerTitle}}
                     <div class="table_btn_wrapper">
                         <a href="" class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i>E</a>
-                        <a href="" class="icon_btn"><i class="fa fa-trash-o">D</i></a>
+                        <a href="" class="icon_btn" data-ng-click="deleteColumn($index)"><i class="fa fa-trash-o">D</i></a>
                     </div>
                 </th>
             </tr>

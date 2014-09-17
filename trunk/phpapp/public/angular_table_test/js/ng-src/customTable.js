@@ -8,21 +8,20 @@ angular.module('customTable').controller('MyController', function($scope, localL
 
     localLoader.fetch("sample_server_response.json").then(function(data) {
         $scope.tableData = data;
-        window.w = $scope.tableData.data;
     });
 
     $scope.countUnknownColumns = 1;
 
     $scope.deleteColumn = function (index) {
-        if (!confirm("Delete column?")) {
-            return false;
-        }
+        //if (!confirm("Delete column?")) {
+        //    return false;
+        //}
 
         var removedColumn = $scope.tableData.headers.splice(index, 1);
         $scope.tableData.data.forEach(function (rowItem) {
             delete rowItem[removedColumn];
         });
-        $scope.$apply();
+        //$scope.$apply();
     };
 
     $scope.editHeader = function (colNum, newValue) {
