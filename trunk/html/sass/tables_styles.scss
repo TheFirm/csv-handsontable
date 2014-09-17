@@ -2,7 +2,14 @@
 @import "base_styles";
 /////////////////////////////////////////////////////////////
 /////////////////////////*MAIN TABLE*////////////////////////
-/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////\
+.table_wrapper {
+  .main_table {
+    width: 87.5%;
+  }
+  background-color: darken($full_white, 2.5%);
+}
+
 .main_table {
   background-color: darken($full_white, 2.5%);
 }
@@ -45,6 +52,20 @@
 
 .unknown_cell {
   background-color: $bg6;
+}
+
+.table_btn_wrapper {
+  a:first-child {
+   margin-right: 5px;
+  }
+  display: inline-block;
+  float: right;
+}
+
+
+//Add row or column
+.add_column_block {
+  width: 12.5%;
 }
 /////////////////////////////////////////////////////////////
 //////////////////////*END OF MAIN TABLE*////////////////////

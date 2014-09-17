@@ -216,11 +216,11 @@ h6 {
   -o-transition: all 0.1s;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
-  color: #818181;
+  color: #a8a8a8;
 }
 /* line 75, ../sass/buttons_and_notifications.scss */
 .icon_btn:hover {
-  color: #686868;
+  color: #818181;
 }
 /* line 78, ../sass/buttons_and_notifications.scss */
 .icon_btn i {
@@ -255,13 +255,13 @@ h6 {
 /* line 108, ../sass/buttons_and_notifications.scss */
 .btn_bordered_left {
   border-left: 1px solid #e1e1e1;
-  padding-left: 5px;
+  padding-left: 7px;
 }
 
 /* line 113, ../sass/buttons_and_notifications.scss */
 .btn_bordered_right {
   border-right: 1px solid #e1e1e1;
-  padding-right: 5px;
+  padding-right: 7px;
 }
 
 /* line 126, ../sass/buttons_and_notifications.scss */
@@ -403,58 +403,82 @@ h6 {
 }
 
 /* line 6, ../sass/tables_styles.scss */
+.table_wrapper {
+  background-color: #f9f9f9;
+}
+/* line 7, ../sass/tables_styles.scss */
+.table_wrapper .main_table {
+  width: 87.5%;
+}
+
+/* line 13, ../sass/tables_styles.scss */
 .main_table {
   background-color: #f9f9f9;
 }
 
-/* line 10, ../sass/tables_styles.scss */
+/* line 17, ../sass/tables_styles.scss */
 .main_table.table-bordered {
   border-top: 1px solid #eeeeee;
 }
 
-/* line 14, ../sass/tables_styles.scss */
+/* line 21, ../sass/tables_styles.scss */
 .main_table.table-bordered th {
   font-size: 13px;
   color: #a8a8a8;
   padding: 13px 10px 15px 16px;
 }
 
-/* line 20, ../sass/tables_styles.scss */
+/* line 27, ../sass/tables_styles.scss */
 .main_table.table-bordered td {
   font-size: 13px;
   color: #a8a8a8;
   padding: 16px 16px;
 }
 
-/* line 26, ../sass/tables_styles.scss */
+/* line 33, ../sass/tables_styles.scss */
 .main_table.table-bordered tbody tr:first-child td {
   -moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
   -webkit-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
 }
 
-/* line 30, ../sass/tables_styles.scss */
+/* line 37, ../sass/tables_styles.scss */
 .main_table.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
   border-bottom-width: 1px;
   border: 1px solid #eeeeee;
   border-right-width: 2px;
 }
 
-/* line 36, ../sass/tables_styles.scss */
+/* line 43, ../sass/tables_styles.scss */
 .main_table.table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td {
   border: 1px solid #eeeeee;
   border-right-width: 2px;
 }
 
-/* line 41, ../sass/tables_styles.scss */
+/* line 48, ../sass/tables_styles.scss */
 .checkbox_wrap {
   width: 80px;
   text-align: center;
 }
 
-/* line 46, ../sass/tables_styles.scss */
+/* line 53, ../sass/tables_styles.scss */
 .unknown_cell {
   background-color: #eaeaea;
+}
+
+/* line 57, ../sass/tables_styles.scss */
+.table_btn_wrapper {
+  display: inline-block;
+  float: right;
+}
+/* line 58, ../sass/tables_styles.scss */
+.table_btn_wrapper a:first-child {
+  margin-right: 5px;
+}
+
+/* line 67, ../sass/tables_styles.scss */
+.add_column_block {
+  width: 12.5%;
 }
 
 /* line 9, ../sass/custom_styles.scss */

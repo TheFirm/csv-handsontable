@@ -140,11 +140,11 @@ h6 {
   -o-transition: all 0.1s;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
-  color: #818181;
+  color: #a8a8a8;
 }
 /* line 75, ../sass/buttons_and_notifications.scss */
 .icon_btn:hover {
-  color: #686868;
+  color: #818181;
 }
 /* line 78, ../sass/buttons_and_notifications.scss */
 .icon_btn i {
@@ -179,13 +179,13 @@ h6 {
 /* line 108, ../sass/buttons_and_notifications.scss */
 .btn_bordered_left {
   border-left: 1px solid #e1e1e1;
-  padding-left: 5px;
+  padding-left: 7px;
 }
 
 /* line 113, ../sass/buttons_and_notifications.scss */
 .btn_bordered_right {
   border-right: 1px solid #e1e1e1;
-  padding-right: 5px;
+  padding-right: 7px;
 }
 
 /* line 126, ../sass/buttons_and_notifications.scss */

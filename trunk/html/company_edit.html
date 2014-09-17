@@ -117,21 +117,43 @@
     <div class="main_content">
         <div class="container-fluid">
             <div class="main_table_wrapper">
-                <table class="main_table table table-bordered">
-                    <thead>
+                <div class="table_wrapper">
+                    <table class="main_table table table-bordered">
+                        <thead>
                         <tr>
                             <th class="checkbox_wrap">
                                 <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
                                 <label for="checkboxG1" class="css-label"></label>
                                 <a class="caret_btn" href=""><i class="fa fa-caret-down"></i></a>
                             </th>
-                            <th>First name</th>
-                            <th>Email</th>
-                            <th>Home Address</th>
-                            <th>Unknown</th>
+                            <th>
+                                First name
+                                <div class="table_btn_wrapper">
+                                    <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
+                                    <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                            </th>
+                            <th>Email
+                                <div class="table_btn_wrapper">
+                                    <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
+                                    <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                            </th>
+                            <th>Home Address
+                                <div class="table_btn_wrapper">
+                                    <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
+                                    <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                            </th>
+                            <th class="unknown_cell">Unknown
+                                <div class="table_btn_wrapper">
+                                    <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
+                                    <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                            </th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         <tr>
                             <td class="checkbox_wrap">
                                 <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
@@ -140,7 +162,7 @@
                             <td>Curtis Horton</td>
                             <td>marsha.sutton35@example.com</td>
                             <td>6875 Photinia Ave</td>
-                            <td>X</td>
+                            <td class="unknown_cell">X</td>
                         </tr>
                         <tr>
                             <td class="checkbox_wrap">
@@ -150,7 +172,7 @@
                             <td>Deann Lambert</td>
                             <td>justin.olson53@example.com</td>
                             <td>5875 Hill Rd</td>
-                            <td>XL</td>
+                            <td class="unknown_cell">XL</td>
                         </tr>
                         <tr>
                             <td class="checkbox_wrap">
@@ -160,7 +182,7 @@
                             <td>Veronica Palmer</td>
                             <td>sherri.jennings40@example.com</td>
                             <td>8016 Crescent Canyon St</td>
-                            <td>XXL</td>
+                            <td class="unknown_cell">XXL</td>
                         </tr>
                         <tr>
                             <td class="checkbox_wrap">
@@ -170,7 +192,7 @@
                             <td>Keith Douglas</td>
                             <td>kathryn.lambert98@example.com</td>
                             <td>3557 Auerbach Ave</td>
-                            <td>M</td>
+                            <td class="unknown_cell">M</td>
                         </tr>
                         <tr>
                             <td class="checkbox_wrap">
@@ -180,10 +202,14 @@
                             <td>Marsha Sutton</td>
                             <td>gerald.payne10@example.com</td>
                             <td>5122 Parker Rd</td>
-                            <td>L</td>
+                            <td class="unknown_cell">L</td>
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                    <div class="add_column_block">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

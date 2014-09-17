@@ -73,13 +73,13 @@
 //Icon-button
 .icon_btn {
   &:hover {
-    color: darken($text_color1, 10%);
+    color: $text_color1;
   }
   i {
     font-size: 18px;
   }
   @include transition(all 0.1s);
-  color: $text_color1;
+  color: $text_color4;
 }
 
 .success {
@@ -107,12 +107,12 @@
 //Bordered btn
 .btn_bordered_left {
   border-left: 1px solid $border_light;
-  padding-left: 5px;
+  padding-left: 7px;
 }
 
 .btn_bordered_right {
   border-right: 1px solid $border_light;
-  padding-right: 5px;
+  padding-right: 7px;
 }
 
 
