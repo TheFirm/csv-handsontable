@@ -1,20 +1,21 @@
 /**
  * Created by boom on 18.09.14.
  */
-var TemplatePath = '/public/javascripts/app/templates';
+
 //Routes
 APP.config(function($routeProvider, $locationProvider) {
+    var TEMPLATE_PATH = '/public/javascripts/app/templates';
     $routeProvider
         .when('/', {
-            templateUrl: TemplatePath+'/dropfile.html',
+            templateUrl: TEMPLATE_PATH+'/dropfile.html',
             controller: 'DropFile'
         })
         .when('/validator', {
-            templateUrl: TemplatePath+'/validator.html',
+            templateUrl: TEMPLATE_PATH+'/validator.html',
             controller: 'validator'
         });
 
     // configure html5 to get links working on jsfiddle
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 });
 

@@ -5,7 +5,7 @@
  * Date: 15.09.14
  * Time: 12:31
  */
-require_once 'auth.php';
+//require_once 'auth.php';
 ?>
 
 <!DOCTYPE html>
@@ -156,11 +156,20 @@ require_once 'auth.php';
 <script src="public/javascripts/lib/angular/angular-route.min.js"></script>
 
 <script src="public/javascripts/app/main.js"></script>
-<script src="public/javascripts/app/controllers/controllers.js"></script>
-<script src="public/javascripts/app/filters/truncate.js"></script>
 <script src="public/javascripts/app/route.js"></script>
-<script src="public/javascripts/app/localLoaderService.js"></script>
 
+<!--filters-->
+<script src="public/javascripts/app/filters/truncate.js"></script>
+<!--filters-->
+
+<!--controllers-->
+<script src="public/javascripts/app/controllers/fileUploadCtrl.js"></script>
+<script src="public/javascripts/app/controllers/tableCtrl.js"></script>
+<!--controllers-->
+
+<!--for debug-->
+<script src="public/javascripts/app/localLoaderService.js"></script>
+<!--for debug-->
 
 <script src="public/javascripts/lib/bootstrap/dropdown.js"></script>
 <script src="public/javascripts/lib/bootstrap/transition.js"></script>

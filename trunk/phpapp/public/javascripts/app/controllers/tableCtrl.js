@@ -2,12 +2,7 @@
  * Created by boom on 18.09.14.
  */
 
-
-APP.controller('DropFile', ['$route',function($scope, $route, $routeParams) {
-
-}]);
-
-APP.controller('validator', function($scope, localLoader, $route, $routeParams) {
+APP.controller('tableCtrl', function($scope, localLoader, $route, $routeParams) {
 
     localLoader.fetch("sample_server_response.json").then(function(data) {
         $scope.tableData = data;
@@ -79,8 +74,12 @@ APP.controller('validator', function($scope, localLoader, $route, $routeParams) 
         $scope.$apply();
     };
 
+    //for debug remove later
     window.editCell = $scope.editCell;
     window.addRow = $scope.addRow;
     window.editHeader = $scope.editHeader;
     window.addColumn = $scope.addColumn;
+    //for debug remove later
+
+
 });
