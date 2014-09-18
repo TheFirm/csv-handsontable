@@ -51,7 +51,7 @@
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-ng-controller="popupCtrl">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-ng-controller="alertCtrl">
                             <ul class="nav navbar-nav left_navbar">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle dropdown_base dropdown_main"
@@ -173,7 +173,7 @@
 <!--controllers-->
 <script src="public/javascripts/app/controllers/fileUploadCtrl.js"></script>
 <script src="public/javascripts/app/controllers/tableCtrl.js"></script>
-<script src="public/javascripts/app/controllers/errorCtrl.js"></script>
+<script src="public/javascripts/app/controllers/alertCtrl.js"></script>
 <!--controllers-->
 
 <!--for debug-->
