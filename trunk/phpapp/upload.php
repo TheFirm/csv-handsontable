@@ -13,7 +13,6 @@ ini_set('xdebug.var_display_max_data', 1024);
 
 require_once 'auth.php';
 
-
 if(isset($_FILES['file'])){
     if($_FILES['file']['size'] >= MAX_FILE_SIZE) {
         echo json_encode(array('success'=>'false','error'=>'File to large!'));
