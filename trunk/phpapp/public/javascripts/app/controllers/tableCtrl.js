@@ -22,6 +22,8 @@ APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadRe
         //if (!confirm("Delete column?")) {
         //    return false;
         //}
+        //var test = {success:true};
+        //$rootScope.$broadcast('errorEvent', test);
 
         var removedColumn = $scope.tableData.headers.splice(index, 1);
         $scope.tableData.data.forEach(function (rowItem) {
