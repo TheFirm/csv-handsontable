@@ -7,12 +7,12 @@ APP.config(function($routeProvider, $locationProvider) {
     var TEMPLATE_PATH = '/public/javascripts/app/templates';
     $routeProvider
         .when('/', {
-            templateUrl: TEMPLATE_PATH+'/dropfile.html',
-            controller: 'DropFile'
+            templateUrl: TEMPLATE_PATH+'/fileUpload.html',
+            controller: 'fileUploadCtrl'
         })
         .when('/validator', {
-            templateUrl: TEMPLATE_PATH+'/validator.html',
-            controller: 'validator'
+            templateUrl: TEMPLATE_PATH+'/dataTable.html',
+            controller: 'tableCtrl'
         });
 
     // configure html5 to get links working on jsfiddle
