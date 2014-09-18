@@ -5,9 +5,6 @@
  * Date: 15.09.14
  * Time: 12:28
  */
-const MAX_FILE_SIZE = 1000000;
-$TYPE_FILES = array('text/csv');
-
 
 $api = new Humanity\Api(array(
     'client_id' => '95982517764489216',

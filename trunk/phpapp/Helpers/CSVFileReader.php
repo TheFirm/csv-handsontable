@@ -7,7 +7,6 @@
  */
 
 namespace Helpers;
-use Helpers;
 
 class CSVFileReader implements FileReader {
 

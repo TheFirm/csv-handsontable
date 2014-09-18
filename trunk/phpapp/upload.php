@@ -11,7 +11,12 @@ ini_set('xdebug.var_display_max_data', 1024);
  * Time: 18:39
  */
 
-require_once 'auth.php';
+//require_once 'auth.php';
+
+// 1 MB
+require_once 'vendor/autoload.php';
+const MAX_FILE_SIZE = 1000000;
+$TYPE_FILES = ['text/csv', "application/vnd.ms-excel"];
 
 if(isset($_FILES['file'])){
     if($_FILES['file']['size'] >= MAX_FILE_SIZE) {
