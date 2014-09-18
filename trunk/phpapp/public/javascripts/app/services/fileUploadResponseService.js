@@ -5,7 +5,8 @@ APP.factory('fileUploadResponseService', function ($rootScope) {
         return {
             setFileUploadResponse:function (data) {
                 $rootScope.$emit("file.uploaded", data);
-                console.log('file.uploaded');
+                $rootScope.$emit("popup.message", data);
+                console.log('file.uploaded', data);
                 fileUploadResponse = data;
             },
             getFileUploadResponse:function () {

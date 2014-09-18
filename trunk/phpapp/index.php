@@ -35,7 +35,7 @@
         </ul>
     </div>
     <header>
-        <div class="container-fluid" data-ng-controller="errorCtrl">
+        <div class="container-fluid" >
             <div class="top_navbar">
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <div class="container-fluid">
@@ -51,7 +51,7 @@
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-ng-controller="popupCtrl">
                             <ul class="nav navbar-nav left_navbar">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle dropdown_base dropdown_main"
@@ -74,14 +74,14 @@
                                     <div class="thin_border"></div>
                                 </li>
                                 <li><p class="navbar-text">Company Staff & Owerview</p></li>
-                                <li class="notificaton_wrapper" ng-show="error">
+                                <li class="notificaton_wrapper" ng-show="message.error">
                                     <div class="base_notification notificaton_error">
-                                        <span>Error in Column<a href=""><i class="fa fa-times"></i></a></span>
+                                        <span>{{message.text}}<a href=""><i class="fa fa-times"></i></a></span>
                                     </div>
                                 </li>
-                                <li class="notificaton_wrapper" ng-hide="error">
+                                <li class="notificaton_wrapper" ng-show="message.error === false">
                                     <div class="base_notification notificaton_success">
-                                        <span>5 rows succesfully imported<a href=""><i
+                                        <span>{{message.text}}<a href=""><i
                                                     class="fa fa-times"></i></a></span>
                                     </div>
                                 </li>
