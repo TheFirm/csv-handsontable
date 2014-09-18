@@ -5,13 +5,17 @@
  * Date: 15.09.14
  * Time: 12:28
  */
+const MAX_FILE_SIZE = 1000000;
+$TYPE_FILES = array('text/csv');
+
 
 $api = new Humanity\Api(array(
-    'client_id' => '90102200730124288',
+    'client_id' => '95982517764489216',
     'client_secret' => null,
-    'redirect_uri' => 'http://localhost/oauth',
+    'redirect_uri' => 'http://www.humanity.dev/php_sdk/oauth.php',
 ));
 
-$api->setAuthorizeEndpoint('http://www.master.accounts.humanity.com/oauth2/authorize');
-$api->setTokenEndpoint('http://www.master.accounts.humanity.com/oauth2/token');
-$api->setApiEndpoint('http://www.master.api.humanity.com/v1/');
+// This is changed to match our endpoints
+$api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
+$api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
+$api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');

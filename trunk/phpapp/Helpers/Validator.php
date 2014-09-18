@@ -27,7 +27,8 @@ class Validator
      */
     function __construct($data_to_validate)
     {
-        $data_from_file = json_decode($data_to_validate);
+        //$data_from_file = json_decode($data_to_validate);
+        $data_from_file = $data_to_validate;
         $this->transformTitlesFromFileToLowerCase($data_from_file);
         $this->load_config();
     }
@@ -54,7 +55,7 @@ class Validator
     {
         $result = array();
         foreach ($col as $title =>$column) {
-            $result[] = $title;
+            $result[] = strtolower($title);
         }
         return $result;
     }
@@ -63,18 +64,40 @@ class Validator
     {
         $result = array('success' => true, 'errors' => array());
         $errors = array();
+
         $columns_title = $this->data_to_validate[0];
         foreach ($this->config as $conf_title => $conf) {
+            $name_mismatch = true;
+            $in_file_to_much = false;
+            $in_file_to_few = false;
+
             $column_conf = $this->getColumnsArrayFromConfig($conf);
-            if (count($column_conf) != count($columns_title)) {
-                continue;
-            }
             $res = array_intersect($column_conf, $columns_title);
-            if (count($res) == count($column_conf)) {
-                return array('success' => true, 'errors' => array(), 'result' => $conf_title);
+
+            if ((count($res) == count($column_conf))&&(count($res) == count($columns_title))) {
+                return array(
+                    'success' => true,
+                    'errors' => array(),
+                    'result' => $conf_title
+                );
             }
-            $column_errors = array_diff($columns_title, $res);
-            $errors[$conf_title] = $column_errors;
+            if (count($res) == count($column_conf)) {
+                $in_file_to_much = true;
+            }
+            if (count($res) == count($columns_title)) {
+                $in_file_to_few = true;
+            }
+
+            $column_errors_from_file = array_diff($columns_title,$res);
+            $column_errors_from_conf = array_diff($column_conf,$res);
+
+            $errors[$conf_title] = array(
+                "name_mismatch"=>$name_mismatch,
+                "in_file_to_much"=>$in_file_to_much,
+                "in_file_to_few"=>$in_file_to_few,
+                "from_file"=>$column_errors_from_file,
+                "from_conf"=>$column_errors_from_conf
+            );
         }
 
         $result['success'] = false;
@@ -107,7 +130,10 @@ class Validator
         if ($this->result['success']) {
             $this->result = array_merge($this->result, $this->findCellsError());
         }
-        var_dump($this->result);
         return $this->result['success'];
+    }
+
+    public function getResult(){
+        return $this->result;
     }
 } 
