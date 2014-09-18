@@ -19,10 +19,15 @@
     font-size: 13px;
     font-weight: 300;
   }
+  &:first-child {
+    padding-right: 16px;
+  }
   color: $text_color4;
   padding: 13px 10px 15px 16px;
   word-break: break-all;
   word-break: break-word;
+  position: relative;
+  padding-right: 60px;
 }
 
 .main_table.table-bordered td {
@@ -98,7 +103,9 @@
     margin-right: 5px;
   }
   display: inline-block;
-  float: right;
+  position: absolute;
+  top: 15px;
+  right: 10px;
 }
 
 .select_match_wrapper {
