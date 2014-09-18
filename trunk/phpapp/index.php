@@ -162,6 +162,14 @@
 <script src="public/javascripts/app/filters/truncate.js"></script>
 <!--filters-->
 
+<!--services-->
+<script src="public/javascripts/app/services/fileUploadResponseService.js"></script>
+<!--services-->
+
+<!--directives-->
+<script src="public/javascripts/app/directives/dropzoneDir.js"></script>
+<!--directives-->
+
 <!--controllers-->
 <script src="public/javascripts/app/controllers/fileUploadCtrl.js"></script>
 <script src="public/javascripts/app/controllers/tableCtrl.js"></script>
@@ -170,6 +178,7 @@
 <!--for debug-->
 <script src="public/javascripts/app/localLoaderService.js"></script>
 <!--for debug-->
+
 
 <script src="public/javascripts/lib/bootstrap/dropdown.js"></script>
 <script src="public/javascripts/lib/bootstrap/transition.js"></script>

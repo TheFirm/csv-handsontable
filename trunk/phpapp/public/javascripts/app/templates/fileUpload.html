@@ -1,8 +1,9 @@
 <div data-ng-controller="fileUploadCtrl" class="drag_and_drop_wrapper">
-    <h3>Supported Columns: <span>First Name, E-mail, Home Address</span></h3>
+    <h3>Supported Columns: <span>TODO!!!!!!! First Name, E-mail, Home Address</span></h3>
     <div class="drag_and_drop">
-        <div id="drop_zone" title="Drop here or click to choose file">
-
+        <div id="drop_zone" title="Drop here or click to choose file"
+             class="ngDropZone" options='{"success": successFileUpload}'
+                >
         </div>
         <div class="hidden_elements_wrapper">
             <div><i class="csv_icon"></i></div>

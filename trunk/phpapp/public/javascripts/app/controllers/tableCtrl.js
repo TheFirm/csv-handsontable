@@ -2,11 +2,19 @@
  * Created by boom on 18.09.14.
  */
 
-APP.controller('tableCtrl', function($scope, localLoader, $route, $routeParams) {
+APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadResponseService) {
 
-    localLoader.fetch("sample_server_response.json").then(function(data) {
-        $scope.tableData = data;
-    });
+    $scope.tableData = fileUploadResponseService.getFileUploadResponse();
+
+    //if empty table data, got to root path
+    if(!$scope.tableData || Object.keys($scope.tableData).length === 0){
+        $location.path("/");
+    }
+
+    //console.log($scope.tableData);
+    //localLoader.fetch("sample_server_response.json").then(function(data) {
+    //
+    //});
 
     $scope.countUnknownColumns = 1;
 
