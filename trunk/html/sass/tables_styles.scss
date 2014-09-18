@@ -86,7 +86,7 @@
   }
   background-color: $bg6;
   position: relative;
-  min-width: 250px;
+  min-width: 183px;
 }
 
 
@@ -97,6 +97,9 @@
   }
   .select_match_wrapper {
     display: block;
+  }
+  .table_btn_wrapper {
+    display: none;
   }
 }
 
