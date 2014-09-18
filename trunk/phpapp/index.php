@@ -35,7 +35,7 @@
         </ul>
     </div>
     <header>
-        <div class="container-fluid">
+        <div class="container-fluid" data-ng-controller="errorCtrl">
             <div class="top_navbar">
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <div class="container-fluid">
@@ -74,17 +74,17 @@
                                     <div class="thin_border"></div>
                                 </li>
                                 <li><p class="navbar-text">Company Staff & Owerview</p></li>
-                                <li class="notificaton_wrapper">
+                                <li class="notificaton_wrapper" ng-show="error">
                                     <div class="base_notification notificaton_error">
                                         <span>Error in Column<a href=""><i class="fa fa-times"></i></a></span>
                                     </div>
                                 </li>
-<!--                                <li class="notificaton_wrapper">-->
-<!--                                    <div class="base_notification notificaton_success">-->
-<!--                                        <span>5 rows succesfully imported<a href=""><i-->
-<!--                                                    class="fa fa-times"></i></a></span>-->
-<!--                                    </div>-->
-<!--                                </li>-->
+                                <li class="notificaton_wrapper" ng-hide="error">
+                                    <div class="base_notification notificaton_success">
+                                        <span>5 rows succesfully imported<a href=""><i
+                                                    class="fa fa-times"></i></a></span>
+                                    </div>
+                                </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right right_navbar">
                                 <li class="header_btn_wrapper">
@@ -165,6 +165,7 @@
 <!--controllers-->
 <script src="public/javascripts/app/controllers/fileUploadCtrl.js"></script>
 <script src="public/javascripts/app/controllers/tableCtrl.js"></script>
+<script src="public/javascripts/app/controllers/errorCtrl.js"></script>
 <!--controllers-->
 
 <!--for debug-->

@@ -10,7 +10,7 @@ APP.config(function($routeProvider, $locationProvider) {
             templateUrl: TEMPLATE_PATH+'/fileUpload.html',
             controller: 'fileUploadCtrl'
         })
-        .when('/validator', {
+        .when('/dataTable', {
             templateUrl: TEMPLATE_PATH+'/dataTable.html',
             controller: 'tableCtrl'
         });

@@ -2,7 +2,7 @@
  * Created by boom on 18.09.14.
  */
 
-APP.controller('tableCtrl', function($scope, localLoader, $route, $routeParams) {
+APP.controller('tableCtrl', function($scope,$rootScope, localLoader, $route, $routeParams) {
 
     localLoader.fetch("sample_server_response.json").then(function(data) {
         $scope.tableData = data;
@@ -14,6 +14,8 @@ APP.controller('tableCtrl', function($scope, localLoader, $route, $routeParams) 
         //if (!confirm("Delete column?")) {
         //    return false;
         //}
+        //var test = {success:true};
+        //$rootScope.$broadcast('errorEvent', test);
 
         var removedColumn = $scope.tableData.headers.splice(index, 1);
         $scope.tableData.data.forEach(function (rowItem) {
