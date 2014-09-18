@@ -16,6 +16,7 @@ require_once 'auth.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="public/stylesheets/styles.css"/>
     <link type="text/css" rel="stylesheet" href="public/stylesheets/custom_styles.css"/>
+    <link type="text/css" rel="stylesheet" href="public/stylesheets/selectric.css"/>
     <link type="text/css" rel="stylesheet" href="public/stylesheets/responsive_styles.css"/>
     <link type="text/css" rel="stylesheet" href="public/stylesheets/font-awesome.min.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
@@ -156,6 +157,7 @@ require_once 'auth.php';
 
 <script src="public/javascripts/app/main.js"></script>
 <script src="public/javascripts/app/controllers/controllers.js"></script>
+<script src="public/javascripts/app/filters/truncate.js"></script>
 <script src="public/javascripts/app/route.js"></script>
 <script src="public/javascripts/app/localLoaderService.js"></script>
 
@@ -164,6 +166,7 @@ require_once 'auth.php';
 <script src="public/javascripts/lib/bootstrap/transition.js"></script>
 <script src="public/javascripts/lib/bootstrap/collapse.js"></script>
 <script src="public/javascripts/lib/bootstrap/scrollspy.js"></script>
+<script src="public/javascripts/lib/jquery.selectric.min.js"></script>
 <script src="public/javascripts/lib/dropzone.js"></script>
 
 </body>
