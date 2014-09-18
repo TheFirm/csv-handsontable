@@ -6,8 +6,8 @@
  * Time: 12:32
  */
 
-require_once '../vendor/autoload.php';
-require_once 'config.php';
+require_once '../phpapp/vendor/autoload.php';
+require_once '../phpapp/humanity_sdk/config.php';
 
 if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
 // No valid access token available, go to authorization server
@@ -15,4 +15,4 @@ if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
     exit;
 }
 
-header('Location: ../index.php');
+header('Location: ../');

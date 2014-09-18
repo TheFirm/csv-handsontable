@@ -56,5 +56,49 @@
             "required": true,
             "type": "text"
         }
+    },
+    "okokok<": {
+        "NAME": {
+            "required": true,
+            "type": "text"
+        },
+        "JOB TITLE": {
+            "required": true,
+            "type": "text"
+        },
+        "DEPARTMENT": {
+            "required": true,
+            "type": "text"
+        },
+        "EMPLOYEE ANNUAL SALARY": {
+            "required": true,
+            "type": "text"
+        }
+    },
+    "okokok>": {
+        "NAME": {
+            "required": true,
+            "type": "text"
+        },
+        "JOB TITLE": {
+            "required": true,
+            "type": "text"
+        },
+        "DEPARTMENT": {
+            "required": true,
+            "type": "text"
+        },
+        "EMPLOYEE ANNUAL SALARY": {
+            "required": true,
+            "type": "text"
+        },
+        "ESTIMATED ANNUAL SALARY MINUS FURLOUGHS": {
+            "required": true,
+            "type": "text"
+        },
+        "new field": {
+            "required": true,
+            "type": "text"
+        }
     }
 }

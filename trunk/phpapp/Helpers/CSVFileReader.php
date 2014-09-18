@@ -11,7 +11,35 @@ use Helpers;
 
 class CSVFileReader implements FileReader {
 
-    protected $json_data;
+    protected $array_data;
+    protected $headers = array();
+    protected $columns = array();
+    protected $data = array();
+    protected $validator;
+
+    function __construct($data,$CSVconvertToJson=true)
+    {
+        if($CSVconvertToJson){
+            $this->read($data);
+            $this->validation();
+        }else{
+            $data_arr = json_decode($data, true);
+            if($data_arr!=null){
+                $this->headers = $data_arr['headers'];
+                foreach($data_arr['data'] as $k=>$v){
+                    $this->data[$k] = array_values($v);
+                }
+
+                $this->array_data = array($this->headers) + $this->data;
+
+                foreach($this->headers as $column){
+                    $this->columns[] = array("data"=>$column,"type"=>"text");
+                }
+                //var_dump($this->json_data);
+                $this->validation();
+            }
+        }
+    }
 
     /**
      * Read CSV file
@@ -25,15 +53,39 @@ class CSVFileReader implements FileReader {
             $result[]=fgetcsv($file);
         }
         fclose($file);
-        $this->json_data = json_encode($result);
+        $this->headers = $result[0];
+        foreach($this->headers as $column){
+            $this->columns[] = array("data"=>$column,"type"=>"text");
+        }
+        //$this->json_data = json_encode($result);
+        $this->array_data = $result;
+        unset($result[0]);
+        $line_result = array();
+        foreach($result as $line){
+            $i=0;
+            foreach($this->headers as $hcol){
+                $line_result[$hcol] = $line[$i];
+                $i++;
+            }
+            $this->data[] = $line_result;
+        }
     }
 
     /**
      * @return mixed
      */
     public function validation(){
-        $validator = new Validator($this->json_data);
-        return $validator->validate();
+        $this->validator = new Validator($this->array_data);
+        return $this->validator->validate();
     }
 
+    public function print_result(){
+        if($this->validator){
+            $result = $this->validator->getResult();
+            $result['columns'] = $this->columns;
+            $result['headers'] = $this->headers;
+            $result['data'] = $this->data;
+            echo json_encode($result);
+        }
+    }
 } 

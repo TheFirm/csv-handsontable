@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteRule ^php_sdk/oauth\.php http://www.humanity.dev/humanity_sdk/oauth.php [R=301]
+
