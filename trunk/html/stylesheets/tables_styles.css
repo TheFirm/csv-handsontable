@@ -186,7 +186,7 @@ h6 {
   left: 8px;
 }
 /* line 114, ../sass/tables_styles.scss */
-.select_match_wrapper div {
+.select_match_wrapper > div {
   float: left;
 }
 /* line 117, ../sass/tables_styles.scss */

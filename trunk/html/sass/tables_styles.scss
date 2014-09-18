@@ -111,7 +111,7 @@
 }
 
 .select_match_wrapper {
-  div {
+  &>div {
     float: left;
   }
   a {
