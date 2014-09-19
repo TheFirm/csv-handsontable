@@ -68,14 +68,14 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
             }else{
                 $json = file_get_contents('php://input');
                 if($json){
-                    $csvFileReader = new \Helpers\CSVFileReader($json);
+                    $csvFileReader = new \Helpers\CSVFileReader($json, false);
                     return $app->json($csvFileReader->print_result());
                 }
             }
         }
     }
     return $app->json(array('error'=>'Error!'));
-}, 'GET|POST');
+}, 'POST');
 
 $app->match('/user', function (Request $request) use ($app) {
 
