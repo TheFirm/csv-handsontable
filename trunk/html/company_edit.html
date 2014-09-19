@@ -175,7 +175,7 @@
                                                 <!--<a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>-->
                                             <!--</div>-->
                                         <!--</div>-->
-                                        <p href="#" class="x-editable-select" data-type="select">Unknown</p>
+                                        <p editable-text="user">{{ user || "John Doe" }}</p>
                                         <!--<div class="table_btn_wrapper">-->
                                             <!--<a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>-->
                                             <!--<a href class="icon_btn"><i class="fa fa-trash-o"></i></a>-->
@@ -189,7 +189,7 @@
                                         <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
                                         <label for="checkboxG2" class="css-label"></label>
                                     </td>
-                                        <td><p editable-text="user">{{ user || "empty" }}</p></td>
+                                        <td><p editable-text="user">{{ user || "John Doe" }}</p></td>
                                     <td>marsha.sutton35@example.com</td>
                                     <td>6875 Photinia Ave</td>
                                     <td class="unknown_cell">X</td>
@@ -288,10 +288,10 @@
     app.run(function(editableOptions, editableThemes) {
         // set `default` theme
         editableOptions.theme = 'default';
-
-        // overwrite submit button template
-        editableThemes['default'].submitTpl = '<button type="submit">Hahaha</button>';
         console.log(editableThemes['default']);
+        // overwrite submit and error button template
+        editableThemes['default'].submitTpl = '<a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>';
+        editableThemes['default'].cancelTpl = '<a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>';
     });
 
     $(document).ready(function(){
@@ -299,21 +299,21 @@
             $('.table_wrapper').addClass('table_edit_done');
         });
 
-        $(function(){
-            $('.x-editable').editable();
-            $('.x-editable-select').editable({
-                value: 2,
-                source: [
-                    {value: 1, text: 'Active'},
-                    {value: 2, text: 'Blocked'},
-                    {value: 3, text: 'Deleted'}
-                ]
-            }).on('shown', function(e, editable) {
-                $('select').selectric();
-            });
-
-            $('select').selectric();
-        });
+//        $(function(){
+//            $('.x-editable').editable();
+//            $('.x-editable-select').editable({
+//                value: 2,
+//                source: [
+//                    {value: 1, text: 'Active'},
+//                    {value: 2, text: 'Blocked'},
+//                    {value: 3, text: 'Deleted'}
+//                ]
+//            }).on('shown', function(e, editable) {
+//                $('select').selectric();
+//            });
+//
+//            $('select').selectric();
+//        });
     });
 </script>
 </body>
