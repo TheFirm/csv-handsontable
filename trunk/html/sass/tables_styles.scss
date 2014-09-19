@@ -283,6 +283,7 @@
   width: 200px !important;
   height: 25px;
   @include border-radius(2px);
+  padding: 3px;
   &:focus {
     box-shadow: none;
     outline: none !important;

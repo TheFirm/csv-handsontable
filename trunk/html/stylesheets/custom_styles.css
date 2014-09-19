@@ -683,20 +683,21 @@ label.css-label {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+  padding: 3px;
 }
-/* line 286, ../sass/tables_styles.scss */
+/* line 287, ../sass/tables_styles.scss */
 .editable-input:focus {
   box-shadow: none;
   outline: none !important;
   border: 1px solid #ccc;
 }
 
-/* line 293, ../sass/tables_styles.scss */
+/* line 294, ../sass/tables_styles.scss */
 .editable-buttons {
   margin-top: 3px;
 }
 
-/* line 297, ../sass/tables_styles.scss */
+/* line 298, ../sass/tables_styles.scss */
 select.editable-input {
   width: 114px;
 }

@@ -290,8 +290,8 @@
         editableOptions.theme = 'default';
         console.log(editableThemes['default']);
         // overwrite submit and error button template
-        editableThemes['default'].submitTpl = '<a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>';
-        editableThemes['default'].cancelTpl = '<a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>';
+        editableThemes['default'].submitTpl = '<a href ng-click="$form.$submit()" class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>';
+        editableThemes['default'].cancelTpl = '<a href ng-click="$form.$submit()" class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>';
     });
 
     $(document).ready(function(){
