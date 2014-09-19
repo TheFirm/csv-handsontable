@@ -131,14 +131,23 @@
     }
     i {
       margin-left: 60px;
+      position: absolute;
+      top: 5px;
+      right: 5px;
     }
     color: $full_white;
     font-size: 13px;
   }
   display: inline-block;
-  padding: 10px 15px;
+  max-width: 500px;
+  max-height: 500px;
+  padding: 10px 30px 10px 15px;
   @include border-radius(3px);
   @include box-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+  position: absolute;
+  left: 25%;
+  top: 15%;
+  overflow-y: auto;
 }
 
 
