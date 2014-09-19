@@ -284,9 +284,12 @@
   height: 25px;
   @include border-radius(2px);
   padding: 3px;
+  border: none;
+  border: 1px solid #ccc;
   &:focus {
     box-shadow: none;
     outline: none !important;
+    border: none;
     border: 1px solid #ccc;
   }
 }
