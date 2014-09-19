@@ -14,7 +14,7 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
 
 </head>
-<body>
+<body ng-app="app">
 <div class="main_wrapper">
     <div class="fixed_left_navigation">
         <ul>
@@ -189,7 +189,7 @@
                                         <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
                                         <label for="checkboxG2" class="css-label"></label>
                                     </td>
-                                        <td><p data-type="text" class="x-editable">Curtis Horton</p></td>
+                                        <td><p editable-text="user">{{ user || "empty" }}</p></td>
                                     <td>marsha.sutton35@example.com</td>
                                     <td>6875 Photinia Ave</td>
                                     <td class="unknown_cell">X</td>
@@ -278,17 +278,19 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script src="javascripts/xeditable.min.js"></script>
+
+
 
 <script>
+    var app = angular.module("app", ["xeditable"]);
+
     $(document).ready(function(){
         $('#done_edit_btn').on('click',function(){
             $('.table_wrapper').addClass('table_edit_done');
         });
-    });
-</script>
 
-<script>
-    $(document).ready(function(){
         $(function(){
             $('.x-editable').editable();
             $('.x-editable-select').editable({

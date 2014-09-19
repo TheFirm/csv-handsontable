@@ -19,7 +19,7 @@ APP.config(function($routeProvider, $locationProvider ) {
 
     // configure html5 to get links working on jsfiddle
     //$locationProvider.html5Mode(true);
-}).run(function ($rootScope, $http, fileUploadResponseService, $location, $route) {
+}).run(function ($rootScope, $http, fileUploadResponseService, $location, $route, editableOptions) {
     $rootScope.importData = function () {
         $http.post("/uploadfile", fileUploadResponseService.getFileUploadResponse())
             .success(function (data, status, headers, config) {
@@ -33,5 +33,7 @@ APP.config(function($routeProvider, $locationProvider ) {
                 // or server returns response with an error status.
             });
     };
+
+    editableOptions.mode = 'popup';
 });
 

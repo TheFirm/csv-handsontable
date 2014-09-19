@@ -1,1 +1,1 @@
-var  APP = angular.module('App', ['ngRoute', 'filters']);
+var  APP = angular.module('App', ['ngRoute', 'filters', "xeditable"]);
