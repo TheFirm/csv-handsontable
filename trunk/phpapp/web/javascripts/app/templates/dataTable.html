@@ -46,12 +46,12 @@
 
 
                     <tbody>
-                    <tr data-ng-repeat="rowItem in tableData.data">
+                    <tr data-ng-repeat="rowItem in tableData.data track by $index">
                         <td class="checkbox_wrap">
                             <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
                             <label for="checkboxG2" class="css-label"></label>
                         </td>
-                        <td data-ng-repeat="(key, value) in rowItem" title="{{value}}">
+                        <td data-ng-repeat="(key, value) in rowItem track by $index" title="{{value}}">
                             {{::value | truncate:25}}
                             <div class="table_btn_wrapper">
                                 <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>

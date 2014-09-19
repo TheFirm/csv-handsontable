@@ -19,11 +19,14 @@ APP.config(function($routeProvider, $locationProvider ) {
 
     // configure html5 to get links working on jsfiddle
     //$locationProvider.html5Mode(true);
-}).run(function ($rootScope, $http, fileUploadResponseService) {
+}).run(function ($rootScope, $http, fileUploadResponseService, $location, $route) {
     $rootScope.importData = function () {
         $http.post("/uploadfile", fileUploadResponseService.getFileUploadResponse())
             .success(function (data, status, headers, config) {
                 console.log(data);
+                fileUploadResponseService.setFileUploadResponse(data);
+                $location.path("/dataTable");
+                $route.reload();
             })
             .error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs
