@@ -84,9 +84,7 @@ class CSVFileReader implements FileReader {
             $result['columns'] = $this->columns;
             $result['headers'] = $this->headers;
             $result['data'] = $this->data;
-
-            header('Content-Type: application/json');
-            echo json_encode($result);
+            return $result;
         }
     }
 } 

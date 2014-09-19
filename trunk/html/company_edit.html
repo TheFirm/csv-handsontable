@@ -10,6 +10,9 @@
     <link type="text/css" rel="stylesheet" href="stylesheets/font-awesome.min.css"/>
     <link type="text/css" rel="stylesheet" href="stylesheets/selectric.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+
 </head>
 <body>
 <div class="main_wrapper">
@@ -186,7 +189,7 @@
                                         <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
                                         <label for="checkboxG2" class="css-label"></label>
                                     </td>
-                                    <td>Curtis Horton</td>
+                                    <td><a href="" data-type="text" class="x-editable">Curtis Horton</a></td>
                                     <td>marsha.sutton35@example.com</td>
                                     <td>6875 Photinia Ave</td>
                                     <td class="unknown_cell">X</td>
@@ -272,6 +275,10 @@
 <script src="javascripts/drag_and_drop_files_plugin.js"></script>
 <script src="javascripts/jquery.selectric.min.js"></script>
 
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+
 <script>
     $(document).ready(function(){
         $('#done_edit_btn').on('click',function(){
@@ -284,6 +291,7 @@
     $(document).ready(function(){
         $(function(){
             $('select').selectric();
+            $('.x-editable').editable();;
         });
     });
 </script>
