@@ -34,7 +34,6 @@ class CSVFileReader implements FileReader {
                 foreach($this->headers as $column){
                     $this->columns[] = array("data"=>$column,"type"=>"text");
                 }
-                //var_dump($this->json_data);
                 $this->validation();
             }
         }
@@ -56,7 +55,6 @@ class CSVFileReader implements FileReader {
         foreach($this->headers as $column){
             $this->columns[] = array("data"=>$column,"type"=>"text");
         }
-        //$this->json_data = json_encode($result);
         $this->array_data = $result;
         unset($result[0]);
         $line_result = array();
@@ -80,11 +78,12 @@ class CSVFileReader implements FileReader {
 
     public function print_result(){
         if($this->validator){
-            $result = $this->validator->getResult();
-            $result['columns'] = $this->columns;
-            $result['headers'] = $this->headers;
-            $result['data'] = $this->data;
-            return $result;
+            //Send to API
         }
+        $result = $this->validator->getResult();
+        $result['columns'] = $this->columns;
+        $result['headers'] = $this->headers;
+        $result['data'] = $this->data;
+        return $result;
     }
 } 

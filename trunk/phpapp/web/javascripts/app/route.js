@@ -3,7 +3,7 @@
  */
 
 //Routes
-APP.config(function($routeProvider, $locationProvider) {
+APP.config(function($routeProvider, $locationProvider ) {
     var TEMPLATE_PATH = '/javascripts/app/templates';
     $routeProvider
         .when('/', {
@@ -15,7 +15,20 @@ APP.config(function($routeProvider, $locationProvider) {
             controller: 'tableCtrl'
         });
 
+
+
     // configure html5 to get links working on jsfiddle
     //$locationProvider.html5Mode(true);
+}).run(function ($rootScope, $http, fileUploadResponseService) {
+    $rootScope.importData = function () {
+        $http.post("/uploadfile", fileUploadResponseService.getFileUploadResponse())
+            .success(function (data, status, headers, config) {
+                console.log(data);
+            })
+            .error(function (data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+    };
 });
 
