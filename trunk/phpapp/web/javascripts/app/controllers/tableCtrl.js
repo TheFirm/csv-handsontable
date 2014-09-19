@@ -2,9 +2,9 @@
  * Created by boom on 18.09.14.
  */
 
-APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadResponseService) {
+APP.controller('tableCtrl', function($scope, $rootScope, $location, TableDataService) {
 
-    $scope.tableData = fileUploadResponseService.getFileUploadResponse();
+    $scope.tableData = TableDataService.getData();
 
     //if empty table data, got to root path
     if(!$scope.tableData || Object.keys($scope.tableData).length === 0){
@@ -44,7 +44,7 @@ APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadRe
                 dataItem[newValue] = "";
             }
         });
-        $scope.$apply();
+        //$scope.$apply();
     };
 
     $scope.editCell = function (rowNum, colNum, newValue) {
@@ -62,7 +62,7 @@ APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadRe
                 }
             }
         }
-        $scope.$apply();
+        //$scope.$apply();
     };
 
     $scope.addRow = function () {
@@ -71,17 +71,18 @@ APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadRe
             rowItem[headerTitle] = "";
         });
         $scope.tableData.data.push(rowItem);
-        $scope.$apply();
+        //$scope.$apply();
     };
 
     $scope.addColumn = function () {
-        var newHeaderName = "Unknown" + $scope.countUnknownColumns;
-        $scope.tableData.headers.push(newHeaderName);
-        $scope.countUnknownColumns++;
-        $scope.tableData.data.forEach(function (dataItem) {
-            dataItem[newHeaderName] = "";
-        });
-        $scope.$apply();
+        //$scope.$apply(function () {
+            var newHeaderName = "Unknown" + $scope.countUnknownColumns;
+            $scope.tableData.headers.push(newHeaderName);
+            $scope.countUnknownColumns++;
+            $scope.tableData.data.forEach(function (dataItem) {
+                dataItem[newHeaderName] = "Unknown";
+            });
+        //});
     };
 
     //for debug remove later

@@ -12,11 +12,11 @@
                         </th>
 
                         <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}">
-                            <span>{{::headerTitle | truncate:25}}</span>
+                            <p data-editable-text="headerTitle" data-onaftersave="editHeader($index, $data)">{{headerTitle | truncate:25}}</p>
                         </th>
 
-                        <th class="unknown_cell editable">
-                            <div class="select_match_wrapper">
+                        <!--<th class="unknown_cell editable">-->
+                            <!--<div class="select_match_wrapper">-->
                                 <!--<select>-->
                                     <!--<option>Select Match</option>-->
                                     <!--<option>Option 1</option>-->
@@ -30,9 +30,9 @@
                                     <!--<a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>-->
                                     <!--<a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>-->
                                 <!--</div>-->
-                            </div>
-                            <span>Unknown</span>
-                        </th>
+                            <!--</div>-->
+                            <!--<span>Unknown</span>-->
+                        <!--</th>-->
                     </tr>
                     </thead>
 
@@ -45,7 +45,7 @@
                         </td>
                         <td data-ng-repeat="(key, value) in rowItem track by $index" title="{{value}}">
 
-                            <p editable-text="value">{{value | truncate:25}}</p>
+                            <p data-editable-text="value" data-onaftersave="editCell($parent.$index, $index, $data)">{{value | truncate:25}}</p>
                         </td>
 
                         <td class="unknown_cell">X</td>
@@ -56,7 +56,7 @@
             <div class="add_column_wrapper">
                 <div class="add_column_block">
                     <div class="add_column_btn">
-                        <a href class="add_btn"><i class="fa fa-plus-circle"></i>Add new column</a>
+                        <a href class="add_btn" data-ng-click="addColumn()"><i class="fa fa-plus-circle"></i>Add new column</a>
                     </div>
                     <div class="shadow_block">
                     </div>

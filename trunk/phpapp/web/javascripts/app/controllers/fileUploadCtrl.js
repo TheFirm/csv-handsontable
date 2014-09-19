@@ -1,8 +1,8 @@
 
 
-APP.controller('fileUploadCtrl', function($scope, $route, $location, fileUploadResponseService) {
+APP.controller('fileUploadCtrl', function($scope, $route, $location, TableDataService) {
     $scope.successFileUpload = function (file, responseObj) {
-        fileUploadResponseService.setFileUploadResponse(responseObj);
+        TableDataService.setData(responseObj);
         
         $scope.$apply(function () {
             $location.path('/dataTable');
