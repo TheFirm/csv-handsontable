@@ -64,14 +64,12 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
                 }
                 $path = $_FILES['file']['tmp_name'];
                 $csvFileReader = new \Helpers\CSVFileReader($path);
-                $csvFileReader->print_result();
                 return $app->json($csvFileReader->print_result());
             }else{
                 $json = file_get_contents('php://input');
                 if($json){
-                    var_dump($json);
-                    $obj = json_decode($json);
-                    var_dump($obj);
+                    $csvFileReader = new \Helpers\CSVFileReader($json);
+                    return $app->json($csvFileReader->print_result());
                 }
             }
         }
