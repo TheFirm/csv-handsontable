@@ -159,27 +159,27 @@
                                             <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
                                         </div>
                                     </th>
-                                    <th class="unknown_cell editable">
-                                        <div class="select_match_wrapper">
-                                            <select>
-                                                <option>Select Match</option>
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
-                                                <option>Option 4</option>
-                                                <option>Option 5</option>
-                                                <option>Option 6</option>
-                                            </select>
-                                            <div class="select_btn_wrapper">
-                                                <a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>
-                                                <a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>
-                                            </div>
-                                        </div>
-                                        <span>Unknown</span>
-                                        <div class="table_btn_wrapper">
-                                            <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                            <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
-                                        </div>
+                                    <th class="unknown_cell">
+                                        <!--<div class="select_match_wrapper">-->
+                                            <!--<select>-->
+                                                <!--<option>Select Match</option>-->
+                                                <!--<option>Option 1</option>-->
+                                                <!--<option>Option 2</option>-->
+                                                <!--<option>Option 3</option>-->
+                                                <!--<option>Option 4</option>-->
+                                                <!--<option>Option 5</option>-->
+                                                <!--<option>Option 6</option>-->
+                                            <!--</select>-->
+                                            <!--<div class="select_btn_wrapper">-->
+                                                <!--<a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>-->
+                                                <!--<a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <p href="#" class="x-editable-select" data-type="select">Unknown</p>
+                                        <!--<div class="table_btn_wrapper">-->
+                                            <!--<a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>-->
+                                            <!--<a href class="icon_btn"><i class="fa fa-trash-o"></i></a>-->
+                                        <!--</div>-->
                                     </th>
                                 </tr>
                                 </thead>
@@ -189,7 +189,7 @@
                                         <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
                                         <label for="checkboxG2" class="css-label"></label>
                                     </td>
-                                    <td><a href="" data-type="text" class="x-editable">Curtis Horton</a></td>
+                                        <td><p data-type="text" class="x-editable">Curtis Horton</p></td>
                                     <td>marsha.sutton35@example.com</td>
                                     <td>6875 Photinia Ave</td>
                                     <td class="unknown_cell">X</td>
@@ -290,8 +290,15 @@
 <script>
     $(document).ready(function(){
         $(function(){
-            $('select').selectric();
-            $('.x-editable').editable();;
+            $('.x-editable').editable();
+            $('.x-editable-select').editable({
+                value: 2,
+                source: [
+                    {value: 1, text: 'Active'},
+                    {value: 2, text: 'Blocked'},
+                    {value: 3, text: 'Deleted'}
+                ]
+            });
         });
     });
 </script>

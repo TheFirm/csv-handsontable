@@ -1,5 +1,6 @@
 @import "compass";
 @import "base_styles";
+@import "buttons_and_notifications";
 
 /////////////////////////////////////////////////////////////
 /////////////////////////*MAIN TABLE*////////////////////////
@@ -215,3 +216,50 @@
 /////////////////////////////////////////////////////////////
 /////////////////////////*SAMPLE TABLE*//////////////////////
 /////////////////////////////////////////////////////////////
+.editable-popup {
+  position: absolute !important;
+}
+
+.main_table.table-bordered th p,.main_table.table-bordered td p {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 300;
+  color: $text_color4;
+  border-bottom: none;
+}
+
+.editable-submit {
+  &:hover {
+    background-color: darken($succes_color, 5%);
+    border-color: $succes_color;
+    color: $full_white;
+  }
+  color: $succes_color;
+  background-color: $full_white;
+  border-color: $succes_color;
+}
+
+.editable-cancel {
+  &:hover {
+    background-color: darken($error_color, 5%);
+    border-color: $error_color;
+    color: $full_white;
+  }
+  color: $error_color;
+  background-color: $full_white;
+  border-color: $error_color;
+}
+
+.editable-input {
+  input:focus {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+/////////////////////////////////////////////////////////////
+///////////////////////*EDITABLE POPUP*//////////////////////
+/////////////////////////////////////////////////////////////
+
+
+
