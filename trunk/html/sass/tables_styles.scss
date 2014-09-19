@@ -247,7 +247,7 @@
   border: 1px solid #AAA;
   border-radius: 5px;
   padding: 7px;
-  width: 190px;
+  width: 275px;
   display: inline-block;
   margin-left: -110px;
   z-index: 101;
@@ -280,13 +280,18 @@
 }
 
 .editable-input{
-  width:114px !important;
-  height: 34px;
+  width: 200px !important;
+  height: 25px;
+  @include border-radius(2px);
   &:focus {
     box-shadow: none;
     outline: none !important;
     border: 1px solid #ccc;
   }
+}
+
+.editable-buttons {
+  margin-top: 3px;
 }
 
 select.editable-input{
