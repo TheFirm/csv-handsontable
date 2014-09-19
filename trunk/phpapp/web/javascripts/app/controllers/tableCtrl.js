@@ -54,7 +54,6 @@ APP.controller('tableCtrl', function($scope, $rootScope, $location, TableDataSer
         for(var cellItem in rowItem){
             if(rowItem.hasOwnProperty(cellItem)){
                 if(i === colNum){
-                    debugger;
                     rowItem[cellItem] = newValue;
                     break;
                 } else {
@@ -62,7 +61,10 @@ APP.controller('tableCtrl', function($scope, $rootScope, $location, TableDataSer
                 }
             }
         }
-        //$scope.$apply();
+        console.log(rowItem);
+        if(!$scope.$$phase) {
+            $scope.$apply();
+        }
     };
 
     $scope.addRow = function () {
