@@ -34,7 +34,7 @@ class Validator
     }
 
     function transformTitlesFromFileToLowerCase($data_from_file){
-        $this->data_to_validate[0] = array_map('strtolower', $data_from_file[0]);
+        $this->data_to_validate[0] = /*array_map('strtolower',*/ $data_from_file[0]/*)*/;
     }
 
     private function load_config()
@@ -55,7 +55,7 @@ class Validator
     {
         $result = array();
         foreach ($col as $title =>$column) {
-            $result[] = strtolower($title);
+            $result[] = /*strtolower*/($title);
         }
         return $result;
     }
@@ -95,17 +95,20 @@ class Validator
                 "name_mismatch"=>$name_mismatch,
                 "in_file_to_much"=>$in_file_to_much,
                 "in_file_to_few"=>$in_file_to_few,
-                "from_file"=>$column_errors_from_file,
-                "from_conf"=>$column_errors_from_conf
+                "from_file"=>array_values($column_errors_from_file),
+                "from_conf"=>array_values($column_errors_from_conf)
             );
         }
 
         $result['success'] = false;
-        $result['errors'] = $errors;
+        $result['errors'] = [
+            'types' => $errors,
+            'bestMatch' => self::findBestMatchingConfig($errors),
+        ];
         return $result;
     }
 
-    protected function findBestMatchingConfig($column_errors){
+    protected static function findBestMatchingConfig($column_errors){
         $mostMatchingConfigName = false;
         $mostMatchingConfigErrors = [];
 
@@ -116,7 +119,7 @@ class Validator
             }
         }
 
-        return [$mostMatchingConfigName => $column_errors];
+        return [$mostMatchingConfigName => $mostMatchingConfigErrors];
     }
 
     protected function findCellsError()
