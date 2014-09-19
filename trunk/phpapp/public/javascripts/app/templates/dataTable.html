@@ -1,4 +1,4 @@
-<div data-ng-controller="validator" class="main_table_wrapper">
+<div class="main_table_wrapper">
     <div class="table_wrapper">
         <div class="top_side">
             <div class="directly_table">
@@ -11,8 +11,8 @@
                             <a class="caret_btn" href=""><i class="fa fa-caret-down"></i></a>
                         </th>
 
-                        <th data-ng-repeat="headerTitle in tableData.headers track by $index">
-                            <span>{{headerTitle}}</span>
+                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}">
+                            <span>{{headerTitle | truncate:25}}</span>
                             <div class="table_btn_wrapper">
                                 <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
                                 <a href class="icon_btn" data-ng-click="deleteColumn($index)"><i class="fa fa-trash-o"></i></a>
@@ -51,8 +51,8 @@
                             <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
                             <label for="checkboxG2" class="css-label"></label>
                         </td>
-                        <td data-ng-repeat="(key, value) in rowItem">
-                            {{value}}
+                        <td data-ng-repeat="(key, value) in rowItem" title="{{value}}">
+                            {{value | truncate:25}}
                             <div class="table_btn_wrapper">
                                 <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
                                 <a href class="icon_btn" data-ng-click="deleteColumn($index)"><i class="fa fa-trash-o"></i></a>
@@ -84,3 +84,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $(function(){
+            $('select').selectric();
+        });
+    });
+</script>

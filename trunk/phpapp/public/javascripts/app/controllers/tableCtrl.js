@@ -1,14 +1,20 @@
-var customTableModule = angular.module('customTable', []);
+/**
+ * Created by boom on 18.09.14.
+ */
 
-//customTableModule.run(function($rootScope) {
-//    $rootScope.test = new Date();
-//});
+APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadResponseService) {
 
-angular.module('customTable').controller('MyController', function($scope, localLoader) {
+    $scope.tableData = fileUploadResponseService.getFileUploadResponse();
 
-    localLoader.fetch("sample_server_response.json").then(function(data) {
-        $scope.tableData = data;
-    });
+    //if empty table data, got to root path
+    if(!$scope.tableData || Object.keys($scope.tableData).length === 0){
+        $location.path("/");
+    }
+
+    //console.log($scope.tableData);
+    //localLoader.fetch("sample_server_response.json").then(function(data) {
+    //
+    //});
 
     $scope.countUnknownColumns = 1;
 
@@ -16,6 +22,8 @@ angular.module('customTable').controller('MyController', function($scope, localL
         //if (!confirm("Delete column?")) {
         //    return false;
         //}
+        //var test = {success:true};
+        //$rootScope.$broadcast('errorEvent', test);
 
         var removedColumn = $scope.tableData.headers.splice(index, 1);
         $scope.tableData.data.forEach(function (rowItem) {
@@ -76,8 +84,12 @@ angular.module('customTable').controller('MyController', function($scope, localL
         $scope.$apply();
     };
 
+    //for debug remove later
     window.editCell = $scope.editCell;
     window.addRow = $scope.addRow;
     window.editHeader = $scope.editHeader;
     window.addColumn = $scope.addColumn;
+    //for debug remove later
+
+
 });

@@ -1,17 +1,18 @@
 /**
  * Created by boom on 18.09.14.
  */
-var TemplatePath = '/public/javascripts/app/templates';
+
 //Routes
 APP.config(function($routeProvider, $locationProvider) {
+    var TEMPLATE_PATH = '/public/javascripts/app/templates';
     $routeProvider
         .when('/', {
-            templateUrl: TemplatePath+'/dropfile.html',
-            controller: 'DropFile'
+            templateUrl: TEMPLATE_PATH+'/fileUpload.html',
+            controller: 'fileUploadCtrl'
         })
-        .when('/validator', {
-            templateUrl: TemplatePath+'/validator.html',
-            controller: 'validator'
+        .when('/dataTable', {
+            templateUrl: TEMPLATE_PATH+'/dataTable.html',
+            controller: 'tableCtrl'
         });
 
     // configure html5 to get links working on jsfiddle

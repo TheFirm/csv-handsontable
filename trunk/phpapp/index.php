@@ -5,7 +5,7 @@
  * Date: 15.09.14
  * Time: 12:31
  */
-require_once 'auth.php';
+//require_once 'auth.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +16,7 @@ require_once 'auth.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="public/stylesheets/styles.css"/>
     <link type="text/css" rel="stylesheet" href="public/stylesheets/custom_styles.css"/>
+    <link type="text/css" rel="stylesheet" href="public/stylesheets/selectric.css"/>
     <link type="text/css" rel="stylesheet" href="public/stylesheets/responsive_styles.css"/>
     <link type="text/css" rel="stylesheet" href="public/stylesheets/font-awesome.min.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
@@ -34,7 +35,7 @@ require_once 'auth.php';
         </ul>
     </div>
     <header>
-        <div class="container-fluid">
+        <div class="container-fluid" >
             <div class="top_navbar">
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <div class="container-fluid">
@@ -50,7 +51,7 @@ require_once 'auth.php';
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-ng-controller="alertCtrl">
                             <ul class="nav navbar-nav left_navbar">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle dropdown_base dropdown_main"
@@ -73,17 +74,17 @@ require_once 'auth.php';
                                     <div class="thin_border"></div>
                                 </li>
                                 <li><p class="navbar-text">Company Staff & Owerview</p></li>
-                                <li class="notificaton_wrapper">
+                                <li class="notificaton_wrapper" ng-show="message.error">
                                     <div class="base_notification notificaton_error">
-                                        <span>Error in Column<a href=""><i class="fa fa-times"></i></a></span>
+                                        <span>{{message.text}}<a href=""><i class="fa fa-times"></i></a></span>
                                     </div>
                                 </li>
-<!--                                <li class="notificaton_wrapper">-->
-<!--                                    <div class="base_notification notificaton_success">-->
-<!--                                        <span>5 rows succesfully imported<a href=""><i-->
-<!--                                                    class="fa fa-times"></i></a></span>-->
-<!--                                    </div>-->
-<!--                                </li>-->
+                                <li class="notificaton_wrapper" ng-show="message.error === false">
+                                    <div class="base_notification notificaton_success">
+                                        <span>{{message.text}}<a href=""><i
+                                                    class="fa fa-times"></i></a></span>
+                                    </div>
+                                </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right right_navbar">
                                 <li class="header_btn_wrapper">
@@ -155,15 +156,36 @@ require_once 'auth.php';
 <script src="public/javascripts/lib/angular/angular-route.min.js"></script>
 
 <script src="public/javascripts/app/main.js"></script>
-<script src="public/javascripts/app/controllers/controllers.js"></script>
 <script src="public/javascripts/app/route.js"></script>
+
+<!--filters-->
+<script src="public/javascripts/app/filters/truncate.js"></script>
+<!--filters-->
+
+<!--services-->
+<script src="public/javascripts/app/services/fileUploadResponseService.js"></script>
+<!--services-->
+
+<!--directives-->
+<script src="public/javascripts/app/directives/dropzoneDir.js"></script>
+<!--directives-->
+
+<!--controllers-->
+<script src="public/javascripts/app/controllers/fileUploadCtrl.js"></script>
+<script src="public/javascripts/app/controllers/tableCtrl.js"></script>
+<script src="public/javascripts/app/controllers/alertCtrl.js"></script>
+<!--controllers-->
+
+<!--for debug-->
 <script src="public/javascripts/app/localLoaderService.js"></script>
+<!--for debug-->
 
 
 <script src="public/javascripts/lib/bootstrap/dropdown.js"></script>
 <script src="public/javascripts/lib/bootstrap/transition.js"></script>
 <script src="public/javascripts/lib/bootstrap/collapse.js"></script>
 <script src="public/javascripts/lib/bootstrap/scrollspy.js"></script>
+<script src="public/javascripts/lib/jquery.selectric.min.js"></script>
 <script src="public/javascripts/lib/dropzone.js"></script>
 
 </body>
