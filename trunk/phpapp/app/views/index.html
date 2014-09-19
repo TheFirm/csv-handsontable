@@ -26,7 +26,7 @@
         </ul>
     </div>
     <header>
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <div class="top_navbar">
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <div class="container-fluid">
@@ -42,7 +42,7 @@
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-ng-controller="alertCtrl">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav left_navbar">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle dropdown_base dropdown_main"
@@ -65,22 +65,11 @@
                                     <div class="thin_border"></div>
                                 </li>
                                 <li><p class="navbar-text">Company Staff & Owerview</p></li>
-                                <li class="notificaton_wrapper" ng-show="message.error">
-                                    <div class="base_notification notificaton_error">
-                                        <span>{{message.text}}<a href=""><i class="fa fa-times"></i></a></span>
-                                    </div>
-                                </li>
-                                <li class="notificaton_wrapper" ng-show="message.error === false">
-                                    <div class="base_notification notificaton_success">
-                                        <span>{{message.text}}<a href=""><i
-                                                    class="fa fa-times"></i></a></span>
-                                    </div>
-                                </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right right_navbar">
-                                <li class="header_btn_wrapper">
-                                    <button class="main_btn btn_blue">Done editing</button>
-                                </li>
+                                <!--<li class="header_btn_wrapper">-->
+                                    <!--<button class="main_btn btn_blue">Done editing</button>-->
+                                <!--</li>-->
                                 <li class="header_btn_wrapper">
                                     <button class="main_btn btn_blue" ng-click="$root.importData()">Import Data</button>
                                 </li>
@@ -129,6 +118,17 @@
                         </div>
                         <!-- /.navbar-collapse -->
                     </div>
+
+                    <div data-ng-controller="alertCtrl">
+                        <div ng-show="message.error" class="base_notification notificaton_error">
+                            <span>{{message.text}}<a href=""><i class="fa fa-times"></i></a></span>
+                        </div>
+
+                        <div ng-show="message.error === false" class="base_notification notificaton_success">
+                            <span>{{message.text}}<a href=""><i class="fa fa-times"></i></a></span>
+                        </div>
+                    </div>
+
                     <!-- /.container-fluid -->
                 </nav>
             </div>
