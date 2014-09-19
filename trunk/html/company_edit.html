@@ -285,6 +285,13 @@
 
 <script>
     var app = angular.module("app", ["xeditable"]);
+    app.run(function(editableOptions, editableThemes) {
+        // set `default` theme
+        editableOptions.theme = 'default';
+
+        // overwrite submit button template
+        editableThemes['default'].submitTpl = '<button type="submit">Hahaha</button>';
+    });
 
     $(document).ready(function(){
         $('#done_edit_btn').on('click',function(){

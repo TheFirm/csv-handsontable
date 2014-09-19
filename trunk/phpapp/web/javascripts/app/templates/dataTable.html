@@ -13,10 +13,6 @@
 
                         <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}">
                             <span>{{::headerTitle | truncate:25}}</span>
-                            <div class="table_btn_wrapper">
-                                <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                <a href class="icon_btn" data-ng-click="deleteColumn($index)"><i class="fa fa-trash-o"></i></a>
-                            </div>
                         </th>
 
                         <th class="unknown_cell editable">
@@ -36,10 +32,6 @@
                                 </div>
                             </div>
                             <span>Unknown</span>
-                            <div class="table_btn_wrapper">
-                                <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
-                            </div>
                         </th>
                     </tr>
                     </thead>
@@ -54,10 +46,6 @@
                         <td data-ng-repeat="(key, value) in rowItem track by $index" title="{{value}}">
 
                             <p editable-text="value">{{value | truncate:25}}</p>
-                            <div class="table_btn_wrapper">
-                                <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                <a href class="icon_btn" data-ng-click="deleteColumn($index)"><i class="fa fa-trash-o"></i></a>
-                            </div>
                         </td>
 
                         <td class="unknown_cell">X</td>
