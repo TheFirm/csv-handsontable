@@ -11,6 +11,11 @@ html, body {
   background-color: $bg3;
 }
 
+.container { min-width: 1300px !important; }
+
+body {
+  min-width: 1300px;
+}
 
 /////////////////////////////////////////////////////////////
 ///////////////////////*LEFT NAVIGATION*/////////////////////
@@ -50,6 +55,7 @@ html, body {
   height: 100%;
   width: 160px;
   position: fixed;
+  z-index: 2;
   display: inline-block;
 }
 /////////////////////////////////////////////////////////////
