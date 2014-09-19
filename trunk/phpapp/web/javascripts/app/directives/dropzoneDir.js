@@ -4,7 +4,7 @@ APP.directive('ngDropZone', function() {
         link: function(scope, element, attrs) {
             var defaultOption = {
                 paramName: "file",
-                url: "/web/uploadfile",
+                url: "/uploadfile",
                 maxFilesize: 1 //MB
             };
 
