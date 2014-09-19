@@ -27,6 +27,16 @@ function authorize(){
     return $api;
 }
 
+$app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
+    if ($api = authorize()) {
+        if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
+            header('Location: ' . $api->getAuthorizeUri());
+            exit;
+        }
+        return $app->redirect('/');
+    }
+}, 'GET');
+
 $app->match('/', function (Request $request) use ($app) {
 
     if ($api = authorize()) {
