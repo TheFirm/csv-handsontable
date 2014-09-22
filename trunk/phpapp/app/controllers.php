@@ -7,6 +7,10 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
+/**
+ * @var $app Silex\Application
+ */
+
 function authorize(){
 //    $api = new Humanity\Api(array(
 //        'client_id' => '95982517764489216',
