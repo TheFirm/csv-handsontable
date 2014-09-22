@@ -6,8 +6,8 @@
                     <thead>
                     <tr>
                         <th class="checkbox_wrap">
-                            <input type="checkbox" class="css-checkbox" />
-                            <!--<label for="checkboxG1" class="css-label"></label>-->
+                            <input id="checked_all" type="checkbox" class="css-checkbox" data-ng-click="checkUncheckAllRows()" data-ng-checked="allRowsChecked()"/>
+                            <label for="checked_all" class="css-label"></label>
                             <a class="caret_btn" href=""><i class="fa fa-caret-down"></i></a>
                         </th>
 
@@ -40,8 +40,8 @@
                     <tbody>
                     <tr data-ng-repeat="rowItem in tableData.data track by $index">
                         <td class="checkbox_wrap">
-                            <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
-                            <label for="checkboxG2" class="css-label"></label>
+                            <input type="checkbox" class="css-checkbox" data-ng-model="checkedRows[$index].checked" id="checked_{{$index}}"/>
+                            <label class="css-label" for="checked_{{$index}}"> </label>
                         </td>
                         <td data-ng-repeat="(key, value) in rowItem track by $index" title="{{value}}">
 
