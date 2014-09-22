@@ -97,7 +97,6 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
 
     $scope.checkUncheckAllRows = function () {
         var newValue = !$scope.allRowsChecked();
-        console.log(newValue);
 
         $scope.checkedRows.forEach(function (row) {
             row.checked = newValue;
@@ -114,5 +113,9 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
         return (countChecked === $scope.checkedRows.length);
     };
 
+    $scope.columnHasError = function (colName) {
+        var errorInThisColumn = $scope.tableData.columnsWithErrors && $scope.tableData.columnsWithErrors.indexOf(colName) !== -1;
+        return errorInThisColumn;
+    }
 
 });

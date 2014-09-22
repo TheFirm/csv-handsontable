@@ -5,17 +5,17 @@ APP.factory('TableDataService', function ($rootScope) {
     var _private = {
         getErrorText: function () {
             var errorText = 'Error';
-            console.log(fileUploadResponse.errors.bestMatch);
             var bestMatch = fileUploadResponse.errors.bestMatch;
             var configName = Object.keys(bestMatch)[0];
             var errors = bestMatch[configName];
 
             if(errors.from_file.length === 0 && errors.from_conf.length !== 0){
-                errorText = 'You are missing columns: ' + errors.from_conf.join(', ')
+                errorText = 'You are missing columns: ' + errors.from_conf.join(', ');
             } else if(errors.from_file.length !== 0 && errors.from_conf.length === 0){
-                errorText = 'You have to much columns: ' + errors.from_file.join(', ')
+                errorText = 'You have to much columns: ' + errors.from_file.join(', ');
             } else if(errors.from_file.length !== 0 && errors.from_conf.length !== 0){
-                errorText = 'You have errors in columns: ' + errors.from_file.join(', ')
+                errorText = 'You have errors in columns: ' + errors.from_file.join(', ');
+                fileUploadResponse.columnsWithErrors = errors.from_file;
             }
             return errorText;
         }
@@ -60,8 +60,6 @@ APP.factory('TableDataService', function ($rootScope) {
             return isDataImported;
         }
     };
-
-    window.pub = pub;
 
     return pub;
 });
