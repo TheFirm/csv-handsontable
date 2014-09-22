@@ -296,20 +296,42 @@
   margin-right: 5px;
 }
 
-/* line 147, ../sass/tables_styles.scss */
+/* line 116, ../sass/tables_styles.scss */
+.select_match_wrapper {
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+/* line 117, ../sass/tables_styles.scss */
+.select_match_wrapper > div {
+  float: left;
+}
+/* line 120, ../sass/tables_styles.scss */
+.select_match_wrapper a {
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 121, ../sass/tables_styles.scss */
+.select_match_wrapper a i {
+  font-size: 20px;
+}
+
+/* line 149, ../sass/tables_styles.scss */
 .table_wrapper.table_edit_done .top_side .directly_table {
   width: 100%;
 }
-/* line 150, ../sass/tables_styles.scss */
+/* line 152, ../sass/tables_styles.scss */
 .table_wrapper.table_edit_done .top_side .add_column_wrapper {
   display: none;
 }
-/* line 154, ../sass/tables_styles.scss */
+/* line 156, ../sass/tables_styles.scss */
 .table_wrapper.table_edit_done .bottom_side {
   display: none;
 }
 
-/* line 159, ../sass/tables_styles.scss */
+/* line 161, ../sass/tables_styles.scss */
 .directly_table {
   width: 87.5%;
   display: inline-block;
@@ -320,29 +342,29 @@
   transition: width 0.6s;
 }
 
-/* line 166, ../sass/tables_styles.scss */
+/* line 168, ../sass/tables_styles.scss */
 .add_column_wrapper {
   width: 12.5%;
   display: inline-block;
   float: left;
 }
 
-/* line 174, ../sass/tables_styles.scss */
+/* line 176, ../sass/tables_styles.scss */
 .top_side {
   border-bottom: 1px solid #eeeeee;
 }
 
-/* line 178, ../sass/tables_styles.scss */
+/* line 180, ../sass/tables_styles.scss */
 .add_column_btn {
   padding: 13px 10px 12px 16px;
   border-bottom: 1px solid #eeeeee;
 }
-/* line 179, ../sass/tables_styles.scss */
+/* line 181, ../sass/tables_styles.scss */
 .add_column_btn a {
   white-space: nowrap;
 }
 
-/* line 186, ../sass/tables_styles.scss */
+/* line 188, ../sass/tables_styles.scss */
 .shadow_block {
   height: 10px;
   -moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
@@ -350,35 +372,35 @@
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
 }
 
-/* line 191, ../sass/tables_styles.scss */
+/* line 193, ../sass/tables_styles.scss */
 .add_row_btn {
   text-align: right;
   padding: 13px 18px 12px 18px;
 }
-/* line 192, ../sass/tables_styles.scss */
+/* line 194, ../sass/tables_styles.scss */
 .add_row_btn a {
   margin-right: 80px;
 }
 
-/* line 205, ../sass/tables_styles.scss */
+/* line 207, ../sass/tables_styles.scss */
 .sample_table {
   width: 60%;
   margin: 0 auto;
   margin-bottom: 60px;
 }
-/* line 206, ../sass/tables_styles.scss */
+/* line 208, ../sass/tables_styles.scss */
 .sample_table h4 {
   color: #999;
   font-weight: 300;
   margin-bottom: 15px;
 }
 
-/* line 220, ../sass/tables_styles.scss */
+/* line 222, ../sass/tables_styles.scss */
 .editable-popup {
   position: absolute !important;
 }
 
-/* line 224, ../sass/tables_styles.scss */
+/* line 226, ../sass/tables_styles.scss */
 .main_table.table-bordered th p, .main_table.table-bordered td p {
   display: inline-block;
   cursor: pointer;
@@ -389,19 +411,19 @@
   font-style: inherit;
 }
 
-/* line 234, ../sass/tables_styles.scss */
+/* line 236, ../sass/tables_styles.scss */
 .editable-buttons a {
   border: none;
   background-color: #fff;
   padding: 5px 5px;
 }
 
-/* line 240, ../sass/tables_styles.scss */
+/* line 242, ../sass/tables_styles.scss */
 .main_table.table-bordered th, .main_table.table-bordered td {
   position: relative;
 }
 
-/* line 244, ../sass/tables_styles.scss */
+/* line 246, ../sass/tables_styles.scss */
 .main_table.table-bordered th form, .main_table.table-bordered td form {
   position: absolute;
   background: #FFF;
@@ -416,7 +438,7 @@
   left: 35px;
 }
 
-/* line 258, ../sass/tables_styles.scss */
+/* line 260, ../sass/tables_styles.scss */
 .main_table.table-bordered th form:before, .main_table.table-bordered td form:before {
   content: "";
   width: 0;
@@ -429,7 +451,7 @@
   left: 100px;
 }
 
-/* line 270, ../sass/tables_styles.scss */
+/* line 272, ../sass/tables_styles.scss */
 .main_table.table-bordered th form:after, .main_table.table-bordered td form:after {
   content: "";
   width: 0;
@@ -442,7 +464,7 @@
   left: 101px;
 }
 
-/* line 282, ../sass/tables_styles.scss */
+/* line 284, ../sass/tables_styles.scss */
 .editable-input {
   width: 200px !important;
   height: 25px;
@@ -453,7 +475,7 @@
   border: none;
   border: 1px solid #ccc;
 }
-/* line 289, ../sass/tables_styles.scss */
+/* line 291, ../sass/tables_styles.scss */
 .editable-input:focus {
   box-shadow: none;
   outline: none !important;
@@ -461,12 +483,12 @@
   border: 1px solid #ccc;
 }
 
-/* line 297, ../sass/tables_styles.scss */
+/* line 299, ../sass/tables_styles.scss */
 .editable-buttons {
   margin-top: 3px;
 }
 
-/* line 301, ../sass/tables_styles.scss */
+/* line 303, ../sass/tables_styles.scss */
 select.editable-input {
   width: 114px;
 }
