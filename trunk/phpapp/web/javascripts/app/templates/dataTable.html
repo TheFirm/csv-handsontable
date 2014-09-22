@@ -21,14 +21,8 @@
 
                         <th class="unknown_cell editable">
                             <div class="select_match_wrapper">
-                                <select>
-                                    <option>Select Match</option>
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                    <option>Option 5</option>
-                                    <option>Option 6</option>
+                                <select ng-model="mySelect[headerTitle]" ng-change="select(headerTitle,$index)" ng-init="mySelect[headerTitle] = tableHeaderSelects[headerTitle][0]">
+                                    <option data-ng-repeat="option in tableHeaderSelects[headerTitle] track by $index" select-box value="{{option}}">{{option}}</option>
                                 </select>
                                 <div class="select_btn_wrapper">
                                     <a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>
@@ -86,9 +80,9 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-        $(function(){
-            $('select').selectric();
-        });
-    });
+//    $(document).ready(function(){
+//        $(function(){
+//            $('select').selectric();
+//        });
+//    });
 </script>

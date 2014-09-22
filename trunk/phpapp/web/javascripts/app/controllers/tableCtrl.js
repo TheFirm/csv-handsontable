@@ -1,20 +1,30 @@
 /**
  * Created by boom on 18.09.14.
  */
-
+APP.directive('selectBox', function ($timeout) {
+    return {
+        link: function (scope, element, attr) {
+            if (scope.$last){
+                $timeout(function () {
+                    scope.$emit('ngRepeatFinished',element);
+                });
+            }
+        }
+    };
+});
 APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadResponseService) {
 
     $scope.tableData = fileUploadResponseService.getFileUploadResponse();
+    $scope.tableHeaderSelects = [];
 
     //if empty table data, got to root path
     if(!$scope.tableData || Object.keys($scope.tableData).length === 0){
         $location.path("/");
     }
 
-    //console.log($scope.tableData);
-    //localLoader.fetch("sample_server_response.json").then(function(data) {
-    //
-    //});
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent,element) {
+        $(element.parent()).selectric('refresh');
+    });
 
     $scope.countUnknownColumns = 1;
 
@@ -83,6 +93,11 @@ APP.controller('tableCtrl', function($scope, $rootScope, $location, fileUploadRe
         });
         $scope.$apply();
     };
+
+    $scope.select = function(headerTitle,index){
+        console.log($scope.mySelect[headerTitle],index);
+    }
+
 
     //for debug remove later
     window.editCell = $scope.editCell;

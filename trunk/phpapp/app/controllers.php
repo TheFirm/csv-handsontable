@@ -8,23 +8,23 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 function authorize(){
-//    $api = new Humanity\Api(array(
-//        'client_id' => '95982517764489216',
-//        'client_secret' => null,
-//        'redirect_uri' => 'http://www.humanity.dev/php_sdk/oauth.php',
-//    ));
-//
-//    // This is changed to match our endpoints
-//    $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
-//    $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
-//    $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
-//
-//    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
-//    // No valid access token available, go to authorization server
-//        header('Location: ' . $api->getAuthorizeUri());
-//        exit;
-//    }
-    return true;
+    $api = new Humanity\Api(array(
+        'client_id' => '95982517764489216',
+        'client_secret' => null,
+        'redirect_uri' => 'http://www.humanity.dev/php_sdk/oauth.php',
+    ));
+
+    // This is changed to match our endpoints
+    $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
+    $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
+    $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
+
+    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
+    // No valid access token available, go to authorization server
+        header('Location: ' . $api->getAuthorizeUri());
+        exit;
+    }
+    return $api;
 }
 
 $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
@@ -40,10 +40,28 @@ $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
 $app->match('/', function (Request $request) use ($app) {
 
     if ($api = authorize()) {
-        return file_get_contents(__DIR__.'/views/index.html', FILE_USE_INCLUDE_PATH);
+        $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
+        $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
+        $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
+        $credentials = $api->get('oauth/credentials');
+        $employees =$api->get("companies/{$credentials['company_id']}/employees");
+        $lexer = new Twig_Lexer($app['twig'], array(
+            'tag_variable'  => array('[[', ']]'),
+        ));
+        $app['twig']->setLexer($lexer);
+        if($employees){
+            $ava = str_replace('[size]','300x300',$employees[0]['avatar']?$employees[0]['avatar']['path']:'/img/default_avatar_300x300.png');
+        }
+
+        return $app['twig']->render('index.html', array(
+            'avatar' => $ava,
+            'account_avatar' => $employees[0]['account_avatar'],
+            'display_name' => $employees[0]['display_name'],
+        ));
     }
     return $app->json(array('error'=>'Error!'));
 }, 'GET');
+
 
 $app->match('/uploadfile', function (Request $request) use ($app) {
 
@@ -79,14 +97,27 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
 
 $app->match('/user', function (Request $request) use ($app) {
 
-    if ($api = authorize()) {
-        $credentials = $api->get('oauth/credentials');
-//        var_dump($credentials);
-        $employees = $api->get("companies/{$credentials['company_id']}/employees");
-//        var_dump($employees);
-        return $app->json(array('employees'=>$employees));
+    $api = new Humanity\Api(array(
+        'client_id' => '95982517764489216',
+        'client_secret' => null,
+        'redirect_uri' => 'http://www.humanity.dev/php_sdk/oauth.php',
+    ));
+
+    // This is changed to match our endpoints
+    $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
+    $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
+    $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
+
+    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
+        // No valid access token available, go to authorization server
+        header('Location: ' . $api->getAuthorizeUri());
+        exit;
     }
-    return $app->json(array('error'=>'Error!'));
+
+        $credentials = $api->get('oauth/credentials');
+        $employees = $api->get("companies/{$credentials['company_id']}/employees");
+        return $app->json(array('employees'=>$employees));
+
 }, 'GET|POST');
 
 $app->error(function (\Exception $e, $code) use ($app) {
