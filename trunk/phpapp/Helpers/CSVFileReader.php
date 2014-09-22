@@ -24,13 +24,12 @@ class CSVFileReader implements FileReader {
         }else{
             $data_arr = json_decode($data, true);
             if($data_arr!=null){
-                $this->headers = sort($data_arr['headers']);
+                asort($data_arr['headers']);
+                $this->headers = $data_arr['headers'];
                 foreach($data_arr['data'] as $k=>$v){
                     $this->data[$k] = array_values($v);
                 }
-
                 $this->array_data = array($this->headers) + $this->data;
-
                 foreach($this->headers as $column){
                     $this->columns[] = array("data"=>$column,"type"=>"text");
                 }

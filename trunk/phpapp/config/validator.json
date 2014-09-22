@@ -58,7 +58,7 @@
         }
     },
     "okokok<": {
-        "NAME": {
+        "NAME1": {
             "required": true,
             "type": "text"
         },
@@ -74,7 +74,7 @@
             "required": true,
             "type": "text"
         },
-        "ESTIMATED ANNUAL SALARY MINUS FURLOUGH": {
+        "sraka": {
             "required": true,
             "type": "text"
         }

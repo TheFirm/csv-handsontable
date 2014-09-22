@@ -1,25 +1,43 @@
 /**
  * Created by boom on 18.09.14.
  */
+APP.directive('selectBox', function ($timeout) {
+    return {
+        link: function (scope, element, attr) {
+            if (scope.$last){
+                $timeout(function () {
+                    scope.$emit('ngRepeatFinished',element);
+                });
+            }
+        }
+    };
+});
 
 APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataService) {
 
     $scope.tableData = TableDataService.getData();
     $scope.checkedRows = [];
     $scope.tableHeaderSelects = [];
-    
+    $scope.possibleValues = [];
+
     //if empty table data, got to root path
     if (!$scope.tableData || Object.keys($scope.tableData).length === 0) {
         $location.path("/");
         return false;
     }
 
-    $scope.tableData.data.forEach(function (rowItem, index) {
-        $scope.checkedRows[index] = {
-            index: index,
-            checked: false
-        };
+    if($scope.tableData.errors.hasOwnProperty('bestMatch')){
+        var confName = Object.keys($scope.tableData.errors.bestMatch);
+        $scope.possibleValues = $scope.tableData.errors.bestMatch[confName].from_conf;
+        $scope.possibleValues.unshift("Choose");
+    }
+
+    $scope.tableHeaderSelects = [];
+
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent,element) {
+        $(element.parent()).selectric('refresh');
     });
+
 
     //console.log($scope.tableData);
     //localLoader.fetch("sample_server_response.json").then(function(data) {
@@ -71,7 +89,6 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
                 }
             }
         }
-        console.log(rowItem);
         if (!$scope.$$phase) {
             $scope.$apply();
         }
@@ -97,8 +114,10 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
         //});
     };
 
-    $scope.select = function(headerTitle,index){
-        console.log($scope.mySelect[headerTitle],index);
+    $scope.mySelect = {};
+
+    $scope.select = function(selectedName,index){
+        $scope.editHeader(index,selectedName);
     }
 
 

@@ -26,6 +26,7 @@ APP.factory('TableDataService', function ($rootScope) {
             isDataImported = false;
             fileUploadResponse = data;
             $rootScope.$emit("file.uploaded", data);
+            $rootScope.$emit("file.uploaded1", data);
 
             var message = {};
             if(pub.hasErrors()){
@@ -53,7 +54,8 @@ APP.factory('TableDataService', function ($rootScope) {
         },
 
         isDataLoaded: function () {
-            return Object.keys(fileUploadResponse).length > 0
+            console.log(fileUploadResponse);
+            return fileUploadResponse?(fileUploadResponse && Object.keys(fileUploadResponse).length > 0):false
         },
 
         isDataImported: function () {

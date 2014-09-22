@@ -11,24 +11,18 @@
                             <a class="caret_btn" href=""><i class="fa fa-caret-down"></i></a>
                         </th>
 
-                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}" data-ng-class="{unknown_cell: columnHasError(headerTitle)}">
-                            <p data-editable-text="headerTitle" data-onaftersave="editHeader($index, $data)">{{headerTitle | truncate:25}}</p>
-                        </th>
+                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}" data-ng-class="{'unknown_cell editable': columnHasError(headerTitle)}">
 
-                        <th class="unknown_cell editable">
-                            <div class="select_match_wrapper">
-                                <select ng-model="mySelect[headerTitle]" ng-change="select(headerTitle,$index)" ng-init="mySelect[headerTitle] = tableHeaderSelects[headerTitle][0]">
-                                    <option data-ng-repeat="option in tableHeaderSelects[headerTitle] track by $index" select-box value="{{option}}">{{option}}</option>
+                            <p data-ng-hide="columnHasError(headerTitle)" data-editable-text="headerTitle" data-onaftersave="editHeader($index, $data)">{{headerTitle | truncate:25}}</p>
+
+                            <div data-ng-show="columnHasError(headerTitle)" class="select_match_wrapper">
+                                <select ng-model="mySelect[headerTitle]" ng-change="select(mySelect[headerTitle],$index)" ng-init="mySelect[headerTitle] = possibleValues[0]">
+                                    <option data-ng-repeat="option in possibleValues track by $index" select-box value="{{option}}">{{option}}</option>
                                 </select>
                                 <div class="select_btn_wrapper">
                                     <a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>
                                     <a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>
                                 </div>
-                            </div>
-                            <span>Unknown</span>
-                            <div class="table_btn_wrapper">
-                                <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
                             </div>
                         </th>
                     </tr>
