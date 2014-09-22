@@ -87,6 +87,7 @@
   }
   background-color: $bg6;
   position: relative;
+  min-width: 103px;
 }
 
 
@@ -113,23 +114,23 @@
   right: 10px;
 }
 
-//.select_match_wrapper {
-//  &>div {
-//    float: left;
-//  }
-//  a {
-//    i {
-//      font-size: 20px;
-//    }
-//    margin-left: 5px;
-//    display: inline-block;
-//    vertical-align: middle;
-//  }
-//  display: inline-block;
-//  position: absolute;
-//  top: 8px;
-//  left: 8px;
-//}
+.select_match_wrapper {
+  &>div {
+    float: left;
+  }
+  a {
+    i {
+      font-size: 20px;
+    }
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
 
 //.select_btn_wrapper {
 //  a {
@@ -139,6 +140,8 @@
 //  margin-left: 7px;
 //  margin-top: 7px;
 //}
+
+
 //Table wrappers
 
 //This class is using for hide add row/column divs.

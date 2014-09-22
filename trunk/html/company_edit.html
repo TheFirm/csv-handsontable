@@ -159,23 +159,23 @@
                                             <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
                                         </div>
                                     </th>
-                                    <th class="unknown_cell">
-                                        <!--<div class="select_match_wrapper">-->
-                                            <!--<select>-->
-                                                <!--<option>Select Match</option>-->
-                                                <!--<option>Option 1</option>-->
-                                                <!--<option>Option 2</option>-->
-                                                <!--<option>Option 3</option>-->
-                                                <!--<option>Option 4</option>-->
-                                                <!--<option>Option 5</option>-->
-                                                <!--<option>Option 6</option>-->
-                                            <!--</select>-->
+                                    <th class="unknown_cell editable">
+                                        <div class="select_match_wrapper">
+                                            <select>
+                                                <option>Select Match</option>
+                                                <option>Option 1</option>
+                                                <option>Option 2</option>
+                                                <option>Option 3</option>
+                                                <option>Option 4 SDGS SGRTG WHREWJ H Q5H45HQ3QW 43 34TQ</option>
+                                                <option>Option 5</option>
+                                                <option>Option 6</option>
+                                            </select>
                                             <!--<div class="select_btn_wrapper">-->
                                                 <!--<a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>-->
                                                 <!--<a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>-->
                                             <!--</div>-->
-                                        <!--</div>-->
-                                        <p editable-text="user">{{ user || "John Doe" }}</p>
+                                        </div>
+                                        <!--<p editable-text="user">{{ user || "John Doe" }}</p>-->
                                         <!--<div class="table_btn_wrapper">-->
                                             <!--<a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>-->
                                             <!--<a href class="icon_btn"><i class="fa fa-trash-o"></i></a>-->
@@ -298,6 +298,8 @@
         $('#done_edit_btn').on('click',function(){
             $('.table_wrapper').addClass('table_edit_done');
         });
+
+        $('select').selectric();
 
 //        $(function(){
 //            $('.x-editable').editable();
