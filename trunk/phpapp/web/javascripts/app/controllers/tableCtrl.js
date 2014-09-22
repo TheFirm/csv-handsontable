@@ -14,7 +14,6 @@ APP.directive('selectBox', function ($timeout) {
 });
 
 APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataService) {
-
     $scope.tableData = TableDataService.getData();
     $scope.checkedRows = [];
     $scope.tableHeaderSelects = [];
@@ -53,53 +52,19 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
         //var test = {success:true};
         //$rootScope.$broadcast('errorEvent', test);
 
-        var removedColumn = $scope.tableData.headers.splice(index, 1);
-        $scope.tableData.data.forEach(function (rowItem) {
-            delete rowItem[removedColumn];
+        $scope.tableData.headers.splice(index, 1);
+        $scope.tableData.rows.forEach(function (row) {
+            delete row[index];
         });
         //$scope.$apply();
-    };
-
-    $scope.editHeader = function (colNum, newValue) {
-        var oldHeaderValue = $scope.tableData.headers[colNum];
-        $scope.tableData.headers[colNum] = newValue;
-
-        $scope.tableData.data.forEach(function (dataItem) {
-            if(dataItem.hasOwnProperty(oldHeaderValue)){
-                dataItem[newValue] = dataItem[oldHeaderValue];
-                delete dataItem[oldHeaderValue];
-            } else {
-                dataItem[newValue] = "";
-            }
-        });
-        //$scope.$apply();
-    };
-
-    $scope.editCell = function (rowNum, colNum, newValue) {
-        var rowItem = $scope.tableData.data[rowNum];
-
-        var i = 0;
-        for (var cellItem in rowItem) {
-            if (rowItem.hasOwnProperty(cellItem)) {
-                if (i === colNum) {
-                    rowItem[cellItem] = newValue;
-                    break;
-                } else {
-                    i++;
-                }
-            }
-        }
-        if (!$scope.$$phase) {
-            $scope.$apply();
-        }
     };
 
     $scope.addRow = function () {
-        var rowItem = {};
-        $scope.tableData.headers.forEach(function (headerTitle) {
-            rowItem[headerTitle] = "";
+        var row = [];
+        $scope.tableData.headers.forEach(function () {
+            row.push("Unknown");
         });
-        $scope.tableData.data.push(rowItem);
+        $scope.tableData.rows.push(row);
         //$scope.$apply();
     };
 
@@ -108,8 +73,8 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
         var newHeaderName = "Unknown" + $scope.countUnknownColumns;
         $scope.tableData.headers.push(newHeaderName);
         $scope.countUnknownColumns++;
-        $scope.tableData.data.forEach(function (dataItem) {
-            dataItem[newHeaderName] = "Unknown";
+        $scope.tableData.rows.forEach(function (row) {
+            row.push("Unknown");
         });
         //});
     };
@@ -118,7 +83,7 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
 
     $scope.select = function(selectedName,index){
         $scope.editHeader(index,selectedName);
-    }
+    };
 
 
     $scope.checkUncheckAllRows = function () {

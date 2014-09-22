@@ -30,13 +30,13 @@
 
 
                     <tbody>
-                    <tr data-ng-repeat="rowItem in tableData.data track by $index">
+                    <tr data-ng-repeat="row in tableData.rows track by $index">
                         <td class="checkbox_wrap">
                             <input type="checkbox" class="css-checkbox" data-ng-model="checkedRows[$index].checked" id="checked_{{$index}}"/>
                             <label class="css-label" for="checked_{{$index}}"> </label>
                         </td>
-                        <td data-ng-repeat="(key, value) in rowItem track by $index" title="{{value}}" data-ng-class="{unknown_cell: columnHasError(key, value)}">
-                            <p data-editable-text="value" data-onaftersave="editCell($parent.$index, $index, $data)">{{value | truncate:25}}</p>
+                        <td data-ng-repeat="cell in row track by $index" title="{{cell}}" data-ng-class="{unknown_cell: columnHasError($index, $parent.$index)}">
+                            <p data-editable-text="cell">{{cell | truncate:25}}</p>
                         </td>
                     </tr>
                     </tbody>
