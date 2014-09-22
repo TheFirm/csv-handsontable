@@ -13,7 +13,7 @@ class CSVFileReader implements FileReader {
     protected $array_data;
     protected $headers = array();
     protected $columns = array();
-    protected $data = array();
+    protected $rows = array();
     protected $validator;
 
     function __construct($data,$CSVconvertToJson=true)
@@ -24,13 +24,12 @@ class CSVFileReader implements FileReader {
         }else{
             $data_arr = json_decode($data, true);
             if($data_arr!=null){
-                $this->headers = sort($data_arr['headers']);
-                foreach($data_arr['data'] as $k=>$v){
-                    $this->data[$k] = array_values($v);
+                asort($data_arr['headers']);
+                $this->headers = $data_arr['headers'];
+                foreach($data_arr['rows'] as $row){
+                    $this->rows[] = $row;
                 }
-
-                $this->array_data = array($this->headers) + $this->data;
-
+                $this->array_data = array($this->headers) + $this->rows;
                 foreach($this->headers as $column){
                     $this->columns[] = array("data"=>$column,"type"=>"text");
                 }
@@ -61,10 +60,10 @@ class CSVFileReader implements FileReader {
         foreach($result as $line){
             $i=0;
             foreach($this->headers as $hcol){
-                $line_result[$hcol] = $line[$i];
+                $line_result[] = $line[$i];
                 $i++;
             }
-            $this->data[] = $line_result;
+            $this->rows[] = $line_result;
         }
         sort($this->headers);
     }
@@ -84,7 +83,7 @@ class CSVFileReader implements FileReader {
         $result = $this->validator->getResult();
         $result['columns'] = $this->columns;
         $result['headers'] = $this->headers;
-        $result['data'] = $this->data;
+        $result['rows'] = $this->rows;
         return $result;
     }
 } 
