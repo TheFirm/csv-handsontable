@@ -6,17 +6,13 @@
                     <thead>
                     <tr>
                         <th class="checkbox_wrap">
-                            <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
-                            <label for="checkboxG1" class="css-label"></label>
+                            <input id="checked_all" type="checkbox" class="css-checkbox" data-ng-click="checkUncheckAllRows()" data-ng-checked="allRowsChecked()"/>
+                            <label for="checked_all" class="css-label"></label>
                             <a class="caret_btn" href=""><i class="fa fa-caret-down"></i></a>
                         </th>
 
-                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}">
-                            <span>{{::headerTitle | truncate:25}}</span>
-                            <div class="table_btn_wrapper">
-                                <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                <a href class="icon_btn" data-ng-click="deleteColumn($index)"><i class="fa fa-trash-o"></i></a>
-                            </div>
+                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}" data-ng-class="{unknown_cell: columnHasError(headerTitle)}">
+                            <p data-editable-text="headerTitle" data-onaftersave="editHeader($index, $data)">{{headerTitle | truncate:25}}</p>
                         </th>
 
                         <th class="unknown_cell editable">
@@ -40,20 +36,14 @@
 
 
                     <tbody>
-                    <tr data-ng-repeat="rowItem in tableData.data">
+                    <tr data-ng-repeat="rowItem in tableData.data track by $index">
                         <td class="checkbox_wrap">
-                            <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
-                            <label for="checkboxG2" class="css-label"></label>
+                            <input type="checkbox" class="css-checkbox" data-ng-model="checkedRows[$index].checked" id="checked_{{$index}}"/>
+                            <label class="css-label" for="checked_{{$index}}"> </label>
                         </td>
-                        <td data-ng-repeat="(key, value) in rowItem" title="{{value}}">
-                            {{::value | truncate:25}}
-                            <div class="table_btn_wrapper">
-                                <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                <a href class="icon_btn" data-ng-click="deleteColumn($index)"><i class="fa fa-trash-o"></i></a>
-                            </div>
+                        <td data-ng-repeat="(key, value) in rowItem track by $index" title="{{value}}" data-ng-class="{unknown_cell: columnHasError(key, value)}">
+                            <p data-editable-text="value" data-onaftersave="editCell($parent.$index, $index, $data)">{{value | truncate:25}}</p>
                         </td>
-
-                        <td class="unknown_cell">X</td>
                     </tr>
                     </tbody>
                 </table>
@@ -61,7 +51,7 @@
             <div class="add_column_wrapper">
                 <div class="add_column_block">
                     <div class="add_column_btn">
-                        <a href class="add_btn"><i class="fa fa-plus-circle"></i>Add new column</a>
+                        <a href class="add_btn" data-ng-click="addColumn()"><i class="fa fa-plus-circle"></i>Add new column</a>
                     </div>
                     <div class="shadow_block">
                     </div>

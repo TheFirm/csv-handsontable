@@ -14,7 +14,7 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
 
 </head>
-<body>
+<body ng-app="app">
 <div class="main_wrapper">
     <div class="fixed_left_navigation">
         <ul>
@@ -159,27 +159,27 @@
                                             <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
                                         </div>
                                     </th>
-                                    <th class="unknown_cell editable">
-                                        <div class="select_match_wrapper">
-                                            <select>
-                                                <option>Select Match</option>
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
-                                                <option>Option 4</option>
-                                                <option>Option 5</option>
-                                                <option>Option 6</option>
-                                            </select>
-                                            <div class="select_btn_wrapper">
-                                                <a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>
-                                                <a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>
-                                            </div>
-                                        </div>
-                                        <span>Unknown</span>
-                                        <div class="table_btn_wrapper">
-                                            <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                            <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
-                                        </div>
+                                    <th class="unknown_cell">
+                                        <!--<div class="select_match_wrapper">-->
+                                            <!--<select>-->
+                                                <!--<option>Select Match</option>-->
+                                                <!--<option>Option 1</option>-->
+                                                <!--<option>Option 2</option>-->
+                                                <!--<option>Option 3</option>-->
+                                                <!--<option>Option 4</option>-->
+                                                <!--<option>Option 5</option>-->
+                                                <!--<option>Option 6</option>-->
+                                            <!--</select>-->
+                                            <!--<div class="select_btn_wrapper">-->
+                                                <!--<a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>-->
+                                                <!--<a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <p editable-text="user">{{ user || "John Doe" }}</p>
+                                        <!--<div class="table_btn_wrapper">-->
+                                            <!--<a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>-->
+                                            <!--<a href class="icon_btn"><i class="fa fa-trash-o"></i></a>-->
+                                        <!--</div>-->
                                     </th>
                                 </tr>
                                 </thead>
@@ -189,7 +189,7 @@
                                         <input type="checkbox" name="checkboxG1" id="checkboxG2" class="css-checkbox" />
                                         <label for="checkboxG2" class="css-label"></label>
                                     </td>
-                                    <td><a href="" data-type="text" class="x-editable">Curtis Horton</a></td>
+                                        <td><p editable-text="user">{{ user || "John Doe" }}</p></td>
                                     <td>marsha.sutton35@example.com</td>
                                     <td>6875 Photinia Ave</td>
                                     <td class="unknown_cell">X</td>
@@ -275,23 +275,45 @@
 <script src="javascripts/drag_and_drop_files_plugin.js"></script>
 <script src="javascripts/jquery.selectric.min.js"></script>
 
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script src="javascripts/xeditable.min.js"></script>
+
 
 
 <script>
+    var app = angular.module("app", ["xeditable"]);
+    app.run(function(editableOptions, editableThemes) {
+        // set `default` theme
+        editableOptions.theme = 'default';
+        console.log(editableThemes['default']);
+        // overwrite submit and error button template
+        editableThemes['default'].submitTpl = '<a href ng-click="$form.$submit()" class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>';
+        editableThemes['default'].cancelTpl = '<a href ng-click="$form.$submit()" class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>';
+    });
+
     $(document).ready(function(){
         $('#done_edit_btn').on('click',function(){
             $('.table_wrapper').addClass('table_edit_done');
         });
-    });
-</script>
 
-<script>
-    $(document).ready(function(){
-        $(function(){
-            $('select').selectric();
-            $('.x-editable').editable();;
-        });
+//        $(function(){
+//            $('.x-editable').editable();
+//            $('.x-editable-select').editable({
+//                value: 2,
+//                source: [
+//                    {value: 1, text: 'Active'},
+//                    {value: 2, text: 'Blocked'},
+//                    {value: 3, text: 'Deleted'}
+//                ]
+//            }).on('shown', function(e, editable) {
+//                $('select').selectric();
+//            });
+//
+//            $('select').selectric();
+//        });
     });
 </script>
 </body>

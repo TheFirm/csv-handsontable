@@ -9,6 +9,10 @@ use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\SwiftmailerServiceProvider;
 
+/**
+ * @var $app Silex\Application
+ */
+
 $app->register(new ValidatorServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new TranslationServiceProvider());

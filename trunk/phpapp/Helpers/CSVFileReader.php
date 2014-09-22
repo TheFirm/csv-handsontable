@@ -24,7 +24,7 @@ class CSVFileReader implements FileReader {
         }else{
             $data_arr = json_decode($data, true);
             if($data_arr!=null){
-                $this->headers = $data_arr['headers'];
+                $this->headers = sort($data_arr['headers']);
                 foreach($data_arr['data'] as $k=>$v){
                     $this->data[$k] = array_values($v);
                 }
@@ -66,6 +66,7 @@ class CSVFileReader implements FileReader {
             }
             $this->data[] = $line_result;
         }
+        sort($this->headers);
     }
 
     /**

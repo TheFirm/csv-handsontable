@@ -9,6 +9,7 @@
     <link type="text/css" rel="stylesheet" href="stylesheets/selectric.css"/>
     <link type="text/css" rel="stylesheet" href="stylesheets/responsive_styles.css"/>
     <link type="text/css" rel="stylesheet" href="stylesheets/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="stylesheets/xeditable.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="App">
@@ -25,7 +26,7 @@
         </ul>
     </div>
     <header>
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <div class="top_navbar">
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <div class="container-fluid">
@@ -41,7 +42,7 @@
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-ng-controller="alertCtrl">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav left_navbar">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle dropdown_base dropdown_main"
@@ -64,24 +65,16 @@
                                     <div class="thin_border"></div>
                                 </li>
                                 <li><p class="navbar-text">Company Staff & Owerview</p></li>
-                                <li class="notificaton_wrapper" ng-show="message.error">
-                                    <div class="base_notification notificaton_error">
-                                        <span>{{message.text}}<a href=""><i class="fa fa-times"></i></a></span>
-                                    </div>
-                                </li>
-                                <li class="notificaton_wrapper" ng-show="message.error === false">
-                                    <div class="base_notification notificaton_success">
-                                        <span>{{message.text}}<a href=""><i
-                                                    class="fa fa-times"></i></a></span>
-                                    </div>
-                                </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right right_navbar">
+                                <!--<li class="header_btn_wrapper">-->
+                                    <!--<button class="main_btn btn_blue">Done editing</button>-->
+                                <!--</li>-->
                                 <li class="header_btn_wrapper">
-                                    <button class="main_btn btn_blue">Done editing</button>
-                                </li>
-                                <li class="header_btn_wrapper">
-                                    <button class="main_btn btn_blue" ng-click="$root.importData()">Import Data</button>
+                                    <button class="main_btn btn_blue"
+                                            data-ng-click="$root.importData()"
+                                            data-ng-show="TableDataService.isDataLoaded() && !TableDataService.isDataImported()"
+                                            >Import Data</button>
                                 </li>
                                 <li class="thin_border_wrapper">
                                     <div class="thin_border"></div>
@@ -128,13 +121,24 @@
                         </div>
                         <!-- /.navbar-collapse -->
                     </div>
+
+                    <div data-ng-controller="alertCtrl">
+                        <div data-ng-show="message.error" class="base_notification notificaton_error">
+                            <span>{{message.text}}<a href="" data-ng-click="close()"><i class="fa fa-times"></i></a></span>
+                        </div>
+
+                        <div data-ng-show="message.error === false" class="base_notification notificaton_success">
+                            <span>{{message.text}}<a href="" data-ng-click="close()"><i class="fa fa-times"></i></a></span>
+                        </div>
+                    </div>
+
                     <!-- /.container-fluid -->
                 </nav>
             </div>
         </div>
     </header>
     <div class="main_content">
-        <div ng-view class="container-fluid">
+        <div data-ng-view class="container-fluid">
 
         </div>
     </div>
@@ -145,15 +149,18 @@
 <script src="javascripts/lib/angular/angular.min.js"></script>
 <script src="javascripts/lib/angular/angular-route.min.js"></script>
 
+<script src="javascripts/lib/xeditable.min.js"></script>
+
 <script src="javascripts/app/main.js"></script>
-<script src="javascripts/app/route.js"></script>
+<script src="javascripts/app/appConf.js"></script>
+<script src="javascripts/app/appRun.js"></script>
 
 <!--filters-->
 <script src="javascripts/app/filters/truncate.js"></script>
 <!--filters-->
 
 <!--services-->
-<script src="javascripts/app/services/fileUploadResponseService.js"></script>
+<script src="javascripts/app/services/tableDataService.js"></script>
 <!--services-->
 
 <!--directives-->
@@ -167,7 +174,7 @@
 <!--controllers-->
 
 <!--for debug-->
-<script src="javascripts/app/localLoaderService.js"></script>
+<!--<script src="javascripts/app/localLoaderService.js"></script>-->
 <!--for debug-->
 
 
