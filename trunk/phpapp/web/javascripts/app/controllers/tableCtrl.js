@@ -28,7 +28,7 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
     if($scope.tableData.errors.hasOwnProperty('bestMatch')){
         var confName = Object.keys($scope.tableData.errors.bestMatch);
         $scope.possibleValues = $scope.tableData.errors.bestMatch[confName].from_conf;
-        $scope.possibleValues.unshift("Choose");
+        //$scope.possibleValues.unshift("Choose");
     }
 
     $scope.tableHeaderSelects = [];
@@ -36,7 +36,6 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent,element) {
         $(element.parent()).selectric('refresh');
     });
-
 
     //console.log($scope.tableData);
     //localLoader.fetch("sample_server_response.json").then(function(data) {
@@ -62,7 +61,7 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
     $scope.addRow = function () {
         var row = [];
         $scope.tableData.headers.forEach(function () {
-            row.push("Unknown");
+            row.push({value:"Unknown"});
         });
         $scope.tableData.rows.push(row);
         //$scope.$apply();
@@ -71,20 +70,15 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
     $scope.addColumn = function () {
         //$scope.$apply(function () {
         var newHeaderName = "Unknown" + $scope.countUnknownColumns;
-        $scope.tableData.headers.push(newHeaderName);
+        $scope.tableData.headers.push({name:newHeaderName});
         $scope.countUnknownColumns++;
         $scope.tableData.rows.forEach(function (row) {
-            row.push("Unknown");
+            row.push({value:"Unknown"});
         });
         //});
     };
 
     $scope.mySelect = {};
-
-    $scope.select = function(selectedName,index){
-        $scope.editHeader(index,selectedName);
-    };
-
 
     $scope.checkUncheckAllRows = function () {
         var newValue = !$scope.allRowsChecked();
@@ -104,7 +98,9 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
         return (countChecked === $scope.checkedRows.length);
     };
 
-    $scope.columnHasError = function (colName) {
+    $scope.columnHasError = function (colIndex) {
+        var colName = $scope.tableData.headers[colIndex].name;
+
         var errorInThisColumn = $scope.tableData.columnsWithErrors && $scope.tableData.columnsWithErrors.indexOf(colName) !== -1;
         return errorInThisColumn;
     }

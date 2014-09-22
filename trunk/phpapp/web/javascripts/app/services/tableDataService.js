@@ -25,6 +25,7 @@ APP.factory('TableDataService', function ($rootScope) {
         setData: function (data, secondTime) {
             isDataImported = false;
             fileUploadResponse = data;
+            window.w = data;
             $rootScope.$emit("file.uploaded", data);
             $rootScope.$emit("file.uploaded1", data);
 
@@ -54,7 +55,6 @@ APP.factory('TableDataService', function ($rootScope) {
         },
 
         isDataLoaded: function () {
-            console.log(fileUploadResponse);
             return fileUploadResponse?(fileUploadResponse && Object.keys(fileUploadResponse).length > 0):false
         },
 
