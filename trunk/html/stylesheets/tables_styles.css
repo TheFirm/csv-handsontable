@@ -265,7 +265,7 @@
 .unknown_cell {
   background-color: #eaeaea;
   position: relative;
-  min-width: 103px;
+  min-width: 128px;
 }
 /* line 85, ../sass/tables_styles.scss */
 .unknown_cell .select_match_wrapper {
