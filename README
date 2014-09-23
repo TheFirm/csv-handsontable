@@ -7,15 +7,17 @@ trunk/html html layout
 
 trunk/phpapp php application
 
-Project frameworks
+Project frameworks and libraries
 ===================
 ## Server: 
 #### PHP
-[Silex microframework](http://silex.sensiolabs.org/)
+[Silex](http://silex.sensiolabs.org/) - microframework
 
 ### Client:
 
-[Angularjs](https://angularjs.org/)
+[Angularjs](https://angularjs.org/) - js framework
+
+[dropzonejs](http://www.dropzonejs.com/) - drag and drop support
 
 ### SDK
 Humanity SDK
