@@ -30,9 +30,10 @@ return $app;
 
 
 function loadConfig(){
-    $conf_file_path = dirname(__FILE__) . '/../conf/conf.php';
+    $conf_file_path = dirname(__FILE__) . '/../config/conf.php';
+    var_dump($conf_file_path);
     if(!file_exists($conf_file_path)){
         die("Missing conf file. Please copy it from conf.php.sample");
     }
-    return $conf_file_path;
+    return require($conf_file_path);
 }
