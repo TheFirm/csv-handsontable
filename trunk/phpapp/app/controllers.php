@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 
 function authorize($conf){
+
     $api = new Humanity\Api($conf['humanity-sdk']);
 
     // This is changed to match our endpoints
@@ -24,6 +25,7 @@ function authorize($conf){
         header('Location: ' . $api->getAuthorizeUri());
         exit;
     }
+
     return $api;
 }
 
