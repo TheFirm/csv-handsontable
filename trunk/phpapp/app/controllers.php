@@ -11,12 +11,8 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  * @var $app Silex\Application
  */
 
-function authorize(){
-    $api = new Humanity\Api(array(
-        'client_id' => '95982517764489216',
-        'client_secret' => null,
-        'redirect_uri' => 'http://www.humanity.dev/php_sdk/oauth.php',
-    ));
+function authorize($conf){
+    $api = new Humanity\Api($conf['humanity-sdk']);
 
     // This is changed to match our endpoints
     $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
@@ -32,7 +28,7 @@ function authorize(){
 }
 
 $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
-    if ($api = authorize()) {
+    if ($api = authorize($app['conf'])) {
         if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
             header('Location: ' . $api->getAuthorizeUri());
             exit;
@@ -43,7 +39,7 @@ $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
 
 $app->match('/', function (Request $request) use ($app) {
 
-    if ($api = authorize()) {
+    if ($api = authorize($app['conf'])) {
         $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
         $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
         $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
@@ -69,7 +65,7 @@ $app->match('/', function (Request $request) use ($app) {
 
 $app->match('/uploadfile', function (Request $request) use ($app) {
 
-    if ($api = authorize()) {
+    if ($api = authorize($app['conf'])) {
     $request = $app['request'];
         if ($request->isMethod('POST')) {
             $MAX_FILE_SIZE = 1000000;

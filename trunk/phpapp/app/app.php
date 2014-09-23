@@ -24,4 +24,15 @@ $app->register(new TwigServiceProvider(), array(
 
 $app['debug'] = true;
 
+$app['conf'] = loadConfig();
+
 return $app;
+
+
+function loadConfig(){
+    $conf_file_path = dirname(__FILE__) . '/conf.php';
+    if(!file_exists($conf_file_path)){
+        die("Missing conf file. Please copy it from conf.php.sample");
+    }
+    return require(dirname(__FILE__) . '/conf.php');
+}
