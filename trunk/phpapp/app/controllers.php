@@ -97,30 +97,12 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
     return $app->json(array('error'=>'Error!'));
 }, 'POST');
 
-$app->match('/user', function (Request $request) use ($app) {
-
-    $api = new Humanity\Api(array(
-        'client_id' => '95982517764489216',
-        'client_secret' => null,
-        'redirect_uri' => 'http://www.humanity.dev/php_sdk/oauth.php',
-    ));
-
-    // This is changed to match our endpoints
-    $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
-    $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
-    $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
-
-    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
-        // No valid access token available, go to authorization server
-        header('Location: ' . $api->getAuthorizeUri());
-        exit;
+$app->match('/supportedColumns', function (Request $request) use ($app) {
+    if ($api = authorize($app['conf'])) {
+        return $app->json(array('SupportedColumns'=>$app['conf']['SupportedColumns']));
     }
+}, 'GET');
 
-        $credentials = $api->get('oauth/credentials');
-        $employees = $api->get("companies/{$credentials['company_id']}/employees");
-        return $app->json(array('employees'=>$employees));
-
-}, 'GET|POST');
 
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
