@@ -1,0 +1,31 @@
+Project structure
+=================
+
+doc/samples sample csv files
+
+trunk/html html layout
+
+trunk/phpapp php application
+
+Project frameworks
+===================
+## Server: 
+#### PHP
+[Silex microframework](http://silex.sensiolabs.org/)
+
+### Client:
+
+[Angularjs](https://angularjs.org/)
+
+### SDK
+Humanity SDK
+
+Deploy tutorial
+===============
+1. run ```php composer.phar install``` in ```trunk/phpapp``` folder
+2. make ```conf.php``` file in ```trunk/phpapp/config``` folder (just copy it from ```conf.php.sample```) and set there valid configs (client_id, etc.)
+3. config ```trunk/phpapp/config/validator.json``` file for proper column validation  
+
+Requirenments
+===============
+1. PHP >= 5.4
