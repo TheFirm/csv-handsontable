@@ -1,13 +1,13 @@
 Project Structure
 =================
-trunk/sample_data - sample csv files
-trunk/html - HTML layout
-trunk/phpapp - PHP application
-trunk/phpapp/app - Silex app
-trunk/phpapp/config - Silex app configs
-trunk/phpapp/Helpers - Helpers PHP classes
-trunk/phpapp/humanity_sdk - Humanity PHP SDK folder
-trunk/phpapp/web - public js, css, fonts, html, index.php
+- trunk/sample_data - sample csv files
+- trunk/html - HTML layout
+- trunk/phpapp - PHP application
+- trunk/phpapp/app - Silex app
+- trunk/phpapp/config - Silex app configs
+- trunk/phpapp/Helpers - Helpers PHP classes
+- trunk/phpapp/humanity_sdk - Humanity PHP SDK folder
+- trunk/phpapp/web - public js, css, fonts, html, index.php
 
 
 Project Frameworks and Libraries
