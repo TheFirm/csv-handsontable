@@ -11,21 +11,13 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  * @var $app Silex\Application
  */
 
-$app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
-    $api = Helpers\Auth::authorize($app['conf']);
-
-    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
-        header('Location: ' . $api->getAuthorizeUri());
-        exit;
-    }
-
+$app->match('/php-sdk/oauth.php', function (Request $request) use ($app) {
+    Helpers\Auth::authorize($app['conf']);
     return $app->redirect('/');
 }, 'GET');
 
-
 $app->match('/', function (Request $request) use ($app) {
     $api = Helpers\Auth::authorize($app['conf']);
-
     return $app['twig']->render('index.html', array(
         'avatar' => Helpers\General::getAva($api),
     ));
@@ -47,7 +39,6 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
             }
             $path = $_FILES['file']['tmp_name'];
             $csvFileReader = new \Helpers\CSVFileReader($path);
-
             return $app->json($csvFileReader->print_result());
         } else {
             $jsonString = file_get_contents('php://input');
@@ -57,10 +48,8 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
             }
         }
     }
-
     return $app->json(array('error' => 'Error!'));
 }, 'POST');
-
 
 $app->match('/supportedColumns', function (Request $request) use ($app) {
     Helpers\Auth::authorize($app['conf']);
