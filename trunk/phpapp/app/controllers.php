@@ -11,18 +11,13 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  * @var $app Silex\Application
  */
 
-$app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
-    $api = Helpers\Auth::authorize($app['conf']);
-    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
-        header('Location: ' . $api->getAuthorizeUri());
-        exit;
-    }
+$app->match('/php-sdk/oauth.php', function (Request $request) use ($app) {
+    Helpers\Auth::authorize($app['conf']);
     return $app->redirect('/');
 }, 'GET');
 
 $app->match('/', function (Request $request) use ($app) {
     $api = Helpers\Auth::authorize($app['conf']);
-
     return $app['twig']->render('index.html', array(
         'avatar' => Helpers\General::getAva($api),
     ));

@@ -16,7 +16,7 @@ $app->register(new TranslationServiceProvider());
 
 $app->register(new TwigServiceProvider(), array(
     'twig.path' => array(__DIR__ . '/views'),
-    'twig.options' => array('cache' => __DIR__ . '/../cache/twig'),
+    //'twig.options' => array('cache' => __DIR__ . '/../cache/twig'),
 ));
 
 $app['twig']->setLexer(
