@@ -38,5 +38,3 @@ $app->register(new FormServiceProvider());
 $app->register(new TranslationServiceProvider());
 
 return $app;
-
-

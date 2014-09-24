@@ -2,15 +2,21 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * @var $app Silex\Application
  */
 
-$app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
+$app->match('/php-sdk/oauth.php', function (Request $request) use ($app) {
     Helpers\Auth::authorize($app['conf']);
+
     return $app->redirect('/');
 }, 'GET');
+
 
 $app->match('/', function (Request $request) use ($app) {
     $api = Helpers\Auth::authorize($app['conf']);
@@ -23,6 +29,7 @@ $app->match('/', function (Request $request) use ($app) {
 
 $app->match('/uploadfile', function (Request $request) use ($app) {
     Helpers\Auth::authorize($app['conf']);
+
     if ($app['request']->isMethod('POST')) {
         $MAX_FILE_SIZE = 1000000; //10Mb
         $TYPE_FILES = ['text/csv', "application/vnd.ms-excel"];
@@ -34,19 +41,24 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
             if (!in_array($_FILES['file']['type'], $TYPE_FILES)) {
                 return $app->json(array('success' => 'false', 'error' => 'File format not supported!'));
             }
+
             $path = $_FILES['file']['tmp_name'];
             $csvFileReader = new \Helpers\CSVFileReader($path);
+
             return $app->json($csvFileReader->print_result());
         } else {
             $jsonString = file_get_contents('php://input');
+
             if ($jsonString) {
                 $csvFileReader = new \Helpers\CSVFileReader($jsonString, false);
                 return $app->json($csvFileReader->print_result());
             }
         }
     }
+
     return $app->json(array('error' => 'Error!'));
 }, 'POST');
+
 
 $app->match('/supportedColumns', function (Request $request) use ($app) {
     Helpers\Auth::authorize($app['conf']);
@@ -56,7 +68,7 @@ $app->match('/supportedColumns', function (Request $request) use ($app) {
 
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
-        return;
+        return false;
     }
 
     switch ($code) {
