@@ -18,22 +18,22 @@ $app->register(new FormServiceProvider());
 $app->register(new TranslationServiceProvider());
 
 $app->register(new TwigServiceProvider(), array(
-    'twig.path' => array(__DIR__.'/views'),
-    'twig.options' => array('cache' => __DIR__.'/../cache/twig'),
+    'twig.path' => array(__DIR__ . '/views'),
+    'twig.options' => array('cache' => __DIR__ . '/../cache/twig'),
 ));
 
-$app['debug'] = true;
+$app['twig']->setLexer(
+    new Twig_Lexer(
+        $app['twig'], array(
+            'tag_variable' => array('[[', ']]'),
+        )
+    )
+);
 
-$app['conf'] = loadConfig();
+
+$app['conf'] = Helpers\General::loadConfig();
+$app['debug'] = $app['conf']['debug'];
 
 return $app;
 
 
-function loadConfig(){
-    $conf_file_path = dirname(__FILE__) . '/../config/conf.php';
-
-    if(!file_exists($conf_file_path)){
-        die("Missing conf file. Please copy it from conf.php.sample");
-    }
-    return require($conf_file_path);
-}
