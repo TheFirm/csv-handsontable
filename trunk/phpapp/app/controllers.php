@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 
 function authorize($conf){
-
     $api = new Humanity\Api($conf['humanity-sdk']);
 
     // This is changed to match our endpoints
@@ -29,6 +28,7 @@ function authorize($conf){
     return $api;
 }
 
+
 $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
     if ($api = authorize($app['conf'])) {
         if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
@@ -39,18 +39,21 @@ $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
     }
 }, 'GET');
 
-$app->match('/', function (Request $request) use ($app) {
 
+$app->match('/', function (Request $request) use ($app) {
     if ($api = authorize($app['conf'])) {
         $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
         $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
         $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
+
         $credentials = $api->get('oauth/credentials');
         $employees =$api->get("companies/{$credentials['company_id']}/employees");
+
         $lexer = new Twig_Lexer($app['twig'], array(
             'tag_variable'  => array('[[', ']]'),
         ));
         $app['twig']->setLexer($lexer);
+
         if($employees){
             $ava = str_replace('[size]','300x300',$employees[0]['avatar']?$employees[0]['avatar']['path']:'/img/default_avatar_300x300.png');
         }
@@ -61,14 +64,15 @@ $app->match('/', function (Request $request) use ($app) {
             'display_name' => $employees[0]['display_name'],
         ));
     }
+
     return $app->json(array('error'=>'Error!'));
 }, 'GET');
 
 
 $app->match('/uploadfile', function (Request $request) use ($app) {
-
     if ($api = authorize($app['conf'])) {
-    $request = $app['request'];
+        $request = $app['request'];
+
         if ($request->isMethod('POST')) {
             $MAX_FILE_SIZE = 1000000;
             $TYPE_FILES = ['text/csv', "application/vnd.ms-excel"];
@@ -78,15 +82,19 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
                     echo json_encode(array('success' => 'false', 'error' => 'File to large!'));
                     exit;
                 }
+
                 if (!in_array($_FILES['file']['type'], $TYPE_FILES)) {
                     echo json_encode(array('success' => 'false', 'error' => 'File format not supported!'));
                     exit;
                 }
+
                 $path = $_FILES['file']['tmp_name'];
                 $csvFileReader = new \Helpers\CSVFileReader($path);
+
                 return $app->json($csvFileReader->print_result());
             }else{
                 $json = file_get_contents('php://input');
+
                 if($json){
                     $csvFileReader = new \Helpers\CSVFileReader($json, false);
                     return $app->json($csvFileReader->print_result());
@@ -97,6 +105,7 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
     return $app->json(array('error'=>'Error!'));
 }, 'POST');
 
+
 $app->match('/supportedColumns', function (Request $request) use ($app) {
     if ($api = authorize($app['conf'])) {
         return $app->json(array('SupportedColumns'=>$app['conf']['SupportedColumns']));
@@ -106,7 +115,7 @@ $app->match('/supportedColumns', function (Request $request) use ($app) {
 
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
-        return;
+        return false;
     }
 
     switch ($code) {
