@@ -2,21 +2,13 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * @var $app Silex\Application
  */
 
 $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
-    $api = Helpers\Auth::authorize($app['conf']);
-    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
-        header('Location: ' . $api->getAuthorizeUri());
-        exit;
-    }
+    Helpers\Auth::authorize($app['conf']);
     return $app->redirect('/');
 }, 'GET');
 
