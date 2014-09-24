@@ -11,7 +11,7 @@ class Auth {
      * @return \Humanity\Api
      * @throws \Humanity\Exception
      */
-    public static function authorize($conf){
+    public static function authorize($conf) {
         $api = new Api($conf['humanity-sdk']);
 
         // This is changed to match our endpoints

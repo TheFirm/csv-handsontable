@@ -10,8 +10,7 @@ class CSVFileReader implements FileReader {
     protected $rows = array();
     protected $validator;
 
-    function __construct($data,$CSVconvertToJson=true)
-    {
+    function __construct($data,$CSVconvertToJson=true) {
         if($CSVconvertToJson){
             $this->read($data);
             $this->validation();
@@ -44,7 +43,7 @@ class CSVFileReader implements FileReader {
      * Read CSV file
      * @param string $file_name
      */
-    public function read($file_name){
+    public function read($file_name) {
         $file = fopen($file_name,"r");
         $result = array();
         while(! feof($file))
@@ -67,12 +66,12 @@ class CSVFileReader implements FileReader {
     /**
      * @return mixed
      */
-    public function validation(){
+    public function validation() {
         $this->validator = new Validator($this->array_data);
         return $this->validator->validate();
     }
 
-    public function print_result(){
+    public function print_result() {
         if($this->validator){
             //Send to API
         }
