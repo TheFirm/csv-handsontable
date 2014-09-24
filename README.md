@@ -3,12 +3,17 @@ Project Structure
 trunk/sample_data - sample csv files
 trunk/html - HTML layout
 trunk/phpapp - PHP application
+trunk/phpapp/app - ...
+trunk/phpapp/config - ...
+trunk/phpapp/Helpers - ...
+trunk/phpapp/humanity_sdk - Humanity PHP SDK folder
+trunk/phpapp/web - Humanity PHP SDK folder
 
 
 Project Frameworks and Libraries
 =================
 ## Server: 
-[Silex](http://silex.sensiolabs.org/) - microframework
+[Silex](http://silex.sensiolabs.org/) - Microframework
 [Humanity](https://github.com/humanityapp/php-sdk) - PHP SDK
 
 ## Client:
