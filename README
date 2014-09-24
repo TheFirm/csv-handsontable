@@ -18,10 +18,10 @@ Project Frameworks and Libraries
 
 Deploy Tutorial
 =================
-1. Run ```php composer.phar install``` in ```trunk/phpapp``` folder
-1. Run ```php composer.phar install``` in ```trunk/phpapp``` folder
-2. Make ```conf.php``` file in ```trunk/phpapp/config``` folder (just copy it from ```conf.php.sample```) and set there valid configs (client_id, etc.)
-3. Config ```trunk/phpapp/config/validator.json``` file for proper column validation
+1. Set up web root to ```trunk/phpapp``` folder
+2. Run ```php composer.phar install``` in ```trunk/phpapp``` folder
+3. Make ```conf.php``` file in ```trunk/phpapp/config``` folder (just copy it from ```conf.php.sample```) and set there valid configs (client_id, etc.)
+4. Config ```trunk/phpapp/config/validator.json``` file for proper column validation
 
 
 Requirenments
