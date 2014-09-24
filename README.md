@@ -31,4 +31,4 @@ Requirenments
 
 Notes
 =================
-1. For speed up loading page minimize all javascript and css files
+1. For speed up loading page minimize and combine all javascript and css files
