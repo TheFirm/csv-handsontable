@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boom
- * Date: 15.09.14
- * Time: 19:49
- */
 
 namespace Helpers;
-
 
 class Validator
 {

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boom
- * Date: 15.09.14
- * Time: 18:01
- */
+
 namespace Helpers;
 
 interface FileReader {
