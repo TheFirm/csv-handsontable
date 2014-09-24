@@ -1,33 +1,35 @@
-Project structure
+Project Structure
 =================
+trunk/sample_data - sample csv files
+trunk/html - HTML layout
+trunk/phpapp - PHP application
 
-doc/samples sample csv files
 
-trunk/html html layout
-
-trunk/phpapp php application
-
-Project frameworks and libraries
-===================
+Project Frameworks and Libraries
+=================
 ## Server: 
-#### PHP
 [Silex](http://silex.sensiolabs.org/) - microframework
+[Humanity](https://github.com/humanityapp/php-sdk) - PHP SDK
 
-### Client:
+## Client:
+[AngularJS](https://angularjs.org/) - js framework
+[DropzoneJS](http://www.dropzonejs.com/) - drag and drop support
 
-[Angularjs](https://angularjs.org/) - js framework
 
-[dropzonejs](http://www.dropzonejs.com/) - drag and drop support
+Deploy Tutorial
+=================
+1. Run ```php composer.phar install``` in ```trunk/phpapp``` folder
+1. Run ```php composer.phar install``` in ```trunk/phpapp``` folder
+2. Make ```conf.php``` file in ```trunk/phpapp/config``` folder (just copy it from ```conf.php.sample```) and set there valid configs (client_id, etc.)
+3. Config ```trunk/phpapp/config/validator.json``` file for proper column validation
 
-### SDK
-Humanity SDK
-
-Deploy tutorial
-===============
-1. run ```php composer.phar install``` in ```trunk/phpapp``` folder
-2. make ```conf.php``` file in ```trunk/phpapp/config``` folder (just copy it from ```conf.php.sample```) and set there valid configs (client_id, etc.)
-3. config ```trunk/phpapp/config/validator.json``` file for proper column validation  
 
 Requirenments
-===============
+=================
 1. PHP >= 5.4
+
+
+List of Known Issues
+=================
+1. For make speed up loading page may minimize all javascript files
+2.
