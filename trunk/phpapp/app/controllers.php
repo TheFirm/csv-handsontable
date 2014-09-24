@@ -13,12 +13,15 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
     $api = Helpers\Auth::authorize($app['conf']);
+
     if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
         header('Location: ' . $api->getAuthorizeUri());
         exit;
     }
+
     return $app->redirect('/');
 }, 'GET');
+
 
 $app->match('/', function (Request $request) use ($app) {
     $api = Helpers\Auth::authorize($app['conf']);
@@ -53,8 +56,10 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
             }
         }
     }
+
     return $app->json(array('error' => 'Error!'));
 }, 'POST');
+
 
 $app->match('/supportedColumns', function (Request $request) use ($app) {
     Helpers\Auth::authorize($app['conf']);
@@ -64,7 +69,7 @@ $app->match('/supportedColumns', function (Request $request) use ($app) {
 
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
-        return;
+        return false;
     }
 
     switch ($code) {

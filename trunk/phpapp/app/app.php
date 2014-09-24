@@ -13,7 +13,6 @@ use Silex\Provider\TranslationServiceProvider;
 $app->register(new ValidatorServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new TranslationServiceProvider());
-
 $app->register(new TwigServiceProvider(), array(
     'twig.path' => array(__DIR__ . '/views'),
     'twig.options' => array('cache' => __DIR__ . '/../cache/twig'),
@@ -27,10 +26,7 @@ $app['twig']->setLexer(
     )
 );
 
-
 $app['conf'] = Helpers\General::loadConfig();
 $app['debug'] = $app['conf']['debug'];
 
 return $app;
-
-
