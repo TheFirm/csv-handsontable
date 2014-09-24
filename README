@@ -1,11 +1,9 @@
 Project structure
 =================
 
-doc/samples sample csv files
-
-trunk/html html layout
-
-trunk/phpapp php application
+trunk/sample_data - sample csv files
+trunk/html - HTML layout
+trunk/phpapp - PHP application
 
 Project frameworks and libraries
 ===================
@@ -14,12 +12,10 @@ Project frameworks and libraries
 [Silex](http://silex.sensiolabs.org/) - microframework
 
 ### Client:
-
 [Angularjs](https://angularjs.org/) - js framework
-
 [dropzonejs](http://www.dropzonejs.com/) - drag and drop support
 
-### SDK
+### SDK:
 Humanity SDK
 
 Deploy tutorial

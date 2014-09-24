@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boom
- * Date: 15.09.14
- * Time: 12:32
- */
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';

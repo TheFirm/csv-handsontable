@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boom
- * Date: 15.09.14
- * Time: 12:28
- */
 
 $api = new Humanity\Api(array(
     'client_id' => '95982517764489216',
