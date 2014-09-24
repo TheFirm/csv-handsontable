@@ -47,6 +47,7 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
             }
             $path = $_FILES['file']['tmp_name'];
             $csvFileReader = new \Helpers\CSVFileReader($path);
+
             return $app->json($csvFileReader->print_result());
         } else {
             $jsonString = file_get_contents('php://input');
