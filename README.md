@@ -29,7 +29,7 @@ Deploy Tutorial
 4. Config ```trunk/phpapp/config/validator.json``` file for proper column validation
 
 
-Requirenments
+System Requirements
 =================
 1. PHP >= 5.4
 
