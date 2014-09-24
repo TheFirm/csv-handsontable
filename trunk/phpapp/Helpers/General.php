@@ -13,7 +13,7 @@ class General {
     public static function loadConfig() {
         $conf_file_path = dirname(__FILE__) . '/../config/conf.php';
 
-        if(!file_exists($conf_file_path)){
+        if(!file_exists($conf_file_path)) {
             die("Missing conf file. Please copy it from conf.php.sample");
         }
         return require($conf_file_path);
@@ -30,7 +30,7 @@ class General {
 
         $ava = '/img/default_avatar_300x300.png';
 
-        if($employees and count($employees) > 0 and isset($employees[0]['avatar'])){
+        if($employees and count($employees) > 0 and isset($employees[0]['avatar'])) {
             $ava = str_replace('[size]', '300x300', $employees[0]['avatar']['path']);
         }
 

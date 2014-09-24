@@ -69,6 +69,7 @@ class Validator
                     'result' => $conf_title
                 );
             }
+
             if (count($res) == count($column_conf)) {
                 $in_file_to_much = true;
             }
