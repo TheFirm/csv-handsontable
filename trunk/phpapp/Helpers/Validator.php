@@ -10,7 +10,7 @@ class Validator
     //config array
     protected $config;
     //array data to validate
-    protected $data_to_validate;
+    protected $columns_to_validate;
 
     protected $result;
 
@@ -20,14 +20,13 @@ class Validator
      */
     function __construct($data_to_validate)
     {
-        //$data_from_file = json_decode($data_to_validate);
         $data_from_file = $data_to_validate;
         $this->transformTitlesFromFileToLowerCase($data_from_file);
         $this->load_config();
     }
 
     function transformTitlesFromFileToLowerCase($data_from_file){
-        $this->data_to_validate[0] = /*array_map('strtolower',*/ $data_from_file[0]/*)*/;
+        $this->columns_to_validate = /*array_map('strtolower',*/ $data_from_file[0]/*)*/;
     }
 
     private function load_config()
@@ -58,7 +57,7 @@ class Validator
         $result = array('success' => true, 'errors' => array());
         $errors = array();
 
-        $columns_title = $this->data_to_validate[0];
+        $columns_title = $this->columns_to_validate;
         foreach ($this->config as $conf_title => $conf) {
             $name_mismatch = true;
             $in_file_to_much = false;
