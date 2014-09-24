@@ -29,7 +29,6 @@ Requirenments
 1. PHP >= 5.4
 
 
-List of Known Issues
+Notes
 =================
-1. For make speed up loading page may minimize all javascript files
-2.
+1. For speed up loading page minimize all javascript and css files

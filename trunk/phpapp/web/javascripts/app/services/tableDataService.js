@@ -25,7 +25,7 @@ APP.factory('TableDataService', function ($rootScope) {
         setData: function (data, secondTime) {
             isDataImported = false;
             fileUploadResponse = data;
-            window.w = data;
+
             $rootScope.$emit("file.uploaded", data);
             $rootScope.$emit("file.uploaded1", data);
 
@@ -41,6 +41,7 @@ APP.factory('TableDataService', function ($rootScope) {
                     error: false,
                     text: secondTime ? "Your data was imported" : "You have valid columns"
                 };
+
             }
 
             $rootScope.$emit("popup.message", message);
