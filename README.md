@@ -37,5 +37,5 @@ Requirenments
 Notes
 =================
 1. We used popup for cell editing instead of inline one, because we had troubles with long cell values
-1. We truncated cell values for 25 symbols but long values could be displayed in hint
-1. For speed up loading page minimize and combine all javascript and css files
+2. We truncated cell values for 25 symbols but long values could be displayed in hint
+3. For speed up loading page minimize and combine all javascript and css files
