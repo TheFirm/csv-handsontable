@@ -1,6 +1,3 @@
-/**
- * Created by boom on 18.09.14.
- */
 APP.directive('selectBox', function ($timeout) {
     return {
         link: function (scope, element, attr) {
@@ -28,7 +25,6 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
     if($scope.tableData.errors.hasOwnProperty('bestMatch')){
         var confName = Object.keys($scope.tableData.errors.bestMatch);
         $scope.possibleValues = $scope.tableData.errors.bestMatch[confName].from_conf;
-        //$scope.possibleValues.unshift("Choose");
     }
 
     $scope.tableHeaderSelects = [];
@@ -37,25 +33,13 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
         $(element.parent()).selectric('refresh');
     });
 
-    //console.log($scope.tableData);
-    //localLoader.fetch("sample_server_response.json").then(function(data) {
-    //
-    //});
-
     $scope.countUnknownColumns = 1;
 
     $scope.deleteColumn = function (index) {
-        //if (!confirm("Delete column?")) {
-        //    return false;
-        //}
-        //var test = {success:true};
-        //$rootScope.$broadcast('errorEvent', test);
-
         $scope.tableData.headers.splice(index, 1);
         $scope.tableData.rows.forEach(function (row) {
             delete row[index];
         });
-        //$scope.$apply();
     };
 
     $scope.addRow = function () {
@@ -64,18 +48,15 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
             row.push({value:"Unknown"});
         });
         $scope.tableData.rows.push(row);
-        //$scope.$apply();
     };
 
     $scope.addColumn = function () {
-        //$scope.$apply(function () {
         var newHeaderName = "Unknown" + $scope.countUnknownColumns;
         $scope.tableData.headers.push({name:newHeaderName});
         $scope.countUnknownColumns++;
         $scope.tableData.rows.forEach(function (row) {
             row.push({value:"Unknown"});
         });
-        //});
     };
 
     $scope.mySelect = {};
@@ -104,5 +85,4 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
         var errorInThisColumn = $scope.tableData.columnsWithErrors && $scope.tableData.columnsWithErrors.indexOf(colName) !== -1;
         return errorInThisColumn;
     }
-
 });

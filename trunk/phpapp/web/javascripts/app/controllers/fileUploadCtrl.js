@@ -1,6 +1,4 @@
-
 APP.controller('fileUploadCtrl', function($scope, $route, $location, $http, TableDataService) {
-
     $http.get('/supportedColumns').then(function(data,status){
         $scope.supportedColumns = data.data.SupportedColumns;
     });
