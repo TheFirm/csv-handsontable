@@ -13,12 +13,12 @@ Project Structure
 Project Frameworks and Libraries
 =================
 ## Server: 
-[Silex](http://silex.sensiolabs.org/) - The PHP micro-framework based on the Symfony2 Components
-[Humanity](https://github.com/humanityapp/php-sdk) - PHP SDK
+- [Silex](http://silex.sensiolabs.org/) - The PHP micro-framework based on the Symfony2 Components
+- [Humanity](https://github.com/humanityapp/php-sdk) - PHP SDK
 
 ## Client:
-[AngularJS](https://angularjs.org/) - js framework
-[DropzoneJS](http://www.dropzonejs.com/) - drag and drop support
+- [AngularJS](https://angularjs.org/) - js framework
+- [DropzoneJS](http://www.dropzonejs.com/) - drag and drop support
 
 
 Deploy Tutorial
