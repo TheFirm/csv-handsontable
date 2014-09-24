@@ -22,19 +22,9 @@ $app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
 
 $app->match('/', function (Request $request) use ($app) {
     $api = Helpers\Auth::authorize($app['conf']);
-    $credentials = $api->get('oauth/credentials');
-    $employees = $api->get("companies/{$credentials['company_id']}/employees");
-
-    $ava = false;
-
-    if ($employees) {
-        $ava = str_replace('[size]', '300x300', $employees[0]['avatar'] ? $employees[0]['avatar']['path'] : '/img/default_avatar_300x300.png');
-    }
 
     return $app['twig']->render('index.html', array(
-        'avatar' => $ava,
-        'account_avatar' => $employees[0]['account_avatar'],
-        'display_name' => $employees[0]['display_name'],
+        'avatar' => Helpers\General::getAva($api),
     ));
 }, 'GET');
 
@@ -56,9 +46,9 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
             $csvFileReader = new \Helpers\CSVFileReader($path);
             return $app->json($csvFileReader->print_result());
         } else {
-            $json = file_get_contents('php://input');
-            if ($json) {
-                $csvFileReader = new \Helpers\CSVFileReader($json, false);
+            $jsonString = file_get_contents('php://input');
+            if ($jsonString) {
+                $csvFileReader = new \Helpers\CSVFileReader($jsonString, false);
                 return $app->json($csvFileReader->print_result());
             }
         }

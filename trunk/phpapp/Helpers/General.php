@@ -3,6 +3,8 @@
 namespace Helpers;
 
 
+use Humanity\Api;
+
 class General {
 
     public static function loadConfig(){
@@ -12,5 +14,18 @@ class General {
             die("Missing conf file. Please copy it from conf.php.sample");
         }
         return require($conf_file_path);
+    }
+
+    public static function getAva(Api $api){
+        $credentials = $api->get('oauth/credentials');
+        $employees = $api->get("companies/{$credentials['company_id']}/employees");
+
+        $ava = '/img/default_avatar_300x300.png';
+
+        if($employees and count($employees) > 0 and isset($employees[0]['avatar'])){
+            $ava = str_replace('[size]', '300x300', $employees[0]['avatar']['path']);
+        }
+
+        return $ava;
     }
 } 
