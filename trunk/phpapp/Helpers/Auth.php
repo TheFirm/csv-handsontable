@@ -5,6 +5,12 @@ namespace Helpers;
 use Humanity\Api;
 
 class Auth {
+
+    /**
+     * @param $conf string[] humanity-sdk config array
+     * @return \Humanity\Api
+     * @throws \Humanity\Exception
+     */
     public static function authorize($conf){
         $api = new Api($conf['humanity-sdk']);
 

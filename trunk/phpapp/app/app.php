@@ -3,11 +3,8 @@
 use Silex\Application;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\TwigServiceProvider;
-use Silex\Provider\UrlGeneratorServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
-use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\TranslationServiceProvider;
-use Silex\Provider\SwiftmailerServiceProvider;
 
 /**
  * @var $app Silex\Application
