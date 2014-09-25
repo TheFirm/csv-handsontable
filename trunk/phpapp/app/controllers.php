@@ -36,10 +36,10 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
 
         if (isset($_FILES['file'])) {
             if ($_FILES['file']['size'] >= $MAX_FILE_SIZE) {
-                return $app->json(array('success' => 'false', 'error' => 'File to large!'));
+                return $app->json(array('error' => true, 'text' => 'File to large. Max 10Mb.'));
             }
             if (!in_array($_FILES['file']['type'], $TYPE_FILES)) {
-                return $app->json(array('success' => 'false', 'error' => 'File format not supported!'));
+                return $app->json(array('error' => true, 'text' => 'File format not supported. Only CSV files allowed.'));
             }
 
             $path = $_FILES['file']['tmp_name'];
