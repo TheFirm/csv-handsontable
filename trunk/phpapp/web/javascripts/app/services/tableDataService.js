@@ -1,4 +1,4 @@
-APP.factory('TableDataService', function ($rootScope) {
+APP.factory('TableDataService', function ($rootScope, $location, $route) {
     var fileUploadResponse = {};
     var isDataImported = false;
 
@@ -42,6 +42,9 @@ APP.factory('TableDataService', function ($rootScope) {
                     text: secondTime ? "Your data was imported" : "You have valid columns"
                 };
 
+            }
+            if(secondTime){
+                window.location.replace('/');
             }
 
             $rootScope.$emit("popup.message", message);

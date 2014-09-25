@@ -19,10 +19,6 @@
                                 <select ng-model="headerTitle.name" ng-change="selectChange($index,headerTitle.name);">
                                     <option data-ng-repeat="option in possibleValues track by $index" select-box value="{{option}}">{{option}}</option>
                                 </select>
-                                <div class="select_btn_wrapper">
-                                    <a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>
-                                    <a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>
-                                </div>
                             </div>
                         </th>
                     </tr>
