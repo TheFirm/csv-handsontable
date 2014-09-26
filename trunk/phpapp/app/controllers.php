@@ -32,7 +32,15 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
 
     if ($app['request']->isMethod('POST')) {
         $MAX_FILE_SIZE = 1000000; //10Mb
-        $TYPE_FILES = ['text/csv', 'application/vnd.ms-excel','application/excel','application/vnd.msexcel','text/anytext','text/comma-separated-values'];
+        $TYPE_FILES = [
+            'text/csv',
+            'application/vnd.ms-excel',
+            'application/excel',
+            'application/vnd.msexcel',
+            'text/anytext',
+            'text/comma-separated-values',
+            'application/octet-stream',
+        ];
 
         if (isset($_FILES['file'])) {
             if ($_FILES['file']['size'] >= $MAX_FILE_SIZE) {
@@ -40,6 +48,11 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
             }
             if (!in_array($_FILES['file']['type'], $TYPE_FILES)) {
                 return $app->json(array('error' => true, 'text' => sprintf('File format not supported. Only CSV files allowed. Your file MIME-type is "%s"', $_FILES['file']['type'])));
+            }
+
+            $file_info = pathinfo($_FILES['file']['name']);
+            if($file_info["extension"] !== 'csv'){
+                return $app->json(array('error' => true, 'text' => 'Only CSV files supported.'));
             }
 
             $path = $_FILES['file']['tmp_name'];
