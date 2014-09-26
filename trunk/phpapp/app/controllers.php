@@ -32,7 +32,7 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
 
     if ($app['request']->isMethod('POST')) {
         $MAX_FILE_SIZE = 1000000; //10Mb
-        $TYPE_FILES = ['text/csv', "application/vnd.ms-excel"];
+        $TYPE_FILES = ['text/csv', 'application/vnd.ms-excel','application/excel','application/vnd.msexcel','text/anytext','text/comma-separated-values'];
 
         if (isset($_FILES['file'])) {
             if ($_FILES['file']['size'] >= $MAX_FILE_SIZE) {
