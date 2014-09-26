@@ -39,7 +39,7 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
                 return $app->json(array('error' => true, 'text' => 'File to large. Max 10Mb.'));
             }
             if (!in_array($_FILES['file']['type'], $TYPE_FILES)) {
-                return $app->json(array('error' => true, 'text' => 'File format not supported. Only CSV files allowed.'));
+                return $app->json(array('error' => true, 'text' => sprintf('File format not supported. Only CSV files allowed. Your file MIME-type is "%s"', $_FILES['file']['type'])));
             }
 
             $path = $_FILES['file']['tmp_name'];
