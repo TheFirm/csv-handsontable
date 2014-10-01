@@ -412,140 +412,164 @@ label.css-label {
   background-color: #f9f9f9;
   margin-bottom: 0;
   border-bottom: none;
+  table-layout: fixed;
 }
 
-/* line 14, ../sass/tables_styles.scss */
+/* line 15, ../sass/tables_styles.scss */
 .main_table.table-bordered {
   border-top: 1px solid #eeeeee;
 }
 
-/* line 18, ../sass/tables_styles.scss */
+/* line 19, ../sass/tables_styles.scss */
 .main_table.table-bordered th {
   color: #a8a8a8;
   padding: 13px 10px 15px 16px;
-  word-break: break-all;
-  word-break: break-word;
   position: relative;
   padding-right: 60px;
   vertical-align: baseline;
+  width: 200px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-/* line 19, ../sass/tables_styles.scss */
+/* line 20, ../sass/tables_styles.scss */
 .main_table.table-bordered th span {
   font-size: 13px;
   font-weight: 300;
 }
-/* line 23, ../sass/tables_styles.scss */
+/* line 24, ../sass/tables_styles.scss */
 .main_table.table-bordered th:first-child {
-  padding-right: 16px;
+  padding-right: 9px;
+  width: 80px !important;
+}
+/* line 28, ../sass/tables_styles.scss */
+.main_table.table-bordered th.unknown_cell {
+  white-space: inherit;
+  overflow: inherit;
+  text-overflow: clip;
 }
 
-/* line 35, ../sass/tables_styles.scss */
+/* line 44, ../sass/tables_styles.scss */
 .main_table.table-bordered td {
   font-size: 13px;
   font-weight: 300;
   color: #a8a8a8;
   padding: 16px 16px;
-  word-break: break-all;
-  word-break: break-word;
   vertical-align: baseline;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* line 45, ../sass/tables_styles.scss */
+/* line 55, ../sass/tables_styles.scss */
 .main_table.table-bordered tbody tr:first-child td {
   -moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
   -webkit-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
 }
 
-/* line 49, ../sass/tables_styles.scss */
+/* line 59, ../sass/tables_styles.scss */
 .main_table.table-bordered tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* line 53, ../sass/tables_styles.scss */
+/* line 63, ../sass/tables_styles.scss */
 .main_table.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
   border-bottom-width: 1px;
   border: 1px solid #eeeeee;
   border-right-width: 2px;
 }
 
-/* line 59, ../sass/tables_styles.scss */
+/* line 69, ../sass/tables_styles.scss */
 .main_table.table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td {
   border: 1px solid #eeeeee;
   border-right-width: 2px;
 }
 
-/* line 66, ../sass/tables_styles.scss */
-.table_wrapper {
-  background-color: #f9f9f9;
-}
-
-/* line 71, ../sass/tables_styles.scss */
+/* line 77, ../sass/tables_styles.scss */
 .table_wrapper > .row > div:first-child {
   padding-right: 0;
 }
-/* line 74, ../sass/tables_styles.scss */
+/* line 80, ../sass/tables_styles.scss */
 .table_wrapper > .row > div:last-child {
   padding-left: 0;
 }
 
-/* line 79, ../sass/tables_styles.scss */
+/* line 85, ../sass/tables_styles.scss */
 .checkbox_wrap {
   width: 80px;
   text-align: center;
 }
 
-/* line 84, ../sass/tables_styles.scss */
+/* line 90, ../sass/tables_styles.scss */
 .unknown_cell {
   background-color: #eaeaea;
   position: relative;
+  min-width: 128px;
 }
-/* line 85, ../sass/tables_styles.scss */
+/* line 91, ../sass/tables_styles.scss */
 .unknown_cell .select_match_wrapper {
   display: none;
 }
 
-/* line 95, ../sass/tables_styles.scss */
+/* line 102, ../sass/tables_styles.scss */
 .unknown_cell.editable span {
   display: none;
 }
-/* line 98, ../sass/tables_styles.scss */
+/* line 105, ../sass/tables_styles.scss */
 .unknown_cell.editable .select_match_wrapper {
   display: block;
 }
-/* line 101, ../sass/tables_styles.scss */
+/* line 108, ../sass/tables_styles.scss */
 .unknown_cell.editable .table_btn_wrapper {
   display: none;
 }
 
-/* line 106, ../sass/tables_styles.scss */
+/* line 113, ../sass/tables_styles.scss */
 .table_btn_wrapper {
   display: inline-block;
   position: absolute;
   top: 15px;
   right: 10px;
 }
-/* line 107, ../sass/tables_styles.scss */
+/* line 114, ../sass/tables_styles.scss */
 .table_btn_wrapper a:first-child {
   margin-right: 5px;
 }
 
-/* line 147, ../sass/tables_styles.scss */
-.table_wrapper.table_edit_done .top_side .directly_table {
-  width: 100%;
+/* line 123, ../sass/tables_styles.scss */
+.select_match_wrapper {
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 8px;
 }
-/* line 150, ../sass/tables_styles.scss */
+/* line 124, ../sass/tables_styles.scss */
+.select_match_wrapper > div {
+  float: left;
+}
+/* line 127, ../sass/tables_styles.scss */
+.select_match_wrapper a {
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 128, ../sass/tables_styles.scss */
+.select_match_wrapper a i {
+  font-size: 20px;
+}
+
+/* line 156, ../sass/tables_styles.scss */
 .table_wrapper.table_edit_done .top_side .add_column_wrapper {
   display: none;
 }
-/* line 154, ../sass/tables_styles.scss */
+/* line 160, ../sass/tables_styles.scss */
 .table_wrapper.table_edit_done .bottom_side {
   display: none;
 }
 
-/* line 159, ../sass/tables_styles.scss */
+/* line 165, ../sass/tables_styles.scss */
 .directly_table {
-  width: 87.5%;
   display: inline-block;
   float: left;
   -moz-transition: width 0.6s;
@@ -554,29 +578,29 @@ label.css-label {
   transition: width 0.6s;
 }
 
-/* line 166, ../sass/tables_styles.scss */
+/* line 171, ../sass/tables_styles.scss */
 .add_column_wrapper {
-  width: 12.5%;
   display: inline-block;
   float: left;
+  background-color: #f9f9f9;
 }
 
-/* line 174, ../sass/tables_styles.scss */
+/* line 179, ../sass/tables_styles.scss */
 .top_side {
   border-bottom: 1px solid #eeeeee;
 }
 
-/* line 178, ../sass/tables_styles.scss */
+/* line 183, ../sass/tables_styles.scss */
 .add_column_btn {
   padding: 13px 10px 12px 16px;
   border-bottom: 1px solid #eeeeee;
 }
-/* line 179, ../sass/tables_styles.scss */
+/* line 184, ../sass/tables_styles.scss */
 .add_column_btn a {
   white-space: nowrap;
 }
 
-/* line 186, ../sass/tables_styles.scss */
+/* line 191, ../sass/tables_styles.scss */
 .shadow_block {
   height: 10px;
   -moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
@@ -584,35 +608,33 @@ label.css-label {
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.15) inset;
 }
 
-/* line 191, ../sass/tables_styles.scss */
+/* line 196, ../sass/tables_styles.scss */
 .add_row_btn {
-  text-align: right;
+  display: inline-block;
+  text-align: left;
+  background-color: #f9f9f9;
   padding: 13px 18px 12px 18px;
 }
-/* line 192, ../sass/tables_styles.scss */
-.add_row_btn a {
-  margin-right: 80px;
-}
 
-/* line 205, ../sass/tables_styles.scss */
+/* line 209, ../sass/tables_styles.scss */
 .sample_table {
   width: 60%;
   margin: 0 auto;
   margin-bottom: 60px;
 }
-/* line 206, ../sass/tables_styles.scss */
+/* line 210, ../sass/tables_styles.scss */
 .sample_table h4 {
   color: #999;
   font-weight: 300;
   margin-bottom: 15px;
 }
 
-/* line 220, ../sass/tables_styles.scss */
+/* line 224, ../sass/tables_styles.scss */
 .editable-popup {
   position: absolute !important;
 }
 
-/* line 224, ../sass/tables_styles.scss */
+/* line 228, ../sass/tables_styles.scss */
 .main_table.table-bordered th p, .main_table.table-bordered td p {
   display: inline-block;
   cursor: pointer;
@@ -623,19 +645,19 @@ label.css-label {
   font-style: inherit;
 }
 
-/* line 234, ../sass/tables_styles.scss */
+/* line 238, ../sass/tables_styles.scss */
 .editable-buttons a {
   border: none;
   background-color: #fff;
   padding: 5px 5px;
 }
 
-/* line 240, ../sass/tables_styles.scss */
+/* line 244, ../sass/tables_styles.scss */
 .main_table.table-bordered th, .main_table.table-bordered td {
   position: relative;
 }
 
-/* line 244, ../sass/tables_styles.scss */
+/* line 248, ../sass/tables_styles.scss */
 .main_table.table-bordered th form, .main_table.table-bordered td form {
   position: absolute;
   background: #FFF;
@@ -650,7 +672,7 @@ label.css-label {
   left: 35px;
 }
 
-/* line 258, ../sass/tables_styles.scss */
+/* line 262, ../sass/tables_styles.scss */
 .main_table.table-bordered th form:before, .main_table.table-bordered td form:before {
   content: "";
   width: 0;
@@ -663,7 +685,7 @@ label.css-label {
   left: 100px;
 }
 
-/* line 270, ../sass/tables_styles.scss */
+/* line 274, ../sass/tables_styles.scss */
 .main_table.table-bordered th form:after, .main_table.table-bordered td form:after {
   content: "";
   width: 0;
@@ -676,27 +698,31 @@ label.css-label {
   left: 101px;
 }
 
-/* line 282, ../sass/tables_styles.scss */
+/* line 286, ../sass/tables_styles.scss */
 .editable-input {
   width: 200px !important;
   height: 25px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+  padding: 3px;
+  border: none;
+  border: 1px solid #ccc;
 }
-/* line 286, ../sass/tables_styles.scss */
+/* line 293, ../sass/tables_styles.scss */
 .editable-input:focus {
   box-shadow: none;
   outline: none !important;
+  border: none;
   border: 1px solid #ccc;
 }
 
-/* line 293, ../sass/tables_styles.scss */
+/* line 301, ../sass/tables_styles.scss */
 .editable-buttons {
   margin-top: 3px;
 }
 
-/* line 297, ../sass/tables_styles.scss */
+/* line 305, ../sass/tables_styles.scss */
 select.editable-input {
   width: 114px;
 }
