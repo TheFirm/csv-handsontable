@@ -4,7 +4,7 @@
 .selectricWrapper {
   position: relative;
   margin: 0 0 10px;
-  width: 110px;
+  width: 160px;
   display: inline-block;
   cursor: pointer;
 }
@@ -18,6 +18,8 @@
   background: #F8F8F8;
   position: relative;
   border-radius: 2px;
+  height: 31px;
+  overflow: hidden;
 }
 .selectric .label {
   display: block;
@@ -38,6 +40,7 @@
   width: 30px;
   height: 30px;
   color: #BBB;
+  background-color: white;
   text-align: center;
   font: 0/0 a;
   /* IE Fix */
