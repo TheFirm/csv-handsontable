@@ -58,7 +58,7 @@
         }
     },
     "okokok<": {
-        "NAME1": {
+        "test_column2": {
             "required": true,
             "type": "text"
         },
@@ -74,7 +74,7 @@
             "required": true,
             "type": "text"
         },
-        "sraka": {
+        "test_column1": {
             "required": true,
             "type": "text"
         }

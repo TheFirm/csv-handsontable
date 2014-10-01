@@ -1,6 +1,3 @@
-/**
- * Created by boom on 18.09.14.
- */
 angular.module('filters', []).
     filter('truncate', function () {
         return function (text, length, end) {

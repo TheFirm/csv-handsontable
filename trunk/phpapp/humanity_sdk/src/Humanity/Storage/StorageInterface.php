@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dusan
- * Date: 8/31/14
- * Time: 3:58 PM
- */
-
 namespace Humanity\Storage;
 
 /**

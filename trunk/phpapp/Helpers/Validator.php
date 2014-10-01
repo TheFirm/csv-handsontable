@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boom
- * Date: 15.09.14
- * Time: 19:49
- */
 
 namespace Helpers;
-
 
 class Validator
 {
@@ -16,29 +9,26 @@ class Validator
 
     //config array
     protected $config;
-    //array data to validate
-    protected $data_to_validate;
 
+    //array data to validate
+    protected $columns_to_validate;
     protected $result;
 
 
     /**
      * @param $data_to_validate array data loaded from file
      */
-    function __construct($data_to_validate)
-    {
-        //$data_from_file = json_decode($data_to_validate);
+    function __construct($data_to_validate) {
         $data_from_file = $data_to_validate;
         $this->transformTitlesFromFileToLowerCase($data_from_file);
         $this->load_config();
     }
 
-    function transformTitlesFromFileToLowerCase($data_from_file){
-        $this->data_to_validate[0] = /*array_map('strtolower',*/ $data_from_file[0]/*)*/;
+    function transformTitlesFromFileToLowerCase($data_from_file) {
+        $this->columns_to_validate = $data_from_file[0];
     }
 
-    private function load_config()
-    {
+    private function load_config() {
         if ($this->config !== null) {
             return $this->config;
         }
@@ -51,21 +41,19 @@ class Validator
         return $this->config;
     }
 
-    static function getColumnsArrayFromConfig($col)
-    {
+    static function getColumnsArrayFromConfig($col) {
         $result = array();
         foreach ($col as $title =>$column) {
-            $result[] = /*strtolower*/($title);
+            $result[] = $title;
         }
         return $result;
     }
 
-    protected function validateColumns()
-    {
+    protected function validateColumns() {
         $result = array('success' => true, 'errors' => array());
         $errors = array();
 
-        $columns_title = $this->data_to_validate[0];
+        $columns_title = $this->columns_to_validate;
         foreach ($this->config as $conf_title => $conf) {
             $name_mismatch = true;
             $in_file_to_much = false;
@@ -81,6 +69,7 @@ class Validator
                     'result' => $conf_title
                 );
             }
+
             if (count($res) == count($column_conf)) {
                 $in_file_to_much = true;
             }
@@ -108,7 +97,7 @@ class Validator
         return $result;
     }
 
-    protected static function findBestMatchingConfig($column_errors){
+    protected static function findBestMatchingConfig($column_errors) {
         $mostMatchingConfigName = false;
         $mostMatchingConfigErrors = [];
 
@@ -122,13 +111,11 @@ class Validator
         return [$mostMatchingConfigName => $mostMatchingConfigErrors];
     }
 
-    protected function findCellsError()
-    {
+    protected function findCellsError() {
         return array('success' => true);
     }
 
-    public function validate()
-    {
+    public function validate() {
         $this->result = $this->validateColumns();
         if ($this->result['success']) {
             $this->result = array_merge($this->result, $this->findCellsError());
@@ -136,7 +123,7 @@ class Validator
         return $this->result['success'];
     }
 
-    public function getResult(){
+    public function getResult() {
         return $this->result;
     }
 } 

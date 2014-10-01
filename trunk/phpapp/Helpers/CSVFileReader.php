@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boom
- * Date: 15.09.14
- * Time: 18:29
- */
 
 namespace Helpers;
 
-class CSVFileReader implements FileReader {
+class CSVFileReader implements FileReader
+{
 
     protected $array_data;
     protected $headers = array();
@@ -16,22 +11,30 @@ class CSVFileReader implements FileReader {
     protected $rows = array();
     protected $validator;
 
-    function __construct($data,$CSVconvertToJson=true)
+    function __construct($data, $CSVconvertToJson = true)
     {
-        if($CSVconvertToJson){
+        if ($CSVconvertToJson) {
             $this->read($data);
             $this->validation();
-        }else{
+        } else {
             $data_arr = json_decode($data, true);
-            if($data_arr!=null){
+            if ($data_arr != null) {
                 asort($data_arr['headers']);
-                $this->headers = $data_arr['headers'];
-                foreach($data_arr['rows'] as $row){
-                    $this->rows[] = $row;
+
+                foreach ($data_arr['headers'] as $head) {
+                    $this->headers[] = $head['name'];
+                }
+
+                foreach ($data_arr['rows'] as $row) {
+                    $_row = array();
+                    foreach ($row as $val) {
+                        $_row[] = $val['value'];
+                    }
+                    $this->rows[] = $_row;
                 }
                 $this->array_data = array($this->headers) + $this->rows;
-                foreach($this->headers as $column){
-                    $this->columns[] = array("data"=>$column,"type"=>"text");
+                foreach ($this->headers as $column) {
+                    $this->columns[] = array("data" => $column, "type" => "text");
                 }
                 $this->validation();
             }
@@ -42,28 +45,26 @@ class CSVFileReader implements FileReader {
      * Read CSV file
      * @param string $file_name
      */
-    public function read($file_name){
-        $file = fopen($file_name,"r");
+    public function read($file_name)
+    {
+        $file = fopen($file_name, "r");
         $result = array();
-        while(! feof($file))
-        {
-            $result[]=fgetcsv($file);
+        while (!feof($file)) {
+            $result[] = fgetcsv($file);
         }
         fclose($file);
         $this->headers = $result[0];
-        foreach($this->headers as $column){
-            $this->columns[] = array("data"=>$column,"type"=>"text");
+        foreach ($this->headers as $column) {
+            $this->columns[] = array("data" => $column, "type" => "text");
         }
         $this->array_data = $result;
         unset($result[0]);
-        $line_result = array();
-        foreach($result as $line){
-            $i=0;
-            foreach($this->headers as $hcol){
-                $line_result[] = $line[$i];
-                $i++;
+
+        foreach ($result as $line) {
+            if (!$line) {
+                continue;
             }
-            $this->rows[] = $line_result;
+            $this->rows[] = $line;
         }
         sort($this->headers);
     }
@@ -71,19 +72,31 @@ class CSVFileReader implements FileReader {
     /**
      * @return mixed
      */
-    public function validation(){
+    public function validation()
+    {
         $this->validator = new Validator($this->array_data);
         return $this->validator->validate();
     }
 
-    public function print_result(){
-        if($this->validator){
+    public function print_result()
+    {
+        if ($this->validator) {
             //Send to API
         }
         $result = $this->validator->getResult();
         $result['columns'] = $this->columns;
-        $result['headers'] = $this->headers;
-        $result['rows'] = $this->rows;
+
+        foreach ($this->headers as $val) {
+            $result['headers'][] = array('name' => $val);
+        }
+
+        foreach ($this->rows as $row) {
+            $row_array = array();
+            foreach ($row as $val) {
+                $row_array[] = array('value' => $val);
+            }
+            $result['rows'][] = $row_array;
+        }
         return $result;
     }
-} 
+}

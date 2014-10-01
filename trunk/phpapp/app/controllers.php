@@ -11,122 +11,77 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  * @var $app Silex\Application
  */
 
-function authorize(){
-    $api = new Humanity\Api(array(
-        'client_id' => '95982517764489216',
-        'client_secret' => null,
-        'redirect_uri' => 'http://www.humanity.dev/php_sdk/oauth.php',
-    ));
+$app->match('/php-sdk/oauth.php', function (Request $request) use ($app) {
+    Helpers\Auth::authorize($app['conf']);
 
-    // This is changed to match our endpoints
-    $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
-    $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
-    $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
-
-    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
-    // No valid access token available, go to authorization server
-        header('Location: ' . $api->getAuthorizeUri());
-        exit;
-    }
-    return $api;
-}
-
-$app->match('/php_sdk/oauth.php', function (Request $request) use ($app) {
-    if ($api = authorize()) {
-        if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
-            header('Location: ' . $api->getAuthorizeUri());
-            exit;
-        }
-        return $app->redirect('/');
-    }
+    return $app->redirect('/');
 }, 'GET');
 
+
 $app->match('/', function (Request $request) use ($app) {
+    $api = Helpers\Auth::authorize($app['conf']);
 
-    if ($api = authorize()) {
-        $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
-        $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
-        $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
-        $credentials = $api->get('oauth/credentials');
-        $employees =$api->get("companies/{$credentials['company_id']}/employees");
-        $lexer = new Twig_Lexer($app['twig'], array(
-            'tag_variable'  => array('[[', ']]'),
-        ));
-        $app['twig']->setLexer($lexer);
-        if($employees){
-            $ava = str_replace('[size]','300x300',$employees[0]['avatar']?$employees[0]['avatar']['path']:'/img/default_avatar_300x300.png');
-        }
-
-        return $app['twig']->render('index.html', array(
-            'avatar' => $ava,
-            'account_avatar' => $employees[0]['account_avatar'],
-            'display_name' => $employees[0]['display_name'],
-        ));
-    }
-    return $app->json(array('error'=>'Error!'));
+    return $app['twig']->render('index.html', array(
+        'avatar' => Helpers\General::getAva($api),
+    ));
 }, 'GET');
 
 
 $app->match('/uploadfile', function (Request $request) use ($app) {
+    Helpers\Auth::authorize($app['conf']);
 
-    if ($api = authorize()) {
-    $request = $app['request'];
-        if ($request->isMethod('POST')) {
-            $MAX_FILE_SIZE = 1000000;
-            $TYPE_FILES = ['text/csv', "application/vnd.ms-excel"];
+    if ($app['request']->isMethod('POST')) {
+        $MAX_FILE_SIZE = 1000000; //10Mb
+        $TYPE_FILES = [
+            'text/csv',
+            'application/vnd.ms-excel',
+            'application/excel',
+            'application/vnd.msexcel',
+            'text/anytext',
+            'text/comma-separated-values',
+            'application/octet-stream',
+        ];
 
-            if (isset($_FILES['file'])) {
-                if ($_FILES['file']['size'] >= $MAX_FILE_SIZE) {
-                    echo json_encode(array('success' => 'false', 'error' => 'File to large!'));
-                    exit;
-                }
-                if (!in_array($_FILES['file']['type'], $TYPE_FILES)) {
-                    echo json_encode(array('success' => 'false', 'error' => 'File format not supported!'));
-                    exit;
-                }
-                $path = $_FILES['file']['tmp_name'];
-                $csvFileReader = new \Helpers\CSVFileReader($path);
+        if (isset($_FILES['file'])) {
+            if ($_FILES['file']['size'] >= $MAX_FILE_SIZE) {
+                return $app->json(array('error' => true, 'text' => 'File to large. Max 10Mb.'));
+            }
+            if (!in_array($_FILES['file']['type'], $TYPE_FILES)) {
+                return $app->json(array('error' => true, 'text' => sprintf('File format not supported. Only CSV files allowed. Your file MIME-type is "%s"', $_FILES['file']['type'])));
+            }
+
+            $file_info = pathinfo($_FILES['file']['name']);
+            if($file_info["extension"] !== 'csv'){
+                return $app->json(array('error' => true, 'text' => 'Only CSV files supported.'));
+            }
+
+            $path = $_FILES['file']['tmp_name'];
+            $csvFileReader = new \Helpers\CSVFileReader($path);
+
+            return $app->json($csvFileReader->print_result());
+        } else {
+            $jsonString = file_get_contents('php://input');
+
+            if ($jsonString) {
+                $csvFileReader = new \Helpers\CSVFileReader($jsonString, false);
                 return $app->json($csvFileReader->print_result());
-            }else{
-                $json = file_get_contents('php://input');
-                if($json){
-                    $csvFileReader = new \Helpers\CSVFileReader($json, false);
-                    return $app->json($csvFileReader->print_result());
-                }
             }
         }
     }
-    return $app->json(array('error'=>'Error!'));
+
+    return $app->json(array('error' => 'Error!'));
 }, 'POST');
 
-$app->match('/user', function (Request $request) use ($app) {
 
-    $api = new Humanity\Api(array(
-        'client_id' => '95982517764489216',
-        'client_secret' => null,
-        'redirect_uri' => 'http://www.humanity.dev/php_sdk/oauth.php',
-    ));
+$app->match('/supportedColumns', function (Request $request) use ($app) {
+    Helpers\Auth::authorize($app['conf']);
+    return $app->json(array('SupportedColumns' => $app['conf']['SupportedColumns']));
+}, 'GET');
 
-    // This is changed to match our endpoints
-    $api->setAuthorizeEndpoint('https://master-accounts.dev.humanity.com/oauth2/authorize');
-    $api->setTokenEndpoint('https://master-accounts.dev.humanity.com/oauth2/token');
-    $api->setApiEndpoint('https://master-api.dev.humanity.com/v1/');
-
-    if (!$api->hasAccessToken() && !$api->requestTokenWithAuthCode()) {
-        // No valid access token available, go to authorization server
-        header('Location: ' . $api->getAuthorizeUri());
-        exit;
-    }
-
-        $credentials = $api->get('oauth/credentials');
-        $employees = $api->get("companies/{$credentials['company_id']}/employees");
-        return $app->json(array('employees'=>$employees));
-
-}, 'GET|POST');
 
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
-        return;
+        return false;
     }
 
     switch ($code) {

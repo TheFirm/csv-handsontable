@@ -11,18 +11,14 @@
                             <a class="caret_btn" href=""><i class="fa fa-caret-down"></i></a>
                         </th>
 
-                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}" data-ng-class="{'unknown_cell editable': columnHasError(headerTitle)}">
+                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}" data-ng-class="{'unknown_cell editable': columnHasError($index)}">
 
-                            <p data-ng-hide="columnHasError(headerTitle)" data-editable-text="headerTitle" data-onaftersave="editHeader($index, $data)">{{headerTitle | truncate:25}}</p>
+                            <p data-ng-hide="columnHasError($index)" data-editable-text="headerTitle.name">{{headerTitle.name | truncate:25}}</p>
 
-                            <div data-ng-show="columnHasError(headerTitle)" class="select_match_wrapper">
-                                <select ng-model="mySelect[headerTitle]" ng-change="select(mySelect[headerTitle],$index)" ng-init="mySelect[headerTitle] = possibleValues[0]">
+                            <div data-ng-show="columnHasError($index)" class="select_match_wrapper">
+                                <select ng-model="headerTitle.name" ng-change="selectChange($index,headerTitle.name);">
                                     <option data-ng-repeat="option in possibleValues track by $index" select-box value="{{option}}">{{option}}</option>
                                 </select>
-                                <div class="select_btn_wrapper">
-                                    <a href class="icon_btn success"><i class="fa fa-check-circle-o"></i></a>
-                                    <a href class="icon_btn error"><i class="fa fa-times-circle-o"></i></a>
-                                </div>
                             </div>
                         </th>
                     </tr>
@@ -30,13 +26,13 @@
 
 
                     <tbody>
-                    <tr data-ng-repeat="rowItem in tableData.data track by $index">
+                    <tr data-ng-repeat="row in tableData.rows track by $index">
                         <td class="checkbox_wrap">
-                            <input type="checkbox" class="css-checkbox" data-ng-model="checkedRows[$index].checked" id="checked_{{$index}}"/>
+                            <input type="checkbox" class="css-checkbox" data-ng-model="checkedRows[$index].checked" ng-init="checkedRows[$index].checked = false" id="checked_{{$index}}"/>
                             <label class="css-label" for="checked_{{$index}}"> </label>
                         </td>
-                        <td data-ng-repeat="(key, value) in rowItem track by $index" title="{{value}}" data-ng-class="{unknown_cell: columnHasError(key, value)}">
-                            <p data-editable-text="value" data-onaftersave="editCell($parent.$index, $index, $data)">{{value | truncate:25}}</p>
+                        <td data-ng-repeat="cell in row track by $index" title="{{cell.value}}" data-ng-class="{unknown_cell: columnHasError($index)}">
+                            <p data-editable-text="cell.value">{{cell.value | truncate:25}}</p>
                         </td>
                     </tr>
                     </tbody>
@@ -56,17 +52,15 @@
         <div class="bottom_side">
             <div class="add_row_block">
                 <div class="add_row_btn">
-                    <a href class="add_btn"><i class="fa fa-plus-circle"></i>Add new row</a>
+                    <a href class="add_btn" data-ng-click="addRow()"><i class="fa fa-plus-circle"></i>Add new row</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-//    $(document).ready(function(){
-//        $(function(){
-//            $('select').selectric();
-//        });
-//    });
-</script>
+<style>
+    .editable-hide {
+        display: block !important;
+    }
+</style>

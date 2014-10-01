@@ -1,4 +1,4 @@
-APP.factory('TableDataService', function ($rootScope) {
+APP.factory('TableDataService', function ($rootScope, $location, $route) {
     var fileUploadResponse = {};
     var isDataImported = false;
 
@@ -25,8 +25,8 @@ APP.factory('TableDataService', function ($rootScope) {
         setData: function (data, secondTime) {
             isDataImported = false;
             fileUploadResponse = data;
+
             $rootScope.$emit("file.uploaded", data);
-            $rootScope.$emit("file.uploaded1", data);
 
             var message = {};
             if(pub.hasErrors()){
@@ -40,6 +40,9 @@ APP.factory('TableDataService', function ($rootScope) {
                     error: false,
                     text: secondTime ? "Your data was imported" : "You have valid columns"
                 };
+                if(secondTime){
+                    window.location.replace('/');
+                }
             }
 
             $rootScope.$emit("popup.message", message);
@@ -54,7 +57,6 @@ APP.factory('TableDataService', function ($rootScope) {
         },
 
         isDataLoaded: function () {
-            console.log(fileUploadResponse);
             return fileUploadResponse?(fileUploadResponse && Object.keys(fileUploadResponse).length > 0):false
         },
 
