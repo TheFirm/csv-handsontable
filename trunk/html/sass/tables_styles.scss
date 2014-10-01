@@ -9,6 +9,7 @@
   background-color: darken($full_white, 2.5%);
   margin-bottom: 0;
   border-bottom: none;
+  table-layout: fixed;
 }
 
 .main_table.table-bordered {
@@ -21,15 +22,23 @@
     font-weight: 300;
   }
   &:first-child {
-    padding-right: 16px;
+    padding-right: 9px;
+    width: 80px !important;
+  }
+  &.unknown_cell {
+    white-space: inherit;
+    overflow: inherit;
+    text-overflow: clip;
   }
   color: $text_color4;
   padding: 13px 10px 15px 16px;
-  word-break: break-all;
-  word-break: break-word;
   position: relative;
   padding-right: 60px;
   vertical-align: baseline;
+  width: 200px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .main_table.table-bordered td {
@@ -37,9 +46,10 @@
   font-weight: 300;
   color: $text_color4;
   padding: 16px 16px;
-  word-break: break-all;
-  word-break: break-word;
   vertical-align: baseline;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .main_table.table-bordered tbody tr:first-child td {
@@ -63,10 +73,6 @@
 /////////////////////////////////////////////////////////////
 //////////////////////*END OF MAIN TABLE*////////////////////
 /////////////////////////////////////////////////////////////
-.table_wrapper {
-  background-color: darken($full_white, 2.5%);
-}
-
 .table_wrapper > .row > div {
   &:first-child {
     padding-right: 0;
@@ -147,9 +153,6 @@
 //This class is using for hide add row/column divs.
 .table_wrapper.table_edit_done {
   .top_side {
-    .directly_table {
-      width: 100%;
-    }
     .add_column_wrapper {
       display: none;
     }
@@ -160,16 +163,15 @@
 }
 
 .directly_table {
-  width: 87.5%;
   display: inline-block;
   float: left;
   @include transition(width 0.6s);
 }
 
 .add_column_wrapper {
-  width: 12.5%;
   display: inline-block;
   float: left;
+  background-color: darken($full_white, 2.5%);
 }
 
 
@@ -192,10 +194,9 @@
 }
 
 .add_row_btn {
-  a {
-    margin-right: 80px;
-  }
-  text-align: right;
+  display: inline-block;
+  text-align: left;
+  background-color: darken($full_white, 2.5%);
   padding: 13px 18px 12px 18px;
 }
 /////////////////////////////////////////////////////////////

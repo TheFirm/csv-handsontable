@@ -9,7 +9,7 @@
     <link type="text/css" rel="stylesheet" href="stylesheets/responsive_styles.css"/>
     <link type="text/css" rel="stylesheet" href="stylesheets/font-awesome.min.css"/>
     <link type="text/css" rel="stylesheet" href="stylesheets/selectric.css"/>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
 
@@ -129,6 +129,15 @@
             <div class="main_table_wrapper">
                 <div class="table_wrapper">
                     <div class="top_side">
+                    <div class="add_column_wrapper">
+                        <div class="add_column_block">
+                            <div class="add_column_btn">
+                                <a href class="add_btn"><i class="fa fa-plus-circle"></i>Add new column</a>
+                            </div>
+                            <!--<div class="shadow_block">-->
+                            <!--</div>-->
+                        </div>
+                    </div>
                         <div class="directly_table">
                             <table class="main_table table table-bordered">
                                 <thead>
@@ -140,24 +149,37 @@
                                     </th>
                                     <th>
                                         <span>First name</span>
-                                        <div class="table_btn_wrapper">
-                                            <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                            <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
-                                        </div>
+                                        <!--<div class="table_btn_wrapper">-->
+                                            <!--<a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>-->
+                                            <!--<a href class="icon_btn"><i class="fa fa-trash-o"></i></a>-->
+                                        <!--</div>-->
                                     </th>
                                     <th>
                                         <span>Email</span>
-                                        <div class="table_btn_wrapper">
-                                            <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                            <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
-                                        </div>
+                                    </th>
+                                    <th title="Quisque velit nisi, pretium ut lacinia in, elementum id enim.">
+                                        <span>Quisque velit nisi, pretium ut lacinia in, elementum id enim.</span>
+                                    </th>
+                                    <th title="Quisque velit nisi, pretium ut lacinia in, elementum id enim.">
+                                        <span>Quisque velit nisi, pretium ut lacinia in, elementum id enim.</span>
+                                    </th>
+                                    <th title="Quisque velit nisi, pretium ut lacinia in, elementum id enim.">
+                                        <span>Quisque velit nisi, pretium ut lacinia in, elementum id enim.</span>
                                     </th>
                                     <th>
                                         <span>Home Address</span>
-                                        <div class="table_btn_wrapper">
-                                            <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                            <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
-                                        </div>
+                                    </th>
+                                    <th>
+                                        <span>Home Address</span>
+                                    </th>
+                                    <th>
+                                        <span>Home Address</span>
+                                    </th>
+                                    <th>
+                                        <span>Home Address</span>
+                                    </th>
+                                    <th>
+                                        <span>Home Address</span>
                                     </th>
                                     <th class="unknown_cell editable">
                                         <div class="select_match_wrapper">
@@ -190,7 +212,14 @@
                                         <label for="checkboxG2" class="css-label"></label>
                                     </td>
                                         <td><p editable-text="user">{{ user || "John Doe" }}</p></td>
-                                    <td>marsha.sutton35@example.com</td>
+                                    <td title="marsha.sutton35@example.com">marsha.sutton35@example.com</td>
+                                    <td>6875 Photinia Ave</td>
+                                    <td>6875 Photinia Ave</td>
+                                    <td>6875 Photinia Ave</td>
+                                    <td>6875 Photinia Ave</td>
+                                    <td>6875 Photinia Ave</td>
+                                    <td>6875 Photinia Ave</td>
+                                    <td>6875 Photinia Ave</td>
                                     <td>6875 Photinia Ave</td>
                                     <td class="unknown_cell">X</td>
                                 </tr>
@@ -200,22 +229,140 @@
                                         <label for="checkboxG3" class="css-label"></label>
                                     </td>
                                     <td>Deann Lambert</td>
-                                    <td>justin.olson53@example.com</td>
+                                    <td title="justin.olson53@example.com">justin.olson53@example.com</td>
+                                    <td>5875 Hill Rd</td>
+                                    <td>5875 Hill Rd</td>
+                                    <td>5875 Hill Rd</td>
+                                    <td>5875 Hill Rd</td>
+                                    <td>5875 Hill Rd</td>
+                                    <td>5875 Hill Rd</td>
+                                    <td>5875 Hill Rd</td>
                                     <td>5875 Hill Rd</td>
                                     <td class="unknown_cell">XL</td>
                                 </tr>
                                 <tr>
                                     <td class="checkbox_wrap">
-                                        <input type="checkbox" name="checkboxG1" id="checkboxG4" class="css-checkbox" />
+                                        <input type="checkbox" id="checkboxG4" class="css-checkbox" />
                                         <label for="checkboxG4" class="css-label"></label>
                                     </td>
                                     <td>Veronica Palmer
-                                        <div class="table_btn_wrapper">
-                                            <a href class="icon_btn btn_bordered_right"><i class="fa fa-pencil"></i></a>
-                                            <a href class="icon_btn"><i class="fa fa-trash-o"></i></a>
-                                        </div>
                                     </td>
-                                    <td>sherri.jennings40@example.com</td>
+                                    <td  title="sherri.jennings40@example.com">sherri.jennings40@example.com</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td class="unknown_cell">XXL</td>
+                                </tr>
+                                <tr>
+                                    <td class="checkbox_wrap">
+                                        <input type="checkbox" id="checkboxG11" class="css-checkbox" />
+                                        <label for="checkboxG11" class="css-label"></label>
+                                    </td>
+                                    <td>Veronica Palmer
+                                    </td>
+                                    <td title="sherri.jennings40@example.com">sherri.jennings40@example.com</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td title="8016 Crescent Canyon St8016 Crescent Canyon St 8016 Crescent Canyon St 8016 Crescent Canyon St">8016 Crescent Canyon St8016 Crescent Canyon St 8016 Crescent Canyon St 8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td title="8016 Crescent Canyon St8016 Crescent Canyon St 8016 Crescent Canyon St 8016 Crescent Canyon St">8016 Crescent Canyon St 8016 Crescent Canyon St 8016 Crescent Canyon St 8016 Crescent Canyon St </td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td class="unknown_cell">XXL</td>
+                                </tr>
+                                <tr>
+                                    <td class="checkbox_wrap">
+                                        <input type="checkbox" id="checkboxG10" class="css-checkbox" />
+                                        <label for="checkboxG10" class="css-label"></label>
+                                    </td>
+                                    <td>Veronica Palmer
+                                    </td>
+                                    <td title="sherri.jennings40@example.com">sherri.jennings40@example.com</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td class="unknown_cell">XXL</td>
+                                </tr>
+                                <tr>
+                                    <td class="checkbox_wrap">
+                                        <input type="checkbox" id="checkboxG12" class="css-checkbox" />
+                                        <label for="checkboxG12" class="css-label"></label>
+                                    </td>
+                                    <td>Veronica Palmer
+                                    </td>
+                                    <td title="sherri.jennings40@example.com">sherri.jennings40@example.com</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td class="unknown_cell">XXL</td>
+                                </tr>
+                                <tr>
+                                    <td class="checkbox_wrap">
+                                        <input type="checkbox" id="checkboxG13" class="css-checkbox" />
+                                        <label for="checkboxG13" class="css-label"></label>
+                                    </td>
+                                    <td>Veronica Palmer
+                                    </td>
+                                    <td title="sherri.jennings40@example.com">sherri.jennings40@example.com</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td class="unknown_cell">XXL</td>
+                                </tr>
+                                <tr>
+                                    <td class="checkbox_wrap">
+                                        <input type="checkbox" id="checkboxG14" class="css-checkbox" />
+                                        <label for="checkboxG14" class="css-label"></label>
+                                    </td>
+                                    <td>Veronica Palmer
+                                    </td>
+                                    <td title="sherri.jennings40@example.com">sherri.jennings40@example.com</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td class="unknown_cell">XXL</td>
+                                </tr>
+                                <tr>
+                                    <td class="checkbox_wrap">
+                                        <input type="checkbox" id="checkboxG15" class="css-checkbox" />
+                                        <label for="checkboxG15" class="css-label"></label>
+                                    </td>
+                                    <td>Veronica Palmer
+                                    </td>
+                                    <td title="sherri.jennings40@example.com">sherri.jennings40@example.com</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
+                                    <td>8016 Crescent Canyon St</td>
                                     <td>8016 Crescent Canyon St</td>
                                     <td class="unknown_cell">XXL</td>
                                 </tr>
@@ -225,7 +372,14 @@
                                         <label for="checkboxG5" class="css-label"></label>
                                     </td>
                                     <td>Keith Douglas</td>
-                                    <td>kathryn.lambert98@example.com</td>
+                                    <td title="kathryn.lambert98@example.com">kathryn.lambert98@example.com</td>
+                                    <td>3557 Auerbach Ave</td>
+                                    <td>3557 Auerbach Ave</td>
+                                    <td>3557 Auerbach Ave</td>
+                                    <td>3557 Auerbach Ave</td>
+                                    <td>3557 Auerbach Ave</td>
+                                    <td>3557 Auerbach Ave</td>
+                                    <td>3557 Auerbach Ave</td>
                                     <td>3557 Auerbach Ave</td>
                                     <td class="unknown_cell">M</td>
                                 </tr>
@@ -235,21 +389,19 @@
                                         <label for="checkboxG6" class="css-label"></label>
                                     </td>
                                     <td>Marsha Sutton</td>
-                                    <td>gerald.payne10@example.com</td>
+                                    <td title="gerald.payne10@example.com">gerald.payne10@example.com</td>
+                                    <td>5122 Parker Rd</td>
+                                    <td>5122 Parker Rd</td>
+                                    <td>5122 Parker Rd</td>
+                                    <td>5122 Parker Rd</td>
+                                    <td>5122 Parker Rd</td>
+                                    <td>5122 Parker Rd</td>
+                                    <td>5122 Parker Rd</td>
                                     <td>5122 Parker Rd</td>
                                     <td class="unknown_cell">L</td>
                                 </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="add_column_wrapper">
-                            <div class="add_column_block">
-                                <div class="add_column_btn">
-                                    <a href class="add_btn"><i class="fa fa-plus-circle"></i>Add new column</a>
-                                </div>
-                                <div class="shadow_block">
-                                </div>
-                            </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
