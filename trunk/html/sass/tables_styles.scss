@@ -36,9 +36,6 @@
   padding-right: 60px;
   vertical-align: baseline;
   width: 200px !important;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .main_table.table-bordered td {
@@ -47,9 +44,6 @@
   color: $text_color4;
   padding: 16px 16px;
   vertical-align: baseline;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .main_table.table-bordered tbody tr:first-child td {
@@ -226,13 +220,17 @@
 }
 
 .main_table.table-bordered th p,.main_table.table-bordered td p {
-  display: inline;
+  display: inline-block;
+  width: 100%;
   cursor: pointer;
   font-size: 13px;
   font-weight: 300;
   color: $text_color4;
   border-bottom: none;
   font-style: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .editable-buttons a {
