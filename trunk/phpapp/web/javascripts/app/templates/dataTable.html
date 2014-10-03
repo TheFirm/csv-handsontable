@@ -18,7 +18,7 @@
                             <a class="caret_btn" href=""><i class="fa fa-caret-down"></i></a>
                         </th>
 
-                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle}}" data-ng-class="{'unknown_cell editable': columnHasError($index)}">
+                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle.name}}" data-ng-class="{'unknown_cell editable': columnHasError($index)}">
 
                             <p data-ng-hide="columnHasError($index)">{{headerTitle.name | truncate:25}}</p>
 
