@@ -1,6 +1,6 @@
 /* line 2, ../sass/icons.scss */
 .csv_icon {
-  background: url(../public/img/sprite.png) no-repeat 0 0;
+  background: url(../img/sprite.png) no-repeat 0 0;
   display: inline-block;
   width: 56px;
   height: 64px;
@@ -8,7 +8,7 @@
 
 /* line 10, ../sass/icons.scss */
 .upload_icon {
-  background: url(../public/img/sprite.png) no-repeat -56px 0;
+  background: url(../img/sprite.png) no-repeat -56px 0;
   display: inline-block;
   width: 64px;
   height: 52px;
