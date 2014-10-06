@@ -87,12 +87,17 @@ class Validator
                 "from_file"=>array_values($column_errors_from_file),
                 "from_conf"=>array_values($column_errors_from_conf)
             );
+            $errors[$conf_title]['from_file_correct'] = array_values(array_diff($columns_title, $errors[$conf_title]['from_file']));
         }
 
         $result['success'] = false;
+
+        $bestMatchingConfig = self::findBestMatchingConfig($errors);
+        $bestMatchingConfig['config'] = array_keys($this->config[$bestMatchingConfig['configName']]);
+
         $result['errors'] = [
             'types' => $errors,
-            'bestMatch' => self::findBestMatchingConfig($errors),
+            'bestMatch' => $bestMatchingConfig,
         ];
         return $result;
     }
@@ -108,7 +113,10 @@ class Validator
             }
         }
 
-        return [$mostMatchingConfigName => $mostMatchingConfigErrors];
+        return [
+            'configName' =>$mostMatchingConfigName,
+            'configErrors' => $mostMatchingConfigErrors,
+        ];
     }
 
     protected function findCellsError() {

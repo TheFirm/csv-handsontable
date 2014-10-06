@@ -20,11 +20,18 @@
 
                         <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle.name}}" data-ng-class="{'unknown_cell editable': columnHasError($index)}">
 
-                            <p data-ng-hide="columnHasError($index)" data-editable-text="headerTitle.name">{{headerTitle.name | truncate:25}}</p>
+                            <!--<p data-ng-hide="columnHasError($index)" data-editable-text="headerTitle.name">{{headerTitle.name | truncate:25}}</p>-->
 
-                            <div data-ng-show="columnHasError($index)" class="select_match_wrapper">
-                                <select ng-model="headerTitle.name" ng-change="selectChange($index,headerTitle.name);">
-                                    <option data-ng-repeat="option in possibleValues track by $index" select-box value="{{option}}">{{option}}</option>
+                            <div class="select_match_wrapper">
+                                <select ng-model="headerTitle.name" ng-change="selectChange($index, headerTitle.name)">
+                                    <option
+                                            data-ng-repeat="option in allPossibleValues track by $index"
+                                            select-box
+                                            value="{{option}}"
+                                            ng-selected='{{selectOption(headerTitle.name, option)}}'
+                                            >
+                                        {{option}}
+                                    </option>
                                 </select>
                             </div>
                         </th>

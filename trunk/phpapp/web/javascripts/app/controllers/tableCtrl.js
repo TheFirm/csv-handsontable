@@ -1,20 +1,9 @@
-APP.directive('selectBox', function ($timeout) {
-    return {
-        link: function (scope, element, attr) {
-            if (scope.$last){
-                $timeout(function () {
-                    scope.$emit('ngRepeatFinished',element);
-                });
-            }
-        }
-    };
-});
-
-APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataService) {
+APP.controller('tableCtrl', function ($scope, $rootScope, $location, $timeout, TableDataService) {
     $scope.tableData = TableDataService.getData();
     $scope.checkedRows = [];
     $scope.tableHeaderSelects = [];
     $scope.possibleValues = [];
+    $scope.allPossibleValues = [];
 
     //if empty table data, got to root path
     if (!$scope.tableData || Object.keys($scope.tableData).length === 0) {
@@ -23,15 +12,17 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
     }
 
     if($scope.tableData.errors.hasOwnProperty('bestMatch')){
-        var confName = Object.keys($scope.tableData.errors.bestMatch);
-        $scope.possibleValues = $scope.tableData.errors.bestMatch[confName].from_conf;
+        //var confName = $scope.tableData.errors.bestMatch.configName;
+        $scope.possibleValues = $scope.tableData.errors.bestMatch.configErrors.from_conf;
+        $scope.allPossibleValues = $scope.tableData.errors.bestMatch.config;
     }
 
     $scope.tableHeaderSelects = [];
 
-    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent,element) {
-        $(element.parent()).selectric('refresh');
-    });
+    //i'm very very sorry
+    $timeout(function () {
+        $('select').selectric('refresh');
+    }, 1000);
 
     $scope.countUnknownColumns = 1;
 
@@ -82,7 +73,14 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, TableDataSe
     $scope.columnHasError = function (colIndex) {
         var colName = $scope.tableData.headers[colIndex].name;
 
-        var errorInThisColumn = $scope.tableData.columnsWithErrors && $scope.tableData.columnsWithErrors.indexOf(colName) !== -1;
+        var errorInThisColumn = $scope.tableData.correctColumnNames &&
+            $scope.tableData.correctColumnNames.indexOf(colName) === -1
+            ;
         return errorInThisColumn;
+    };
+
+    $scope.selectOption = function (headerTitle, optionName) {
+       return headerTitle == optionName;
     }
+
 });
