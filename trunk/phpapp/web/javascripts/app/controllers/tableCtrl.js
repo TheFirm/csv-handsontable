@@ -48,6 +48,10 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, $timeout, T
         $scope.tableData.rows.forEach(function (row) {
             row.push({value:"Unknown"});
         });
+        //i'm very very sorry
+        $timeout(function () {
+            $('select').selectric('refresh');
+        }, 1000);
     };
 
     $scope.mySelect = {};
