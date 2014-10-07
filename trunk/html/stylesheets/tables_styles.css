@@ -341,7 +341,7 @@
 /* line 165, ../sass/tables_styles.scss */
 .add_column_wrapper {
   display: inline-block;
-  float: left;
+  float: right;
   background-color: #f9f9f9;
 }
 
