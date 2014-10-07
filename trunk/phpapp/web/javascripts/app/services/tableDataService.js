@@ -6,8 +6,7 @@ APP.factory('TableDataService', function ($rootScope, $location, $route) {
         getErrorText: function () {
             var errorText = 'Error';
             var bestMatch = fileUploadResponse.errors.bestMatch;
-            var configName = Object.keys(bestMatch)[0];
-            var errors = bestMatch[configName];
+            var errors = bestMatch.configErrors;
 
             if(errors.from_file.length === 0 && errors.from_conf.length !== 0){
                 errorText = 'You are missing columns: ' + errors.from_conf.join(', ');
@@ -16,6 +15,7 @@ APP.factory('TableDataService', function ($rootScope, $location, $route) {
             } else if(errors.from_file.length !== 0 && errors.from_conf.length !== 0){
                 errorText = 'You have errors in columns: ' + errors.from_file.join(', ');
                 fileUploadResponse.columnsWithErrors = errors.from_file;
+                fileUploadResponse.correctColumnNames = errors.from_file_correct;
             }
             return errorText;
         }

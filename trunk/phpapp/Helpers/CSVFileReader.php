@@ -2,6 +2,11 @@
 
 namespace Helpers;
 
+/**
+ * Class CSVFileReader
+ * @package Helpers
+ * @property Validator $validator
+ */
 class CSVFileReader implements FileReader
 {
 
@@ -84,7 +89,6 @@ class CSVFileReader implements FileReader
             //Send to API
         }
         $result = $this->validator->getResult();
-        $result['columns'] = $this->columns;
 
         foreach ($this->headers as $val) {
             $result['headers'][] = array('name' => $val);
