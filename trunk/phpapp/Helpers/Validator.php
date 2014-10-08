@@ -44,7 +44,10 @@ class Validator
     static function getColumnsArrayFromConfig($col) {
         $result = array();
         foreach ($col as $title =>$column) {
-            $result[] = $title;
+            $normalizedTitle = $title;
+            $normalizedTitle = str_replace('_', ' ', $normalizedTitle);
+            $normalizedTitle = ucfirst($normalizedTitle);
+            $result[] = $normalizedTitle;
         }
         return $result;
     }
@@ -93,7 +96,7 @@ class Validator
         $result['success'] = false;
 
         $bestMatchingConfig = self::findBestMatchingConfig($errors);
-        $bestMatchingConfig['config'] = array_keys($this->config[$bestMatchingConfig['configName']]);
+        $bestMatchingConfig['config'] = $this->getColumnsArrayFromConfig(($this->config[$bestMatchingConfig['configName']]));
 
         $result['errors'] = [
             'types' => $errors,
