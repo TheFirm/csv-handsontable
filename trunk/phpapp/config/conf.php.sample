@@ -5,5 +5,23 @@ return [
         'client_id' => '95982517764489216',
         'client_secret' => null,
         'redirect_uri' => "http://" . $_SERVER["HTTP_HOST"] . "/php_sdk/oauth.php",
-    ]
+
+        'endPoints' => [
+            'authorize' => 'https://master-accounts.dev.humanity.com/oauth2/authorize',
+            'token' => 'https://master-accounts.dev.humanity.com/oauth2/token',
+            'api' => 'https://master-api.dev.humanity.com/v1/',
+        ]
+    ],
+
+    'allowedMimeTypes' => [
+        'text/csv',
+        'application/vnd.ms-excel',
+        'application/excel',
+        'application/vnd.msexcel',
+        'text/anytext',
+        'text/comma-separated-values',
+        'application/octet-stream',
+    ],
+
+    'debug' => true
 ];

@@ -1,16 +1,16 @@
 {
     "employee": {
         "first_name": {
-            "required": true,
-            "type": "text"
+            "required": true
         },
         "last_name": {
-            "required": true,
-            "type": "text"
+            "required": true
         },
-        "email": {
-            "required": true,
-            "type": "text"
+        "email1": {
+            "required": true
+        },
+        "email2": {
+            "required": false
         }
     }
 }

@@ -5,6 +5,9 @@ namespace Helpers;
 use Humanity\Api;
 
 class General {
+    //relative path to json config file
+    const VALIDATOR_CONFIG_FILE_PATH = '/../config/validator.json';
+
 
     /**
      * Returns config array or display missing config error
@@ -35,5 +38,21 @@ class General {
         }
 
         return $ava;
+    }
+
+
+
+
+    public static function readValidatorConfig(){
+        $rawConfig = file_get_contents(__DIR__ . self::VALIDATOR_CONFIG_FILE_PATH);
+        $config = json_decode($rawConfig, true);
+        return $config;
+    }
+
+    public static function transformConfigHeaderName($title){
+        $normalizedTitle = $title;
+        $normalizedTitle = str_replace('_', ' ', $normalizedTitle);
+        $normalizedTitle = ucfirst($normalizedTitle);
+        return $normalizedTitle;
     }
 } 

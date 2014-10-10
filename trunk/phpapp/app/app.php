@@ -33,8 +33,7 @@ $app['twig']->setLexer(
     )
 );
 
-$app->register(new ValidatorServiceProvider());
-$app->register(new FormServiceProvider());
-$app->register(new TranslationServiceProvider());
+$app['humanityApiClient'] = new \Helpers\HumanityApiClient($app['conf']);
+
 
 return $app;

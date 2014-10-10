@@ -2,7 +2,11 @@
 
 APP.run(function ($rootScope, $http, TableDataService, $location, $route, editableOptions, editableThemes) {
     $rootScope.importData = function () {
-        $http.post("/uploadfile", TableDataService.getData())
+        var data = {
+            rows: TableDataService.getRows(),
+            headers: TableDataService.getHeaders()
+        };
+        $http.post("/upload", data)
             .success(function (data, status, headers, config) {
                 TableDataService.setData(data, true);
                 $location.path("/dataTable");

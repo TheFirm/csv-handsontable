@@ -10,97 +10,57 @@ namespace Helpers;
 class CSVFileReader implements FileReader
 {
 
-    protected $array_data;
+    protected $tempData;
     protected $headers = array();
-    protected $columns = array();
     protected $rows = array();
     protected $validator;
 
-    function __construct($data, $CSVconvertToJson = true)
+    function __construct($filePath)
     {
-        if ($CSVconvertToJson) {
-            $this->read($data);
-            $this->validation();
-        } else {
-            $data_arr = json_decode($data, true);
-            if ($data_arr != null) {
-                asort($data_arr['headers']);
-
-                foreach ($data_arr['headers'] as $head) {
-                    $this->headers[] = $head['name'];
-                }
-
-                foreach ($data_arr['rows'] as $row) {
-                    $_row = array();
-                    foreach ($row as $val) {
-                        $_row[] = $val['value'];
-                    }
-                    $this->rows[] = $_row;
-                }
-                $this->array_data = array($this->headers) + $this->rows;
-                foreach ($this->headers as $column) {
-                    $this->columns[] = array("data" => $column, "type" => "text");
-                }
-                $this->validation();
-            }
-        }
+        $this->read($filePath);
+        $this->processRawData();
+        return;
     }
 
     /**
      * Read CSV file
      * @param string $file_name
+     * @return mixed|void
      */
     public function read($file_name)
     {
         $file = fopen($file_name, "r");
-        $result = array();
+        $this->tempData = array();
         while (!feof($file)) {
-            $result[] = fgetcsv($file);
+            $this->tempData[] = fgetcsv($file);
         }
         fclose($file);
-        $this->headers = $result[0];
-        foreach ($this->headers as $column) {
-            $this->columns[] = array("data" => $column, "type" => "text");
-        }
-        $this->array_data = $result;
-        unset($result[0]);
+    }
 
-        foreach ($result as $line) {
+    protected function processRawData(){
+        $this->headers = $this->tempData[0];
+        unset($this->tempData[0]);
+
+        foreach ($this->tempData as $line) {
             if (!$line) {
                 continue;
             }
             $this->rows[] = $line;
         }
-        sort($this->headers);
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function validation()
-    {
-        $this->validator = new Validator($this->array_data);
-        return $this->validator->validate();
+    public function getHeaders(){
+        return $this->headers;
     }
 
-    public function print_result()
-    {
-        if ($this->validator) {
-            //Send to API
-        }
-        $result = $this->validator->getResult();
-
-        foreach ($this->headers as $val) {
-            $result['headers'][] = array('name' => $val);
-        }
-
-        foreach ($this->rows as $row) {
-            $row_array = array();
-            foreach ($row as $val) {
-                $row_array[] = array('value' => $val);
-            }
-            $result['rows'][] = $row_array;
-        }
-        return $result;
+    /**
+     * Return array of cell arrays
+     * @return array
+     */
+    public function getRows(){
+        return $this->rows;
     }
 }

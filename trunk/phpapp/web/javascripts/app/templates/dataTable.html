@@ -19,7 +19,7 @@
                             <a class="caret_btn" href=""><i class="fa fa-caret-down"></i></a>
                         </th>
 
-                        <th data-ng-repeat="headerTitle in tableData.headers track by $index" title="{{headerTitle.name}}" data-ng-class="{'unknown_cell editable': columnHasError($index)}">
+                        <th data-ng-repeat="headerTitle in headers track by $index" title="{{headerTitle.name}}" data-ng-class="{'unknown_cell editable': columnHasError($index)}">
 
                             <!--<p data-ng-hide="columnHasError($index)" data-editable-text="headerTitle.name">{{headerTitle.name | truncate:25}}</p>-->
 
@@ -41,7 +41,7 @@
 
 
                     <tbody>
-                    <tr data-ng-repeat="row in tableData.rows track by $index">
+                    <tr data-ng-repeat="row in rows track by $index">
                         <td class="checkbox_wrap">
                             <input type="checkbox" class="css-checkbox" data-ng-model="checkedRows[$index].checked" ng-init="checkedRows[$index].checked = false" id="checked_{{$index}}"/>
                             <label class="css-label" for="checked_{{$index}}"> </label>

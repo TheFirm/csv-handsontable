@@ -4,7 +4,7 @@ APP.controller('fileUploadCtrl', function($rootScope, $scope, $route, $location,
     });
 
     $scope.successFileUpload = function (file, responseObj) {
-        if(responseObj.error){
+        if(responseObj.success){
             $rootScope.$emit("popup.message",  responseObj);
         }else{
             TableDataService.setData(responseObj);
@@ -13,4 +13,5 @@ APP.controller('fileUploadCtrl', function($rootScope, $scope, $route, $location,
             });
         }
     }
+
 });

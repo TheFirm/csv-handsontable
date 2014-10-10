@@ -1,21 +1,22 @@
 APP.controller('tableCtrl', function ($scope, $rootScope, $location, $timeout, TableDataService) {
-    $scope.tableData = TableDataService.getData();
+    console.log("tableCtrl");
+    $scope.headers = TableDataService.getHeaders();
+    $scope.rows = TableDataService.getRows();
+    $scope.errors = TableDataService.getErrors();
+
     $scope.checkedRows = [];
     $scope.tableHeaderSelects = [];
     $scope.possibleValues = [];
     $scope.allPossibleValues = [];
 
     //if empty table data, got to root path
-    if (!$scope.tableData || Object.keys($scope.tableData).length === 0) {
+    console.log($scope.rows);
+    if (!$scope.headers || Object.keys($scope.headers).length === 0) {
         $location.path("/");
         return false;
     }
 
-    if($scope.tableData.errors.hasOwnProperty('bestMatch')){
-        //var confName = $scope.tableData.errors.bestMatch.configName;
-        $scope.possibleValues = $scope.tableData.errors.bestMatch.configErrors.from_conf;
-        $scope.allPossibleValues = $scope.tableData.errors.bestMatch.config;
-    }
+    $scope.allPossibleValues = TableDataService.getAllPossibleValues();
 
     $scope.tableHeaderSelects = [];
 
@@ -27,25 +28,25 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, $timeout, T
     $scope.countUnknownColumns = 1;
 
     $scope.deleteColumn = function (index) {
-        $scope.tableData.headers.splice(index, 1);
-        $scope.tableData.rows.forEach(function (row) {
+        $scope.headers.splice(index, 1);
+        $scope.rows.forEach(function (row) {
             delete row[index];
         });
     };
 
     $scope.addRow = function () {
         var row = [];
-        $scope.tableData.headers.forEach(function () {
+        $scope.headers.forEach(function () {
             row.push({value:"Unknown"});
         });
-        $scope.tableData.rows.push(row);
+        $scope.rows.push(row);
     };
 
     $scope.addColumn = function () {
         var newHeaderName = "Unknown" + $scope.countUnknownColumns;
-        $scope.tableData.headers.push({name:newHeaderName});
+        $scope.headers.push({name:newHeaderName});
         $scope.countUnknownColumns++;
-        $scope.tableData.rows.forEach(function (row) {
+        $scope.rows.forEach(function (row) {
             row.push({value:"Unknown"});
         });
         //i'm very very sorry
@@ -75,10 +76,10 @@ APP.controller('tableCtrl', function ($scope, $rootScope, $location, $timeout, T
     };
 
     $scope.columnHasError = function (colIndex) {
-        var colName = $scope.tableData.headers[colIndex].name;
+        var colName = $scope.headers[colIndex].name;
 
-        var errorInThisColumn = $scope.tableData.correctColumnNames &&
-            $scope.tableData.correctColumnNames.indexOf(colName) === -1
+        var errorInThisColumn = $scope.errors.notMatchedHeadersInFile &&
+                $scope.errors.notMatchedHeadersInFile.indexOf(colName) !== -1
             ;
         return errorInThisColumn;
     };

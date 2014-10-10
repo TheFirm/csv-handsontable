@@ -12,41 +12,33 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 
 $app->match('/php-sdk/oauth.php', function (Request $request) use ($app) {
-    Helpers\Auth::authorize($app['conf']);
+    getHumanityApiClient($app)->authorize();
 
     return $app->redirect('/');
 }, 'GET');
 
 
 $app->match('/', function (Request $request) use ($app) {
-    $api = Helpers\Auth::authorize($app['conf']);
+    $api = getHumanityApiClient($app)->authorize();
 
     return $app['twig']->render('index.html', array(
-        'avatar' => Helpers\General::getAva($api),
+        'avatar' => false//Helpers\General::getAva($api),
     ));
 }, 'GET');
 
 
-$app->match('/uploadfile', function (Request $request) use ($app) {
-    Helpers\Auth::authorize($app['conf']);
-
+$app->match('/upload', function (Request $request) use ($app) {
     if ($app['request']->isMethod('POST')) {
+        getHumanityApiClient($app)->authorize();
         $MAX_FILE_SIZE = 1000000; //10Mb
-        $TYPE_FILES = [
-            'text/csv',
-            'application/vnd.ms-excel',
-            'application/excel',
-            'application/vnd.msexcel',
-            'text/anytext',
-            'text/comma-separated-values',
-            'application/octet-stream',
-        ];
+
+        $config_name = $request->query->get('e', 'employee');
 
         if (isset($_FILES['file'])) {
             if ($_FILES['file']['size'] >= $MAX_FILE_SIZE) {
                 return $app->json(array('error' => true, 'text' => 'File to large. Max 10Mb.'));
             }
-            if (!in_array($_FILES['file']['type'], $TYPE_FILES)) {
+            if (!in_array($_FILES['file']['type'], $app['conf']['allowedMimeTypes'])) {
                 return $app->json(array('error' => true, 'text' => sprintf('File format not supported. Only CSV files allowed. Your file MIME-type is "%s"', $_FILES['file']['type'])));
             }
 
@@ -55,42 +47,88 @@ $app->match('/uploadfile', function (Request $request) use ($app) {
                 return $app->json(array('error' => true, 'text' => 'Only CSV files supported.'));
             }
 
-            $path = $_FILES['file']['tmp_name'];
-            $csvFileReader = new \Helpers\CSVFileReader($path);
+            $filePath = $_FILES['file']['tmp_name'];
+            $csvFileReader = new \Helpers\CSVFileReader($filePath);
 
-            return $app->json($csvFileReader->print_result());
+            $headers = $csvFileReader->getHeaders();
+            $rows = $csvFileReader->getRows();
         } else {
             $jsonString = file_get_contents('php://input');
+            $requestData = json_decode($jsonString, true);
 
-            if ($jsonString) {
-                $csvFileReader = new \Helpers\CSVFileReader($jsonString, false);
-                return $app->json($csvFileReader->print_result());
+            if(!isset($requestData['rows'])){
+                throw new \Exception('Missing rows', 400);
             }
+
+            if(!isset($requestData['headers'])){
+                throw new \Exception('Missing headers', 400);
+            }
+
+            $headers = \Helpers\Transformer::transformColsIn($requestData['headers']);
+            $rows = \Helpers\Transformer::transformRowsIn($requestData['rows']);
         }
+
+        $validator = new \Helpers\Validator($rows, $headers);
+        $result = $validator->validateColumns($config_name);
+        if($result['success']){
+
+        }
+
+        $result['data'] = [
+            'headers' => \Helpers\Transformer::transformColsOut($headers),
+            'rows' => \Helpers\Transformer::transformRowsOut($rows),
+        ];
+
+        return $app->json($result);
     }
 
     return $app->json(array('error' => 'Error!'));
 }, 'POST');
 
-
 $app->match('/supportedColumns', function (Request $request) use ($app) {
-    Helpers\Auth::authorize($app['conf']);
-    return $app->json(array('SupportedColumns' => $app['conf']['SupportedColumns']));
+    getHumanityApiClient($app)->authorize();
+
+    $entity = $request->query->get('e', 'employee');
+
+    $conf = \Helpers\General::readValidatorConfig();
+
+    if(!array_key_exists($entity, $conf)){
+        throw new \Exception('Missing entity', 400);
+    }
+
+    $selectedConf = $conf[$entity];
+
+    foreach ($selectedConf as $confName => $confVal) {
+        $newKey = \Helpers\General::transformConfigHeaderName($confName);
+        $conf[$newKey] = $confVal;
+        unset($conf[$confName]);
+    }
+
+    return $app->json(array('SupportedColumns' => $conf));
 }, 'GET');
 
 
 $app->error(function (\Exception $e, $code) use ($app) {
-    if ($app['debug']) {
-        return false;
-    }
-
     switch ($code) {
         case 404:
-            $message = 'The requested page could not be found.';
+            $message = 'Not found.';
             break;
         default:
-            $message = 'We are sorry, but something went terribly wrong.';
+            $message = $e->getMessage();
     }
 
-    return new Response($message, $code);
+    $response = [
+        'success' => false,
+        'message' => $message
+    ];
+
+    return new JsonResponse($response, $code);
 });
+
+/**
+ * @param \Silex\Application $app
+ * @return \Helpers\HumanityApiClient
+ */
+function getHumanityApiClient(Silex\Application $app) {
+  return $app['humanityApiClient'];
+}

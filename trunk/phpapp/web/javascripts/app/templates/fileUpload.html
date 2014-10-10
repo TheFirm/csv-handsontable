@@ -1,5 +1,12 @@
 <div class="drag_and_drop_wrapper">
-    <h3>Supported Columns: <span ng-bind="supportedColumns">Loading...</span></h3>
+    <h3>
+        Supported Columns:
+        <span data-ng-repeat="(name, options) in supportedColumns">
+            {{name}}
+            <span ng-show=" ! $last ">,</span>
+        </span>
+    </h3>
+
     <div class="drag_and_drop">
         <div id="drop_zone" title="Drop here or click to choose file"
              class="ngDropZone" data-options='{"success": successFileUpload}'

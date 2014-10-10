@@ -4,9 +4,6 @@ namespace Helpers;
 
 class Validator
 {
-    //relative path to json config file
-    const CONFIG_FILE = '/../config/validator.json';
-
     //config array
     protected $config;
 
@@ -14,127 +11,87 @@ class Validator
     protected $columns_to_validate;
     protected $result;
 
+    protected $rows;
+    protected $headers;
+
 
     /**
-     * @param $data_to_validate array data loaded from file
+     * @param $rows
+     * @param $headers
+     * @internal param array $data_to_validate data loaded from file
      */
-    function __construct($data_to_validate) {
-        $data_from_file = $data_to_validate;
-        $this->transformTitlesFromFileToLowerCase($data_from_file);
-        $this->load_config();
+    function __construct($rows, $headers) {
+        $this->rows = $rows;
+        $this->headers = $headers;
     }
 
-    function transformTitlesFromFileToLowerCase($data_from_file) {
-        $this->columns_to_validate = $data_from_file[0];
-    }
-
-    private function load_config() {
+    protected function getConfigs() {
         if ($this->config !== null) {
             return $this->config;
         }
 
-        if (!file_exists(__DIR__ . self::CONFIG_FILE)) {
-            die('No validator config file');
-        }
-
-        $this->config = json_decode(file_get_contents(__DIR__ . self::CONFIG_FILE), true);
+        $this->config = General::readValidatorConfig();
         return $this->config;
+    }
+
+    protected function getConfigByName($configName){
+        $config = $this->getConfigs();
+        if(!array_key_exists($configName, $config)){
+            throw new \Exception("Missing config '$configName'");
+        }
+        return $config[$configName];
     }
 
     static function getColumnsArrayFromConfig($col) {
         $result = array();
-        foreach ($col as $title =>$column) {
-            $normalizedTitle = $title;
-            $normalizedTitle = str_replace('_', ' ', $normalizedTitle);
-            $normalizedTitle = ucfirst($normalizedTitle);
-            $result[] = $normalizedTitle;
+        foreach ($col as $title => $column) {
+            $result[] = General::transformConfigHeaderName($title);
         }
         return $result;
     }
 
-    protected function validateColumns() {
-        $result = array('success' => true, 'errors' => array());
-        $errors = array();
 
-        $columns_title = $this->columns_to_validate;
-        foreach ($this->config as $conf_title => $conf) {
-            $name_mismatch = true;
-            $in_file_to_much = false;
-            $in_file_to_few = false;
 
-            $column_conf = $this->getColumnsArrayFromConfig($conf);
-            $res = array_intersect($column_conf, $columns_title);
+    public function validateColumns($configName) {
+        $selectedConfig = $this->getConfigByName($configName);
+        $configHeaders = $this->getColumnsArrayFromConfig($selectedConfig);
 
-            if ((count($res) == count($column_conf))&&(count($res) == count($columns_title))) {
-                return array(
-                    'success' => true,
-                    'errors' => array(),
-                    'result' => $conf_title
-                );
-            }
+        $intersectedHeaders = array_intersect($this->headers, $configHeaders);
+        $notMatchedHeadersInFile = array_diff($this->headers, $intersectedHeaders);
+        $missingRequiredHeaders = $this->getRequiredMissingHeaders($selectedConfig, $intersectedHeaders);
 
-            if (count($res) == count($column_conf)) {
-                $in_file_to_much = true;
-            }
-            if (count($res) == count($columns_title)) {
-                $in_file_to_few = true;
-            }
-
-            $column_errors_from_file = array_diff($columns_title,$res);
-            $column_errors_from_conf = array_diff($column_conf,$res);
-
-            $errors[$conf_title] = array(
-                "name_mismatch"=>$name_mismatch,
-                "in_file_to_much"=>$in_file_to_much,
-                "in_file_to_few"=>$in_file_to_few,
-                "from_file"=>array_values($column_errors_from_file),
-                "from_conf"=>array_values($column_errors_from_conf)
+        if( count($missingRequiredHeaders) == 0 ){
+            return array(
+                'success' => true
             );
-            $errors[$conf_title]['from_file_correct'] = array_values(array_diff($columns_title, $errors[$conf_title]['from_file']));
         }
 
-        $result['success'] = false;
+        $notUsedColumnsFromConfig = array_diff($configHeaders, $intersectedHeaders);
+        $notUsedNotRequiredColumnsFromConfig = array_diff($notUsedColumnsFromConfig, $missingRequiredHeaders);
 
-        $bestMatchingConfig = self::findBestMatchingConfig($errors);
-        $bestMatchingConfig['config'] = $this->getColumnsArrayFromConfig(($this->config[$bestMatchingConfig['configName']]));
-
-        $result['errors'] = [
-            'types' => $errors,
-            'bestMatch' => $bestMatchingConfig,
-        ];
-        return $result;
+        return array(
+            'success' => false,
+            'meta' => [
+                'allPossibleValues' => $configHeaders
+            ],
+            'errors' => [
+                'notMatchedHeadersInFile' => array_values($notMatchedHeadersInFile),
+                'notUsedNotRequiredColumnsFromConfig' => array_values($notUsedNotRequiredColumnsFromConfig),
+                'missingRequiredHeaders' => array_values($missingRequiredHeaders),
+                'allPossibleValues' => array_values($configHeaders),
+            ]
+        );
     }
 
-    protected static function findBestMatchingConfig($column_errors) {
-        $mostMatchingConfigName = false;
-        $mostMatchingConfigErrors = [];
-
-        foreach ($column_errors as $config_name => $col_errs) {
-            if(empty($mostMatchingConfig) or count($col_errs) < count($mostMatchingConfigErrors)){
-                $mostMatchingConfigName = $config_name;
-                $mostMatchingConfigErrors = $col_errs;
+    protected function getRequiredMissingHeaders($config, $headers){
+        $requiredNames = [];
+        foreach ($config as $colName => $options) {
+            if( isset($options['required']) and $options['required'] ){
+                $requiredNames[] = General::transformConfigHeaderName($colName);
             }
         }
 
-        return [
-            'configName' =>$mostMatchingConfigName,
-            'configErrors' => $mostMatchingConfigErrors,
-        ];
-    }
-
-    protected function findCellsError() {
-        return array('success' => true);
-    }
-
-    public function validate() {
-        $this->result = $this->validateColumns();
-        if ($this->result['success']) {
-            $this->result = array_merge($this->result, $this->findCellsError());
-        }
-        return $this->result['success'];
-    }
-
-    public function getResult() {
-        return $this->result;
+        $missingRequiredHeaders = array_diff($requiredNames, $headers);
+        return $missingRequiredHeaders;
     }
 } 

@@ -5,17 +5,10 @@ APP.factory('TableDataService', function ($rootScope, $location, $route) {
     var _private = {
         getErrorText: function () {
             var errorText = 'Error';
-            var bestMatch = fileUploadResponse.errors.bestMatch;
-            var errors = bestMatch.configErrors;
-
-            if(errors.from_file.length === 0 && errors.from_conf.length !== 0){
-                errorText = 'You are missing columns: ' + errors.from_conf.join(', ');
-            } else if(errors.from_file.length !== 0 && errors.from_conf.length === 0){
-                errorText = 'You have to much columns: ' + errors.from_file.join(', ');
-            } else if(errors.from_file.length !== 0 && errors.from_conf.length !== 0){
-                errorText = 'You have errors in columns: ' + errors.from_file.join(', ');
-                fileUploadResponse.columnsWithErrors = errors.from_file;
-                fileUploadResponse.correctColumnNames = errors.from_file_correct;
+            var errors = fileUploadResponse.errors;
+            if(errors.missingRequiredHeaders.length > 0 ){
+                errorText = 'You are missing requires columns: ' + errors.missingRequiredHeaders.join(', ');
+                fileUploadResponse.correctColumnNames = errors.missingRequiredHeaders;
             }
             return errorText;
         }
@@ -48,8 +41,20 @@ APP.factory('TableDataService', function ($rootScope, $location, $route) {
             $rootScope.$emit("popup.message", message);
         },
 
-        getData: function () {
-            return fileUploadResponse;
+        getRows: function () {
+            return fileUploadResponse.data && fileUploadResponse.data.rows;
+        },
+
+        getHeaders: function () {
+            return fileUploadResponse.data && fileUploadResponse.data.headers;
+        },
+
+        getErrors: function () {
+            return fileUploadResponse.errors;
+        },
+
+        getAllPossibleValues: function () {
+            return fileUploadResponse.meta.allPossibleValues;
         },
 
         hasErrors: function () {
